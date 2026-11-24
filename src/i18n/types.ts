@@ -17,7 +17,21 @@ export interface PageMeta {
 }
 
 /** Sections that only have a placeholder page until their copy is written. */
-export type PlaceholderKey = Exclude<SectionKey, 'styleguide'>;
+export type PlaceholderKey = Exclude<SectionKey, 'styleguide' | 'colophon'>;
+
+/** One colophon row: layer, technology and why (design doc §8.12 DataTable columns). */
+export interface ColophonRow {
+	layer: string;
+	tech: string;
+	why: string;
+}
+
+/** A sentence with one inline link: `before` + link + `after`. */
+export interface InlineLink {
+	before: string;
+	link: string;
+	after: string;
+}
 
 /** Every piece of prose on the site. Facts (names, values, tokens) stay out of it. */
 export interface Dictionary {
@@ -60,6 +74,25 @@ export interface Dictionary {
 			/** Same order and length as `workEntries` in src/data/home.ts. */
 			items: readonly [WorkItem, WorkItem, WorkItem];
 		};
+	};
+	colophon: {
+		meta: PageMeta;
+		/** The page's h1. */
+		title: string;
+		lead: string;
+		table: {
+			/** Visually hidden caption. */
+			caption: string;
+			layer: string;
+			tech: string;
+			why: string;
+		};
+		/** Same order in both locales. The tuple length keeps ES and EN in step. */
+		rows: readonly [ColophonRow, ColophonRow, ColophonRow, ColophonRow, ColophonRow, ColophonRow, ColophonRow, ColophonRow];
+		/** Closing line: link to the styleguide. */
+		styleguide: InlineLink;
+		/** Closing line: link to the source on GitHub (external, new tab). */
+		source: InlineLink;
 	};
 	styleguide: {
 		meta: PageMeta;

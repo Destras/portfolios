@@ -1,0 +1,131 @@
+---
+/**
+ * Three-column table: category, item and note (design doc §8.12, DataTable).
+ * A real <table>: the caption is visually hidden, and on mobile each row stacks as a block
+ * while the header stays readable by screen readers. Used by Colophon (and Uses, later).
+ */
+interface Row {
+	cat: string;
+	item: string;
+	note: string;
+}
+
+interface Props {
+	/** Visually hidden <caption>. */
+	caption: string;
+	/** Column headers, in column order. */
+	headers: readonly [string, string, string];
+	rows: readonly Row[];
+}
+
+const { caption, headers, rows } = Astro.props;
+---
+
+<table class="data-table">
+	<caption class="visually-hidden">{caption}</caption>
+	<thead>
+		<tr>{headers.map((header) => <th scope="col">{header}</th>)}</tr>
+	</thead>
+	<tbody>
+		{
+			rows.map((row) => (
+				<tr>
+					<td class="data-table__cat">{row.cat}</td>
+					<td class="data-table__item">{row.item}</td>
+					<td class="data-table__note">{row.note}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+<style>
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+	}
+
+	.data-table th {
+		padding: 0 0 var(--space-3);
+		border-bottom: var(--border-width) solid var(--color-border);
+		font-family: var(--font-accent);
+		font-size: var(--text-2xs);
+		font-weight: var(--weight-regular);
+		letter-spacing: var(--tracking-caps);
+		text-align: left;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+	}
+
+	.data-table td {
+		padding: var(--space-3) 0;
+		border-bottom: var(--border-width) solid var(--color-border);
+		vertical-align: baseline;
+	}
+
+	.data-table th + th,
+	.data-table td + td {
+		padding-left: var(--space-5);
+	}
+
+	.data-table th:nth-child(1) {
+		width: var(--table-cat-col);
+	}
+
+	.data-table th:nth-child(2) {
+		width: var(--table-item-col);
+	}
+
+	.data-table__cat {
+		font-family: var(--font-accent);
+		font-size: var(--text-xs);
+		color: var(--color-text-muted);
+	}
+
+	.data-table__item {
+		font-weight: var(--weight-semibold);
+		color: var(--color-text);
+	}
+
+	.data-table__note {
+		color: var(--color-text-muted);
+		text-wrap: pretty;
+	}
+
+	@media (width < 48rem) /* --bp-md */ {
+		/* Same technique as .visually-hidden (base.css): hidden, but still read. */
+		.data-table thead {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip-path: inset(50%);
+			white-space: nowrap;
+		}
+
+		.data-table tbody {
+			display: block;
+			border-top: var(--border-width) solid var(--color-border);
+		}
+
+		.data-table tr {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-1);
+			padding-block: var(--space-3);
+			border-bottom: var(--border-width) solid var(--color-border);
+		}
+
+		.data-table td,
+		.data-table td + td {
+			padding: 0;
+			border: 0;
+		}
+
+		.data-table__cat {
+			font-size: var(--text-2xs);
+		}
+	}
+</style>
