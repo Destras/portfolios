@@ -5,6 +5,7 @@ import SectionTitle from '../../components/SectionTitle.astro';
 import ExperienceList from '../../components/ExperienceList.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
+import { localizedPath } from '../../i18n/routes';
 import { workEntries } from '../../data/home';
 
 export const getStaticPaths = localeStaticPaths;
@@ -20,7 +21,11 @@ const work = workEntries.map((entry, i) => ({ ...entry, ...t.home.work.items[i] 
 	<main id="contenido" class="page">
 		<Hero title={t.home.hero.title} />
 		<section class="page__section" aria-labelledby="work-title">
-			<SectionTitle id="work-title" text={t.home.work.heading} />
+			<SectionTitle
+				id="work-title"
+				text={t.home.work.heading}
+				link={{ href: localizedPath('projects', locale), label: t.home.work.allLink }}
+			/>
 			<ExperienceList items={work} />
 		</section>
 	</main>

@@ -55,6 +55,8 @@ export interface Dictionary {
 		};
 		work: {
 			heading: string;
+			/** Link next to the heading, to the projects page. */
+			allLink: string;
 			/** Same order and length as `workEntries` in src/data/home.ts. */
 			items: readonly [WorkItem, WorkItem, WorkItem];
 		};

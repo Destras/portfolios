@@ -37,24 +37,25 @@ export const en: Dictionary = {
 		},
 		work: {
 			heading: 'Featured work',
+			allLink: 'All projects',
 			items: [
 				{
 					role: 'Full-Stack Engineer and Technical Lead',
 					start: 'Apr 2026',
 					end: 'Present',
-					summary: 'Clinical follow-up platform: web console for therapists and a patient app, in production.',
+					summary: 'From first meeting to production in ~6 months: a clinical web platform + mobile app that replaces the spreadsheets of a 150-patient center.',
 				},
 				{
 					role: 'Senior Frontend Engineer',
 					start: 'Jun 2024',
 					end: 'Oct 2026',
-					summary: 'Harness acquired Split.io in 2024. Sole UI and BFF engineer: Configs, AI Configs, Promote, monorepo migration.',
+					summary: 'Built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers.',
 				},
 				{
 					role: 'Frontend Engineer',
 					start: 'Jan 2022',
 					end: 'Jun 2024',
-					summary: 'Landing screen load: from 3–6 s to ~1 s. ~20 shared components.',
+					summary: 'Feature flag frontend for 500+ customers: advanced segmentation for enterprise and flag archiving for JPMorgan.',
 				},
 			],
 		},
