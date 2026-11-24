@@ -184,6 +184,7 @@ Not used on home anymore: CtaLink §8.10, MiniCase §8.9, FactSheet §8.11, Sect
 - [ ] **MISSING COPY:** EN summaries for rows 1 and 2 (EN still shows the old V1 lines). Drafts offered: "From first meeting to production in ~6 months: a clinical web platform + mobile app that replaces a 150-patient center's spreadsheets." / "I built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers."
 - [ ] Open, not asked again: the new Harness line no longer mentions the acquisition (D-H3 relied on it; diseno §14.4 note available); "LLMs" unexpanded (copy-mvp §1); both new lines exceed copy-mvp §4.4's 15-word limit (~23 and ~25 words).
 - [ ] copy-mvp §4.4 to update with all of the above.
+- Footer at the bottom of the viewport at minimum (site-wide, `src/styles/layout.css`): `.page` takes the leftover height (`flex: 1 0 auto`) instead of `.site-footer-wrap`. [ ] Update diseno §7 ("Queda pegado al final del contenido y el espacio que sobra va debajo") and its layout CSS block.
 
 **MISSING COPY:** none beyond the items above. **MISSING IN §8:** none. **DEVIATION:** none.
 
