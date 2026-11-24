@@ -3,6 +3,17 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://juaniw.com',
+	// Locale list must match `locales` in src/i18n/locales.ts.
+	i18n: {
+		locales: ['es', 'en'],
+		defaultLocale: 'es',
+		routing: {
+			prefixDefaultLocale: true,
+			// Static build: `/` becomes a meta-refresh page to /es/. Accept-Language detection is pending (see TODO.md).
+			redirectToDefaultLocale: true,
+		},
+	},
 	// Global typefaces, independent of theme and mode. Files live in src/assets/fonts (woff2).
 	fonts: [
 		{

@@ -1,0 +1,311 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { localeStaticPaths } from '../../i18n/locales';
+import { getDictionary } from '../../i18n/dictionaries';
+import {
+	colorTokens,
+	contrast,
+	families,
+	layoutTokens,
+	radii,
+	spaces,
+	textSizes,
+	typeTokens,
+} from '../../data/styleguide';
+
+export const getStaticPaths = localeStaticPaths;
+
+// Token data lives in src/data/styleguide.ts; prose comes from the dictionaries.
+// Values are shown as text; every swatch and sample renders the live token.
+const { locale } = Astro.props;
+const t = getDictionary(locale).styleguide;
+---
+
+<Layout title={t.meta.title} description={t.meta.description}>
+	<main id="contenido" class="page">
+		<header class="page__section sg-intro">
+			<h1>Styleguide</h1>
+			<p>{t.intro}</p>
+		</header>
+
+		<section class="page__section sg-section" aria-labelledby="color">
+			<h2 id="color">{t.color.heading}</h2>
+			<p>{t.color.lead}</p>
+			<ul class="sg-list">
+				{colorTokens.map((name) => (
+					<li class="sg-row">
+						<span class="sg-swatch" style={`background: var(${name})`} />
+						<div class="sg-meta">
+							<code>{name}</code>
+							<span class="sg-use">{t.colorUse[name]}</span>
+						</div>
+					</li>
+				))}
+			</ul>
+
+			<h3>{t.color.contrastHeading}</h3>
+			{contrast.map((c) => (
+				<div class="sg-table-wrap">
+				<table class="sg-table">
+					<caption>{c.theme}</caption>
+					<thead>
+						<tr>
+							<th scope="col">{t.color.pair}</th>
+							<th scope="col">{t.color.minimum}</th>
+							<th scope="col">{t.color.light}</th>
+							<th scope="col">{t.color.dark}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{c.rows.map((r) => (
+							<tr>
+								{r.map((cell) => <td>{cell}</td>)}
+							</tr>
+						))}
+					</tbody>
+				</table>
+				</div>
+			))}
+		</section>
+
+		<section class="page__section sg-section" aria-labelledby="tipografia">
+			<h2 id="tipografia">{t.typography.heading}</h2>
+			<p>{t.typography.lead}</p>
+			{families.map((f) => (
+				<div class="sg-family">
+					<p class="sg-label"><code>{f.token}</code> · {f.name}</p>
+					{f.weights.map((w) => (
+						<p style={`font-family: var(${f.token}); font-weight: var(${w.token})`}>
+							{w.label} · {t.typography.weightSample}
+						</p>
+					))}
+				</div>
+			))}
+			<p class="sg-mono-sample">{t.typography.arrowSample} <span aria-hidden="true">→</span></p>
+
+			<h3>{t.typography.scaleHeading}</h3>
+			<ul class="sg-list">
+				{textSizes.map((s) => (
+					<li class="sg-stack">
+						<p style={`font-size: var(${s.name})`}>{t.typography.scaleSample}</p>
+						<p class="sg-label"><code>{s.name}</code> · <code>{s.value}</code> · {t.textSizeUse[s.name]}</p>
+					</li>
+				))}
+			</ul>
+
+			<h3>{t.typography.leadingHeading}</h3>
+			<ul class="sg-list">
+				{typeTokens.map(([name, value]) => (
+					<li class="sg-label"><code>{name}</code> · <code>{value}</code></li>
+				))}
+			</ul>
+		</section>
+
+		<section class="page__section sg-section" aria-labelledby="espaciado">
+			<h2 id="espaciado">{t.spacing.heading}</h2>
+			<p>{t.spacing.lead}</p>
+			<ul class="sg-list">
+				{spaces.map(([name, value]) => (
+					<li class="sg-stack">
+						<span class="sg-bar" style={`inline-size: var(${name})`} />
+						<p class="sg-label"><code>{name}</code> · <code>{value}</code></p>
+					</li>
+				))}
+			</ul>
+		</section>
+
+		<section class="page__section sg-section" aria-labelledby="elementos">
+			<h2 id="elementos">{t.elements.heading}</h2>
+			<p>{t.elements.lead}</p>
+			<div class="sg-sample">
+				<h2>{t.elements.sectionTitle}</h2>
+				<h3>{t.elements.caseTitle}</h3>
+				<p>
+					<strong>{t.elements.problemLabel}</strong> {t.elements.problemBody}{' '}
+					<a href="#elementos">{t.elements.linkText}</a> {t.elements.linkAfter}
+				</p>
+				<ul>
+					{t.elements.listItems.map((item) => <li>{item}</li>)}
+				</ul>
+				<table class="sg-table">
+					<caption>{t.elements.tableCaption}</caption>
+					<thead>
+						<tr>
+							<th scope="col">{t.elements.tableCategory}</th>
+							<th scope="col">{t.elements.tableItem}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Editor</td>
+							<td>VS Code</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="page__section sg-section" aria-labelledby="forma">
+			<h2 id="forma">{t.shape.heading}</h2>
+			<ul class="sg-list">
+				{radii.map(([name, value]) => (
+					<li class="sg-row">
+						<span class="sg-swatch sg-swatch--outline" style={`border-radius: var(${name})`} />
+						<p class="sg-label"><code>{name}</code> · <code>{value}</code></p>
+					</li>
+				))}
+				<li class="sg-row">
+					<a class="sg-focus-demo" href="#forma">{t.shape.focusLabel}</a>
+					<p class="sg-label">{t.shape.focusCaption} (<code>--focus-width</code>, <code>--focus-offset</code>)</p>
+				</li>
+			</ul>
+			<ul class="sg-list">
+				{layoutTokens.map((l) => (
+					<li class="sg-label"><code>{l.name}</code> · <code>{l.value}</code> · {t.layoutUse[l.name]}</li>
+				))}
+			</ul>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.sg-intro {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.sg-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.sg-section h3 {
+		margin-top: var(--space-6);
+	}
+
+	.sg-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	.sg-row {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+	}
+
+	.sg-stack {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.sg-swatch {
+		flex: none;
+		inline-size: var(--tap-min);
+		block-size: var(--tap-min);
+		border: var(--border-width) solid var(--color-border);
+		border-radius: var(--radius-sm);
+	}
+
+	.sg-swatch--outline {
+		border-color: var(--color-text-muted);
+	}
+
+	.sg-meta {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.sg-use {
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
+		color: var(--color-text-muted);
+	}
+
+	code,
+	.sg-label {
+		font-family: var(--font-accent);
+		font-size: var(--text-xs);
+		line-height: var(--leading-normal);
+		overflow-wrap: anywhere;
+	}
+
+	.sg-label {
+		color: var(--color-text-muted);
+	}
+
+	.sg-family {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	/* Plain text, not a link: the accent is reserved for interactive elements. */
+	.sg-mono-sample {
+		font-family: var(--font-accent);
+	}
+
+	.sg-bar {
+		display: block;
+		block-size: var(--space-2);
+		background: var(--color-text-muted);
+	}
+
+	.sg-sample {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		padding-block: var(--space-6);
+		border-block: var(--border-width) solid var(--color-border);
+	}
+
+	/* At 320px with a large user font size, only the table scrolls, not the page. */
+	.sg-table-wrap {
+		overflow-x: auto;
+	}
+
+	.sg-table {
+		width: 100%;
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+	}
+
+	.sg-table caption {
+		padding-bottom: var(--space-2);
+		font-weight: var(--weight-semibold);
+		text-align: left;
+	}
+
+	.sg-table th {
+		padding-bottom: var(--space-2);
+		border-bottom: var(--border-width) solid var(--color-border);
+		font-family: var(--font-accent);
+		font-size: var(--text-2xs);
+		font-weight: var(--weight-regular);
+		letter-spacing: var(--tracking-caps);
+		text-align: left;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+	}
+
+	.sg-table td {
+		padding-block: var(--space-2);
+		border-bottom: var(--border-width) solid var(--color-border);
+	}
+
+	.sg-table th + th,
+	.sg-table td + td {
+		padding-left: var(--space-3);
+	}
+
+	/* Always shows the focus ring, so it can be seen without a keyboard. */
+	.sg-focus-demo {
+		outline: var(--focus-width) solid var(--color-focus);
+		outline-offset: var(--focus-offset);
+	}
+</style>
