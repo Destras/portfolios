@@ -1,0 +1,27 @@
+/* Page skeleton. Global because pages (not components) apply these classes.
+   Header layout belongs to the SiteHeader component. */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
+}
+
+/* Reading column: --measure wide, centered; on mobile, full width minus --space-5 per side. */
+.page {
+	width: min(var(--measure), 100% - 2 * var(--space-5));
+	margin-inline: auto;
+	padding-top: var(--space-page-top);
+}
+
+.page__section + .page__section {
+	margin-top: var(--space-section);
+}
+
+/* Footer sits right after the content; the leftover height goes below it. */
+.site-footer-wrap {
+	flex: 1;
+	width: min(var(--measure), 100% - 2 * var(--space-5));
+	margin-inline: auto;
+	padding-top: var(--space-footer-top);
+	padding-bottom: var(--space-footer-bottom);
+}

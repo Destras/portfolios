@@ -1,0 +1,113 @@
+/* Base: global styles for plain HTML elements (no classes) plus .visually-hidden.
+   Component styles live in each component's scoped <style>, not here. */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+[id] {
+	scroll-margin-top: var(--space-8);
+}
+
+body {
+	margin: 0;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
+	font-size: var(--text-md);
+	line-height: var(--leading-relaxed);
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, figure {
+	margin: 0;
+}
+
+/* Heading defaults. Hero and SectionTitle override them in their components. */
+h1 {
+	font-size: var(--text-lg);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	letter-spacing: var(--tracking-tight);
+	color: var(--color-text);
+}
+
+h2,
+h3 {
+	font-size: var(--text-md);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	color: var(--color-text);
+}
+
+ul, ol {
+	padding: 0;
+	list-style: none;
+}
+
+strong {
+	font-weight: var(--weight-semibold);
+}
+
+table {
+	border-collapse: collapse;
+}
+
+a {
+	color: var(--color-accent);
+	text-decoration: underline;
+	text-decoration-color: currentColor;
+	text-underline-offset: var(--underline-offset);
+}
+
+a:hover {
+	color: var(--color-accent-hover);
+}
+
+:focus-visible {
+	outline: var(--focus-width) solid var(--color-focus);
+	outline-offset: var(--focus-offset);
+}
+
+::selection {
+	background: var(--color-selection);
+	color: var(--color-on-selection);
+}
+
+img,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Read by screen readers, not shown (e.g. "opens in a new tab"). */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
