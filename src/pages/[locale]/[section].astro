@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import PlaceholderPage from '../../components/pages/PlaceholderPage.astro';
 import ProjectsPage from '../../components/pages/ProjectsPage.astro';
 import StyleguidePage from '../../components/pages/StyleguidePage.astro';
+import ColophonPage from '../../components/pages/ColophonPage.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { locales } from '../../i18n/locales';
 import { routes, sectionKeys } from '../../i18n/routes';
@@ -30,6 +31,10 @@ const t = getDictionary(locale);
 	) : key === 'projects' ? (
 		<Layout title={t.projects.meta.title} description={t.projects.meta.description} routeKey={key}>
 			<ProjectsPage locale={locale} />
+		</Layout>
+	) : key === 'colophon' ? (
+		<Layout title={t.colophon.meta.title} description={t.colophon.meta.description} routeKey={key}>
+			<ColophonPage locale={locale} />
 		</Layout>
 	) : (
 		<Layout title={`${t.pages[key].title} · Juan Ignacio Werkalec`} description={t.pages[key].description} routeKey={key} noindex>

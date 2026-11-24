@@ -1,14 +1,16 @@
 ---
-/** h1 of an inner page (design doc §8.7). No lead yet: no page that uses it needs one. */
+/** Inner-page h1 with an optional lead (design doc §8.7, PageTitle). */
 interface Props {
 	title: string;
+	lead?: string;
 }
 
-const { title } = Astro.props;
+const { title, lead } = Astro.props;
 ---
 
 <header class="page-title">
 	<h1>{title}</h1>
+	{lead && <p class="page-title__lead">{lead}</p>}
 </header>
 
 <style>
@@ -21,5 +23,12 @@ const { title } = Astro.props;
 		font-weight: var(--weight-semibold);
 		line-height: var(--leading-tight);
 		letter-spacing: var(--tracking-tight);
+	}
+
+	.page-title__lead {
+		margin-top: var(--space-4);
+		font-size: var(--text-md);
+		color: var(--color-text);
+		text-wrap: pretty;
 	}
 </style>

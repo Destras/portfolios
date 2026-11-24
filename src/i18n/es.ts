@@ -24,7 +24,6 @@ export const es: Dictionary = {
 		process: { title: 'Proceso', description: 'Cómo trabajo.' },
 		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
 		uses: { title: 'Uses', description: 'Las herramientas que uso.' },
-		colophon: { title: 'Colofón', description: 'Cómo está hecho este sitio.' },
 	},
 	projects: {
 		meta: {
@@ -67,6 +66,32 @@ export const es: Dictionary = {
 				},
 			],
 		},
+	},
+	colophon: {
+		meta: {
+			title: 'Colofón · Juan Ignacio Werkalec',
+			description: 'Cómo está hecho este sitio, capa por capa, y por qué elegí cada pieza.',
+		},
+		title: 'Colofón',
+		lead: 'Cómo está hecho este sitio, capa por capa, y por qué elegí cada pieza.',
+		table: {
+			caption: 'Cómo está hecho este sitio',
+			layer: 'Capa',
+			tech: 'Tecnología',
+			why: 'Por qué',
+		},
+		rows: [
+			{ layer: 'Framework', tech: 'Astro', why: 'Genera HTML estático y no manda JavaScript que la página no necesita.' },
+			{ layer: 'Tipos', tech: 'TypeScript', why: 'Si falta una traducción, el chequeo falla antes de publicar.' },
+			{ layer: 'Idiomas', tech: 'i18n de Astro', why: 'Un solo archivo por página y un mapa de rutas para ES y EN.' },
+			{ layer: 'Estilos', tech: 'CSS con tokens', why: 'Sin frameworks: cada color y cada medida sale de un token, con dos temas y modo noche.' },
+			{ layer: 'Tipografía', tech: 'Atkinson Hyperlegible Next y Commit Mono', why: 'Una para leer cómodo y otra como acento técnico. Las dos se sirven desde este sitio.' },
+			{ layer: 'Diseño', tech: 'Claude Design', why: 'Los wireframes y la primera versión visual. Las decisiones finales las tomé yo.' },
+			{ layer: 'Implementación', tech: 'Claude Code', why: 'Escribe el código desde specs y planes; yo decido y reviso cada sección.' },
+			{ layer: 'Deploy', tech: 'Netlify', why: 'Lo recomienda Astro: un sitio estático sale sin configuración extra.' },
+		],
+		styleguide: { before: '¿Cómo se ve cada pieza? Está en la ', link: 'guía de estilos', after: '.' },
+		source: { before: 'El código está en ', link: 'GitHub', after: '.' },
 	},
 	styleguide: {
 		meta: {

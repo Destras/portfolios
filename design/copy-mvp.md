@@ -288,7 +288,34 @@ Se agregaron el 2026-11-21. Los wireframes las muestran con la estructura y el l
 | /proyectos/{slug} | Título · tabla (Rol / Duración / Stack / Estado / Stakeholders) · Contexto · Restricciones · Valor · visual opcional. Las experiencias cierran con links a sus proyectos y casos | `datos.md` |
 | /casos | Lista de 2 filas, con el mismo formato | Este documento |
 | /casos/{slug} | Tabla · Problema · Opciones (A vs. B) · Decisión y por qué · Qué salió bien · Qué salió mal o qué cambiaría · Resultado | Mini-casos (4.3), ampliados después |
-| /colofón | Tabla de Capa · Tecnología · Por qué | Se escribe cuando el sitio esté codeado |
+| /colofón | Tabla de Capa · Tecnología · Por qué | Borrador abajo (2026-11-24) |
+
+#### /colofón — borrador (2026-11-24, pendiente de revisión del dueño)
+Escrito por Claude a partir del repo. Ya está en `src/i18n/es.ts` y `en.ts`; si se corrige, se corrige acá y allá.
+
+| Campo | ES | EN |
+|---|---|---|
+| Título (h1) | Colofón | Colophon |
+| Meta title | Colofón · Juan Ignacio Werkalec | Colophon · Juan Ignacio Werkalec |
+| Bajada (y meta description) | Cómo está hecho este sitio, capa por capa, y por qué elegí cada pieza. | How this site is built, layer by layer, and why I picked each piece. |
+| Caption de la tabla (oculto) | Cómo está hecho este sitio | How this site is built |
+| Encabezados | Capa · Tecnología · Por qué | Layer · Technology · Why |
+
+| Capa (ES / EN) | Tecnología (ES / EN) | Por qué ES | Por qué EN |
+|---|---|---|---|
+| Framework / Framework | Astro | Genera HTML estático y no manda JavaScript que la página no necesita. | It outputs static HTML and ships no JavaScript the page doesn't need. |
+| Tipos / Types | TypeScript | Si falta una traducción, el chequeo falla antes de publicar. | If a translation is missing, the check fails before anything ships. |
+| Idiomas / Languages | i18n de Astro / Astro i18n | Un solo archivo por página y un mapa de rutas para ES y EN. | One file per page and one route map for ES and EN. |
+| Estilos / Styles | CSS con tokens / CSS with tokens | Sin frameworks: cada color y cada medida sale de un token, con dos temas y modo noche. | No framework: every color and every size comes from a token, with two themes and a dark mode. |
+| Tipografía / Typography | Atkinson Hyperlegible Next y Commit Mono / … and Commit Mono | Una para leer cómodo y otra como acento técnico. Las dos se sirven desde este sitio. | One for easy reading and one as a technical accent. Both are served from this site. |
+| Diseño / Design | Claude Design | Los wireframes y la primera versión visual. Las decisiones finales las tomé yo. | The wireframes and the first visual pass. The final calls were mine. |
+| Implementación / Build | Claude Code | Escribe el código desde specs y planes; yo decido y reviso cada sección. | It writes the code from specs and plans; I decide and review every section. |
+| Deploy / Deploy | Netlify | Lo recomienda Astro: un sitio estático sale sin configuración extra. | Astro recommends it: a static site ships with no extra setup. |
+
+| Cierre | ES | EN |
+|---|---|---|
+| Styleguide (link en "guía de estilos" / "styleguide") | ¿Cómo se ve cada pieza? Está en la guía de estilos. | Want to see each piece? It's in the styleguide. |
+| Código (link en "GitHub", otra pestaña) | El código está en GitHub. | The code is on GitHub. |
 
 ---
 

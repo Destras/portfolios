@@ -1,0 +1,38 @@
+---
+/** Colophon (/es/colofon/, /en/colophon/): how the site is built and why. Copy: copy-mvp §4.10. */
+import type { Locale } from '../../i18n/locales';
+import { getDictionary } from '../../i18n/dictionaries';
+import { localizedPath } from '../../i18n/routes';
+import PageTitle from '../PageTitle.astro';
+import DataTable from '../DataTable.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const c = t.colophon;
+
+const sourceUrl = 'https://github.com/Destras/portfolios';
+const rows = c.rows.map((row) => ({ cat: row.layer, item: row.tech, note: row.why }));
+---
+
+<main id="contenido" class="page">
+	<PageTitle title={c.title} lead={c.lead} />
+	<DataTable caption={c.table.caption} headers={[c.table.layer, c.table.tech, c.table.why]} rows={rows} />
+	<p class="colophon-more">
+		{c.styleguide.before}<a href={localizedPath('styleguide', locale)}>{c.styleguide.link}</a>{c.styleguide.after}{' '}{c.source.before}<a href={sourceUrl} target="_blank" rel="noopener"
+			>{c.source.link}<span class="visually-hidden">{t.site.footer.newTab}</span></a
+		>{c.source.after}
+	</p>
+</main>
+
+<style>
+	/* Color, underline, hover and focus come from the global `a`. */
+	.colophon-more {
+		margin-top: var(--space-8);
+		color: var(--color-text-muted);
+		text-wrap: pretty;
+	}
+</style>
