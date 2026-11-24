@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/themes/salvia.css';
 import '../styles/themes/brasa.css';
 import '../styles/modes.css';
@@ -9,6 +10,8 @@ import '../styles/modes.css';
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<Font cssVariable="--font-sans" preload />
+		<Font cssVariable="--font-mono" preload />
 		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
 		<script is:inline>
 			try {
