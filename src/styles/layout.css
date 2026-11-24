@@ -7,7 +7,10 @@ body {
 }
 
 /* Reading column: --measure wide, centered; on mobile, full width minus --space-5 per side. */
+/* It takes the leftover height, so the footer sits at the bottom of the viewport at minimum
+   (owner, 2026-11-24; diseno §7 said the leftover went below the footer). */
 .page {
+	flex: 1 0 auto;
 	width: min(var(--measure), 100% - 2 * var(--space-5));
 	margin-inline: auto;
 	padding-top: var(--space-page-top);
@@ -17,9 +20,8 @@ body {
 	margin-top: var(--space-section);
 }
 
-/* Footer sits right after the content; the leftover height goes below it. */
+/* Footer: --space-footer-top is the minimum gap after the content. */
 .site-footer-wrap {
-	flex: 1;
 	width: min(var(--measure), 100% - 2 * var(--space-5));
 	margin-inline: auto;
 	padding-top: var(--space-footer-top);

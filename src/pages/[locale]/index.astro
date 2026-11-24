@@ -1,14 +1,27 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ExperienceList from '../../components/ExperienceList.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
+import { workEntries } from '../../data/home';
 
 export const getStaticPaths = localeStaticPaths;
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
+
+// Facts and prose share the same order (both are 3-tuples, so the types keep them in step).
+const work = workEntries.map((entry, i) => ({ ...entry, ...t.home.work.items[i] }));
 ---
 
 <Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home">
-	<main id="contenido" class="page"></main>
+	<main id="contenido" class="page">
+		<Hero title={t.home.hero.title} />
+		<section class="page__section" aria-labelledby="work-title">
+			<SectionTitle id="work-title" text={t.home.work.heading} />
+			<ExperienceList items={work} />
+		</section>
+	</main>
 </Layout>

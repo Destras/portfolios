@@ -32,6 +32,32 @@ export const en: Dictionary = {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
 			description: "Senior full-stack engineer, UI-focused. Give me the ambiguous stuff; I'll ship it.",
 		},
+		hero: {
+			title: 'I like building things. I own ambiguous features end to end with minimal hand-holding, and I sweat the details that separate good from great.',
+		},
+		work: {
+			heading: 'Featured work',
+			items: [
+				{
+					role: 'Full-Stack Engineer and Technical Lead',
+					start: 'Apr 2026',
+					end: 'Present',
+					summary: 'Clinical follow-up platform: web console for therapists and a patient app, in production.',
+				},
+				{
+					role: 'Senior Frontend Engineer',
+					start: 'Jun 2024',
+					end: 'Oct 2026',
+					summary: 'Harness acquired Split.io in 2024. Sole UI and BFF engineer: Configs, AI Configs, Promote, monorepo migration.',
+				},
+				{
+					role: 'Frontend Engineer',
+					start: 'Jan 2022',
+					end: 'Jun 2024',
+					summary: 'Landing screen load: from 3–6 s to ~1 s. ~20 shared components.',
+				},
+			],
+		},
 	},
 	styleguide: {
 		meta: {
