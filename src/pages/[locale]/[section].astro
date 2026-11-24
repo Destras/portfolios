@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import PlaceholderPage from '../../components/pages/PlaceholderPage.astro';
 import StyleguidePage from '../../components/pages/StyleguidePage.astro';
 import ColophonPage from '../../components/pages/ColophonPage.astro';
+import UsesPage from '../../components/pages/UsesPage.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { locales } from '../../i18n/locales';
 import { routes, sectionKeys } from '../../i18n/routes';
@@ -26,6 +27,10 @@ const t = getDictionary(locale);
 	key === 'styleguide' ? (
 		<Layout title={t.styleguide.meta.title} description={t.styleguide.meta.description} routeKey={key}>
 			<StyleguidePage locale={locale} />
+		</Layout>
+	) : key === 'uses' ? (
+		<Layout title={t.uses.meta.title} description={t.uses.meta.description} routeKey={key}>
+			<UsesPage locale={locale} />
 		</Layout>
 	) : key === 'colophon' ? (
 		<Layout title={t.colophon.meta.title} description={t.colophon.meta.description} routeKey={key}>

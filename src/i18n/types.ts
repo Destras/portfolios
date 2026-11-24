@@ -17,13 +17,20 @@ export interface PageMeta {
 }
 
 /** Sections that only have a placeholder page until their copy is written. */
-export type PlaceholderKey = Exclude<SectionKey, 'styleguide' | 'colophon'>;
+export type PlaceholderKey = Exclude<SectionKey, 'styleguide' | 'colophon' | 'uses'>;
 
 /** One colophon row: layer, technology and why (design doc §8.12 DataTable columns). */
 export interface ColophonRow {
 	layer: string;
 	tech: string;
 	why: string;
+}
+
+/** One Uses row: category, item and note (design doc §8.12 DataTable columns). */
+export interface UsesRow {
+	cat: string;
+	item: string;
+	note: string;
 }
 
 /** A sentence with one inline link: `before` + link + `after`. */
@@ -74,6 +81,23 @@ export interface Dictionary {
 			/** Same order and length as `workEntries` in src/data/home.ts. */
 			items: readonly [WorkItem, WorkItem, WorkItem];
 		};
+	};
+	uses: {
+		/** The description is the lead (design doc §9.3). */
+		meta: PageMeta;
+		/** The page's h1. */
+		title: string;
+		/** The AI line, shown as the PageTitle lead. */
+		lead: string;
+		table: {
+			/** Visually hidden caption. */
+			caption: string;
+			cat: string;
+			item: string;
+			note: string;
+		};
+		/** Same order in both locales. The tuple length keeps ES and EN in step. */
+		rows: readonly [UsesRow, UsesRow, UsesRow, UsesRow, UsesRow, UsesRow];
 	};
 	colophon: {
 		meta: PageMeta;

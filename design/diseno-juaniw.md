@@ -1113,7 +1113,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 |---|---|
 | Clase | `.data-table` (+ `__cat`, `__item`, `__note`) |
 | Para qué | Tabla de tres columnas: categoría, ítem y comentario |
-| Dónde se usa | Uses (en la fase 2, también Colofón) |
+| Dónde se usa | Uses y Colofón |
 | Tokens | `--font-accent`, `--text-2xs`, `--text-xs`, `--text-base`, `--tracking-caps`, `--leading-normal`, `--color-text`, `--color-text-muted`, `--color-border`, `--table-cat-col`, `--table-item-col`, `--space-1`, `--space-3`, `--space-5` |
 | Estados | No es interactiva |
 | Mobile vs. desktop | Mobile: cada fila es un bloque, sin encabezado visible. Desktop: tabla con encabezado en mayúsculas |
@@ -1308,8 +1308,9 @@ Todas usan: `SkipLink` → `SiteHeader` → `<main id="contenido" class="page">`
 
 ### 9.3 Uses — `/es/uses` / `/en/uses`
 - **h1:** Uses.
-- **Meta:** title "Uses · Juan Ignacio Werkalec"; la description es la bajada.
-- **Secciones:** PageTitle con bajada (la línea sobre la IA) → DataTable de 6 filas (copy-mvp §4.8).
+- **Meta:** title "Uses · Juan Ignacio Werkalec"; la description es la bajada. Los dos están en copy-mvp §4.8.
+- **Secciones:** PageTitle con bajada (la línea sobre la IA) → DataTable de 6 filas (copy-mvp §4.8). La categoría "IA" se repite en las dos filas.
+- **Página actual:** Uses está solo en el footer, así que no lleva `aria-current`.
 - **Referencia:** Uses-desktop-final, Uses-mobile-final.
 
 ### 9.4 404 — `app/not-found.tsx`
@@ -1448,8 +1449,8 @@ Calculado desde los valores OKLCH, recortados a sRGB. Coincide con el cálculo d
 | Skip link | Saltar al contenido | Skip to content |
 | `aria-label` del nav y del idioma | Principal · Idioma | Main · Language |
 | Aviso de pestaña nueva | (se abre en otra pestaña) | (opens in a new tab) |
-| Encabezados de la tabla de Uses | Categoría · Ítem · Comentario | Category · Item · Note |
-| Caption de la tabla de Uses | Herramientas que uso | Tools I use |
+| Encabezados de la tabla de Uses (✅ ya en copy-mvp §4.8) | Categoría · Ítem · Comentario | Category · Item · Note |
+| Caption de la tabla de Uses (✅ ya en copy-mvp §4.8) | Herramientas que uso | Tools I use |
 | Mes de "Actualizado en…" | noviembre 2026 | November 2026 |
 
 ---

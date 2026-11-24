@@ -14,7 +14,7 @@
 - [ ] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Needs an adapter and on-demand rendering of `/` (`Astro.preferredLocale`). Today `/` is a static meta-refresh to /es/.
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
-- [ ] Replace the placeholder pages (process, projects, now, uses) with real ones and drop their noindex. Colophon is done (draft copy, pending owner review).
+- [ ] Replace the placeholder pages (process, projects, now) with real ones and drop their noindex. Colophon is done (draft copy, pending owner review). Uses is done.
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Bilingual 404 page.
 - [ ] Sitemap and robots (6 MVP URLs).
@@ -25,7 +25,7 @@
 | Page | Spec | Built ES | Built EN | Verified | Doc updated |
 |---|---|---|---|---|---|
 | Now | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Uses | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Home | ✅ | ✅ | ✅ | ☐ | ☐ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Colophon (phase 2) | ✅ | ✅ | ✅ | ☐ | ☐ |

@@ -24,7 +24,6 @@ export const es: Dictionary = {
 		process: { title: 'Proceso', description: 'Cómo trabajo.' },
 		projects: { title: 'Proyectos', description: 'Experiencia y proyectos.' },
 		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
-		uses: { title: 'Uses', description: 'Las herramientas que uso.' },
 	},
 	home: {
 		meta: {
@@ -58,6 +57,28 @@ export const es: Dictionary = {
 				},
 			],
 		},
+	},
+	uses: {
+		meta: {
+			title: 'Uses · Juan Ignacio Werkalec',
+			description: 'Uso IA todos los días. La IA acelera; el criterio sigue siendo mío.',
+		},
+		title: 'Uses',
+		lead: 'Uso IA todos los días. La IA acelera; el criterio sigue siendo mío.',
+		table: {
+			caption: 'Herramientas que uso',
+			cat: 'Categoría',
+			item: 'Ítem',
+			note: 'Comentario',
+		},
+		rows: [
+			{ cat: 'Editor', item: 'VS Code', note: 'Lo de siempre: rápido, extensible, sin sorpresas.' },
+			{ cat: 'Terminal', item: 'iTerm2 + Oh My Zsh', note: 'Atajos y autocompletado para no escribir dos veces lo mismo.' },
+			{ cat: 'IA', item: 'Claude Code y Claude Desktop', note: 'Specs primero, tests después; el agente escribe, yo reviso.' },
+			{ cat: 'IA', item: 'Superpowers y mattpocock-skills', note: 'Skills de agentes para planificar, testear y revisar.' },
+			{ cat: 'Hardware', item: 'MacBook Pro 2021, M1, 64 GB', note: 'Todo abierto a la vez, sin cerrar nada.' },
+			{ cat: 'Apps', item: 'Obsidian', note: 'Mi vault: lo que aprendo y decido queda escrito.' },
+		],
 	},
 	colophon: {
 		meta: {
