@@ -37,6 +37,7 @@ export const es: Dictionary = {
 		},
 		work: {
 			heading: 'Trabajo destacado',
+			allLink: 'Todos los proyectos',
 			items: [
 				{
 					role: 'Full-Stack Engineer y Technical Lead',
@@ -54,7 +55,7 @@ export const es: Dictionary = {
 					role: 'Frontend Engineer',
 					start: 'ene 2022',
 					end: 'jun 2024',
-					summary: 'Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan y carga de 3–6 s a ~1 s.',
+					summary: 'Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.',
 				},
 			],
 		},

@@ -4,18 +4,49 @@ interface Props {
 	/** Target of the section's aria-labelledby. */
 	id: string;
 	text: string;
+	/** Optional link on the same line, aligned right (e.g. "Todos los proyectos"). Kept outside the h2. */
+	link?: { href: string; label: string };
 }
 
-const { id, text } = Astro.props;
+const { id, text, link } = Astro.props;
 ---
 
-<h2 class="section-title" id={id}>{text}</h2>
+{
+	link ? (
+		<div class="section-title-row">
+			<h2 class="section-title" id={id}>{text}</h2>
+			<a class="section-title-link" href={link.href}>{link.label}</a>
+		</div>
+	) : (
+		<h2 class="section-title section-title--spaced" id={id}>{text}</h2>
+	)
+}
 
 <style>
 	.section-title {
-		margin-bottom: var(--space-2);
 		font-size: var(--text-base);
 		font-weight: var(--weight-regular);
 		color: var(--color-text-muted);
+	}
+
+	.section-title--spaced,
+	.section-title-row {
+		margin-bottom: var(--space-2);
+	}
+
+	/* Wraps only if both don't fit on one line. */
+	.section-title-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--space-2);
+	}
+
+	/* Color, underline and hover come from the global `a`, like the footer links. */
+	.section-title-link {
+		padding-block: var(--space-1);
+		font-family: var(--font-accent);
+		font-size: var(--text-sm);
 	}
 </style>
