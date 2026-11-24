@@ -1,5 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { localeStaticPaths } from '../../i18n/locales';
+
+export const getStaticPaths = localeStaticPaths;
 
 // Token data mirrors src/styles/themes/*.css and src/styles/foundations.css.
 // Values are shown as text; every swatch and sample renders the live token.
@@ -109,7 +112,6 @@ const layoutTokens = [
 <Layout
 	title="Styleguide · Juan Ignacio Werkalec"
 	description="Los tokens y estilos base de juaniw.com."
-	lang="es"
 >
 	<main id="contenido" class="page">
 		<header class="page__section sg-intro">

@@ -6,14 +6,17 @@ import '../styles/modes.css';
 import '../styles/foundations.css';
 import '../styles/base.css';
 import '../styles/layout.css';
+import { defaultLocale, getAlternateLinks, isLocale } from '../i18n/locales';
 
 interface Props {
 	title: string;
 	description?: string;
-	lang?: 'es' | 'en';
 }
 
-const { title, description, lang = 'es' } = Astro.props;
+const { title, description } = Astro.props;
+// The language comes from the URL prefix, never from a prop, so it can't disagree with the route.
+const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
+const alternates = getAlternateLinks(Astro.url.pathname, Astro.site!);
 ---
 
 <!doctype html>
@@ -38,6 +41,7 @@ const { title, description, lang = 'es' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
+		{alternates.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 	</head>
 	<body>
 		<slot />
