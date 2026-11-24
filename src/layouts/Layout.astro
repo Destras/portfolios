@@ -1,14 +1,28 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/themes/salvia.css';
 import '../styles/themes/brasa.css';
 import '../styles/modes.css';
+import '../styles/foundations.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	lang?: 'es' | 'en';
+}
+
+const { title, description, lang = 'es' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<Font cssVariable="--font-sans" preload />
+		<Font cssVariable="--font-mono" preload />
 		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
 		<script is:inline>
 			try {
@@ -22,22 +36,10 @@ import '../styles/modes.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	body {
-		background-color: var(--color-bg);
-	}
-</style>
