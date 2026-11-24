@@ -138,6 +138,7 @@ const layoutTokens = [
 
 			<h3>Contraste (WCAG 2.2 AA)</h3>
 			{contrast.map((t) => (
+				<div class="sg-table-wrap">
 				<table class="sg-table">
 					<caption>{t.theme}</caption>
 					<thead>
@@ -156,6 +157,7 @@ const layoutTokens = [
 						))}
 					</tbody>
 				</table>
+				</div>
 			))}
 		</section>
 
@@ -216,7 +218,7 @@ const layoutTokens = [
 				<h3>Configs y AI Configs (h3)</h3>
 				<p>
 					<strong>Problema:</strong> los clientes no podían cambiar la configuración de sus agentes de IA
-					en tiempo real sin hacer un nuevo deploy. Los links van <a href="#elementos">siempre subrayados</a>
+					en tiempo real sin hacer un nuevo deploy. Los links van <a href="#elementos">siempre subrayados</a>{' '}
 					y cambian de tono con el hover.
 				</p>
 				<ul>
@@ -341,9 +343,9 @@ const layoutTokens = [
 		gap: var(--space-1);
 	}
 
+	/* Plain text, not a link: the accent is reserved for interactive elements. */
 	.sg-mono-sample {
 		font-family: var(--font-accent);
-		color: var(--color-accent);
 	}
 
 	.sg-bar {
@@ -358,6 +360,11 @@ const layoutTokens = [
 		gap: var(--space-4);
 		padding-block: var(--space-6);
 		border-block: var(--border-width) solid var(--color-border);
+	}
+
+	/* At 320px with a large user font size, only the table scrolls, not the page. */
+	.sg-table-wrap {
+		overflow-x: auto;
 	}
 
 	.sg-table {
