@@ -1,12 +1,42 @@
 import type { ColorToken, LayoutToken, TextSizeToken } from '../data/styleguide';
+import type { SectionKey } from './routes';
 
 export interface PageMeta {
 	title: string;
 	description: string;
 }
 
+/** Sections that only have a placeholder page until their copy is written. */
+export type PlaceholderKey = Exclude<SectionKey, 'styleguide'>;
+
 /** Every piece of prose on the site. Facts (names, values, tokens) stay out of it. */
 export interface Dictionary {
+	/** Chrome shared by every page: skip link, header and footer. */
+	site: {
+		skipLink: string;
+		/** aria-label of the main nav. */
+		navLabel: string;
+		/** aria-label of the language switch. */
+		langLabel: string;
+		nav: {
+			process: string;
+			projects: string;
+		};
+		footer: {
+			cv: string;
+			now: string;
+			uses: string;
+			colophon: string;
+			styleguide: string;
+			/** Visually hidden, appended to links that open in a new tab. Starts with a space. */
+			newTab: string;
+			/** Written by hand: it means the content changed, not that the site was deployed. */
+			updated: string;
+			signoff: string;
+		};
+	};
+	/** Placeholder pages: the title is also the h1. */
+	pages: Record<PlaceholderKey, PageMeta>;
 	home: {
 		meta: PageMeta;
 	};

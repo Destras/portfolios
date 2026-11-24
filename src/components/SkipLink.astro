@@ -1,0 +1,32 @@
+---
+import type { Locale } from '../i18n/locales';
+import { getDictionary } from '../i18n/dictionaries';
+
+interface Props {
+	locale: Locale;
+}
+
+const t = getDictionary(Astro.props.locale).site;
+---
+
+<!-- Targets the page's <main id="contenido">. Hidden until it receives keyboard focus. -->
+<a class="skip-link" href="#contenido">{t.skipLink}</a>
+
+<style>
+	.skip-link {
+		position: absolute;
+		top: var(--space-2);
+		left: var(--space-2);
+		z-index: 10;
+		padding: var(--space-2) var(--space-3);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		font-family: var(--font-accent);
+		font-size: var(--text-sm);
+		transform: translateY(-200%);
+	}
+
+	.skip-link:focus-visible {
+		transform: none;
+	}
+</style>

@@ -1,0 +1,12 @@
+---
+interface Props {
+	title: string;
+}
+
+// Stand-in for a section whose copy isn't written yet. The layout marks it noindex.
+const { title } = Astro.props;
+---
+
+<main id="contenido" class="page">
+	<h1>{title}</h1>
+</main>

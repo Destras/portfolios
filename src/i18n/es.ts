@@ -1,6 +1,32 @@
 import type { Dictionary } from './types';
 
 export const es: Dictionary = {
+	site: {
+		skipLink: 'Saltar al contenido',
+		navLabel: 'Principal',
+		langLabel: 'Idioma',
+		nav: {
+			process: 'Proceso',
+			projects: 'Proyectos',
+		},
+		footer: {
+			cv: 'CV',
+			now: 'Ahora',
+			uses: 'Uses',
+			colophon: 'Colofón',
+			styleguide: 'Styleguide',
+			newTab: ' (se abre en otra pestaña)',
+			updated: 'Actualizado en noviembre 2026',
+			signoff: 'Desde Rosario con amor.',
+		},
+	},
+	pages: {
+		process: { title: 'Proceso', description: 'Cómo trabajo.' },
+		projects: { title: 'Proyectos', description: 'Experiencia y proyectos.' },
+		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
+		uses: { title: 'Uses', description: 'Las herramientas que uso.' },
+		colophon: { title: 'Colofón', description: 'Cómo está hecho este sitio.' },
+	},
 	home: {
 		meta: {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',

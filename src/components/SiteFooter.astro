@@ -1,0 +1,90 @@
+---
+import type { Locale } from '../i18n/locales';
+import { getDictionary } from '../i18n/dictionaries';
+import { localizedPath } from '../i18n/routes';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale).site.footer;
+
+// External profiles open in a new tab and say so to screen readers. The CV opens in the same tab.
+const external = [
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/juan-ignacio-werkalec/', newTab: true },
+	{ label: 'GitHub', href: 'https://github.com/Destras', newTab: true },
+	{ label: t.cv, href: '/cv-en.pdf', newTab: false },
+];
+
+const secondary = [
+	{ label: t.now, href: localizedPath('now', locale) },
+	{ label: t.uses, href: localizedPath('uses', locale) },
+	{ label: t.colophon, href: localizedPath('colophon', locale) },
+	{ label: t.styleguide, href: localizedPath('styleguide', locale) },
+];
+---
+
+<footer class="site-footer">
+	<p class="site-footer__row">
+		{
+			external.map((link, i) => (
+				<>
+					{i > 0 && (
+						<span class="site-footer__sep" aria-hidden="true">
+							·
+						</span>
+					)}
+					{link.newTab ? (
+						<a href={link.href} target="_blank" rel="noopener">
+							{link.label}
+							<span class="visually-hidden">{t.newTab}</span>
+						</a>
+					) : (
+						<a href={link.href}>{link.label}</a>
+					)}
+				</>
+			))
+		}
+	</p>
+	<p class="site-footer__row">
+		{
+			secondary.map((link, i) => (
+				<>
+					{i > 0 && (
+						<span class="site-footer__sep" aria-hidden="true">
+							·
+						</span>
+					)}
+					<a href={link.href}>{link.label}</a>
+				</>
+			))
+		}
+	</p>
+	<p class="site-footer__note">{t.updated} · {t.signoff}</p>
+</footer>
+
+<style>
+	.site-footer {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding-top: var(--space-7);
+		border-top: var(--border-width) solid var(--color-border);
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
+		color: var(--color-text-muted);
+	}
+
+	.site-footer__row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	/* Padding lifts the links to a 29 px target (WCAG 2.2 AA asks for 24 px). */
+	.site-footer a {
+		padding-block: var(--space-1);
+	}
+</style>

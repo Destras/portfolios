@@ -9,4 +9,6 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 ---
 
-<Layout title={t.home.meta.title} description={t.home.meta.description}></Layout>
+<Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home">
+	<main id="contenido" class="page"></main>
+</Layout>
