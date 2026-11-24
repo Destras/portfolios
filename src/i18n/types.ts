@@ -17,7 +17,7 @@ export interface PageMeta {
 }
 
 /** Sections that only have a placeholder page until their copy is written. */
-export type PlaceholderKey = Exclude<SectionKey, 'styleguide'>;
+export type PlaceholderKey = Exclude<SectionKey, 'styleguide' | 'projects'>;
 
 /** Every piece of prose on the site. Facts (names, values, tokens) stay out of it. */
 export interface Dictionary {
@@ -47,6 +47,14 @@ export interface Dictionary {
 	};
 	/** Placeholder pages: the title is also the h1. */
 	pages: Record<PlaceholderKey, PageMeta>;
+	/** Projects page (design/pages/projects.md). Its rows live in the `projects` and `experiences` collections. */
+	projects: {
+		meta: PageMeta;
+		/** The page's h1. */
+		title: string;
+		projectsHeading: string;
+		experienceHeading: string;
+	};
 	home: {
 		meta: PageMeta;
 		hero: {

@@ -1,0 +1,68 @@
+[
+	{
+		"id": "harness",
+		"org": "Harness",
+		"role": {
+			"es": "Senior Frontend Engineer",
+			"en": "Senior Frontend Engineer"
+		},
+		"start": {
+			"es": "jun 2024",
+			"en": "Jun 2024"
+		},
+		"end": {
+			"es": "oct 2026",
+			"en": "Oct 2026"
+		},
+		"startIso": "2024-06",
+		"endIso": "2026-10",
+		"summary": {
+			"es": "Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.",
+			"en": "Built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers."
+		}
+	},
+	{
+		"id": "split-io",
+		"org": "Split.io",
+		"role": {
+			"es": "Frontend Engineer",
+			"en": "Frontend Engineer"
+		},
+		"start": {
+			"es": "ene 2022",
+			"en": "Jan 2022"
+		},
+		"end": {
+			"es": "jun 2024",
+			"en": "Jun 2024"
+		},
+		"startIso": "2022-01",
+		"endIso": "2024-06",
+		"summary": {
+			"es": "Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.",
+			"en": "Feature flag frontend for 500+ customers: advanced segmentation for enterprise and flag archiving for JPMorgan."
+		}
+	},
+	{
+		"id": "mangoodev",
+		"org": "MangooDev SRL",
+		"role": {
+			"es": "Full-Stack Developer",
+			"en": "Full-Stack Developer"
+		},
+		"start": {
+			"es": "dic 2020",
+			"en": "Dec 2020"
+		},
+		"end": {
+			"es": "ene 2022",
+			"en": "Jan 2022"
+		},
+		"startIso": "2020-12",
+		"endIso": "2022-01",
+		"summary": {
+			"es": "Sistema de compliance de proveedores para una farmacéutica multinacional. Creé el design system del equipo.",
+			"en": "Supplier compliance system for a multinational pharma company. Built the team's design system."
+		}
+	}
+]

@@ -22,10 +22,18 @@ export const es: Dictionary = {
 	},
 	pages: {
 		process: { title: 'Proceso', description: 'Cómo trabajo.' },
-		projects: { title: 'Proyectos', description: 'Experiencia y proyectos.' },
 		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
 		uses: { title: 'Uses', description: 'Las herramientas que uso.' },
 		colophon: { title: 'Colofón', description: 'Cómo está hecho este sitio.' },
+	},
+	projects: {
+		meta: {
+			title: 'Proyectos · Juan Ignacio Werkalec',
+			description: 'Experiencia y proyectos de Juan Ignacio Werkalec, Senior Full-Stack Engineer.',
+		},
+		title: 'Proyectos',
+		projectsHeading: 'Proyectos',
+		experienceHeading: 'Experiencia',
 	},
 	home: {
 		meta: {

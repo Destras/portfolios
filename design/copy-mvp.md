@@ -30,7 +30,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 **Restricciones de publicación:**
 - **Plataforma clínica:** sin el nombre del cliente ("un centro de terapias"), sin capturas con datos de pacientes y sin link al repo.
 - **Harness:** sin capturas ni mocks del producto.
-- **JPMorgan Chase:** no aparece en la web (sí en el CV, que se manda a alguien en particular).
+- **JPMorgan Chase:** solo aparece en el resumen de Split.io ("archivado de flags para JPMorgan"), por decisión del 2026-11-24. No se nombra en ningún otro lugar de la web.
 - **LaunchDarkly:** se nombra como el competidor cuya brecha se achicó, igual que en el CV.
 
 ---
@@ -180,13 +180,14 @@ Ya no están en el inicio. Cada mini-caso es el contenido provisorio de su pági
 ### 4.4 Trabajo destacado (inicio) y Experiencia (/proyectos)
 Formato: **empresa · rol · período**, y una línea de máximo 15 palabras. Harness y Split.io van como **dos trabajos** (decisión del 2026-11-21); la línea de Harness aclara la compra.
 
-El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos** suma MangooDev. Cada entrada lleva a `/proyectos/{slug}`.
+El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos** muestra Harness, Split.io y MangooDev en Experiencia; el freelance va como la fila de Proyectos (4.10). Por ahora las filas no llevan link (2026-11-24); cuando existan los detalles, cada entrada lleva a `/proyectos/{slug}`.
 
 **Freelance · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad** (`freelance`)
 | | ES | EN |
 |---|---|---|
 | Línea (V1) | Plataforma de seguimiento clínico: web para terapeutas y app para pacientes, en producción. | Clinical follow-up platform: web console for therapists and a patient app, in production. |
 | Descripción corta (V2) | Plataforma clínica: web y app, en producción. | Clinical platform: web and app, in production. |
+| Resumen (inicio, 2026-11-24) | Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes. | From first meeting to production in ~6 months: a clinical web platform + mobile app that replaces the spreadsheets of a 150-patient center. |
 | Links (V1) | Proyecto: Plataforma de seguimiento clínico → | Project: Clinical follow-up platform → |
 
 **Harness · Senior Frontend Engineer · jun 2024 – oct 2026** (`harness`)
@@ -194,13 +195,15 @@ El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos*
 |---|---|---|
 | Línea (V1) | Harness compró Split.io en 2024. Único ingeniero de UI y BFF: Configs, AI Configs, Promote, migración al monorepo. | Harness acquired Split.io in 2024. Sole UI and BFF engineer: Configs, AI Configs, Promote, monorepo migration. |
 | Descripción corta (V2) | Único ingeniero de UI y BFF, tras la compra de Split.io. | Sole UI and BFF engineer, after the Split.io acquisition. |
+| Resumen (inicio y /proyectos, 2026-11-24) | Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes. | Built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers. |
 | Links (V1) | Caso: Configs y AI Configs → | Case study: Configs and AI Configs → |
 
-**Split.io · Senior Frontend Engineer · ene 2022 – jun 2024** (`split-io`)
+**Split.io · Frontend Engineer · ene 2022 – jun 2024** (`split-io`)
 | | ES | EN |
 |---|---|---|
 | Línea (V1) | Carga de la pantalla de entrada: de 3–6 s a ~1 s. ~20 componentes compartidos. | Landing screen load: from 3–6 s to ~1 s. ~20 shared components. |
 | Descripción corta (V2) | Pantalla de entrada: de 3–6 s a ~1 s. | Landing screen: from 3–6 s to ~1 s. |
+| Resumen (inicio y /proyectos, 2026-11-24) | Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan. | Feature flag frontend for 500+ customers: advanced segmentation for enterprise and flag archiving for JPMorgan. |
 | Links (V1) | Caso: La pantalla de entrada → | Case study: The landing screen → |
 
 **MangooDev SRL · Full-Stack Developer · dic 2020 – ene 2022** (`mangoodev`, solo en /proyectos)
@@ -212,6 +215,8 @@ El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos*
 > **Orden:** el freelance va primero, porque sigue activo.
 > **Fechas en EN:** "Apr 2026 – Present", "Jun 2024 – Oct 2026", "Jan 2022 – Jun 2024", "Dec 2020 – Jan 2022".
 > **Descripciones cortas (V2):** son propuestas nuevas, del 2026-11-21. Se revisan en la ronda de copy.
+> **Resúmenes (2026-11-24):** son los textos que usa la web hoy. En /proyectos, MangooDev usa su "Línea".
+> **Rol de Split.io:** "Frontend Engineer" (decisión del 2026-11-24).
 
 ### 4.5 Cierre
 > **ES:** Si querés seguir la conversación, estoy en [LinkedIn](https://www.linkedin.com/in/juan-ignacio-werkalec/).
@@ -265,6 +270,8 @@ Sin "buscando trabajo" ni "abierto a oportunidades": la web muestra trabajo, no 
 | `<title>` del inicio | Juan Ignacio Werkalec · Senior Full-Stack Engineer | Juan Ignacio Werkalec · Senior Full-Stack Engineer |
 | Meta descripción (máx. 155 caracteres) | Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción. | Senior full-stack engineer, UI-focused. Give me the ambiguous stuff; I'll ship it. |
 | Imagen para redes (OG) | Nombre + rol + "Me gusta crear cosas.", solo texto (sin foto) | Name + role + "I like building things.", text only |
+| `<title>` de /proyectos | Proyectos · Juan Ignacio Werkalec | Projects · Juan Ignacio Werkalec |
+| Meta descripción de /proyectos | Experiencia y proyectos de Juan Ignacio Werkalec, Senior Full-Stack Engineer. | Experience and projects of Juan Ignacio Werkalec, Senior Full-Stack Engineer. |
 | 404: título | Esta página no existe. | This page doesn't exist. |
 | 404: link | Volver al inicio → | Back home → |
 | Aviso de idioma (opcional) | This page is also available in English. | Esta página también está en español. |
@@ -277,7 +284,7 @@ Se agregaron el 2026-11-21. Los wireframes las muestran con la estructura y el l
 | Página | Estructura | Fuente del copy |
 |---|---|---|
 | /proceso | Texto corrido con subtítulos cortos: cómo trabajo, en palabras reales | Ronda de copy (las reglas de /uses y los mini-casos dan pistas: "specs primero, tests después", "primero el feedback") |
-| /proyectos | Experiencia (4 filas, sección 4.4) + Proyectos (1 fila: la plataforma clínica) | Este documento |
+| /proyectos | **Con copy (2026-11-24).** Proyectos (1 fila: Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad · "Web para terapeutas y app para pacientes, en producción." / "Web console for therapists and a patient app, in production.") → Experiencia (Harness, Split.io, MangooDev, sección 4.4). Filas sin link | Este documento + `src/data/*.json` |
 | /proyectos/{slug} | Título · tabla (Rol / Duración / Stack / Estado / Stakeholders) · Contexto · Restricciones · Valor · visual opcional. Las experiencias cierran con links a sus proyectos y casos | `datos.md` |
 | /casos | Lista de 2 filas, con el mismo formato | Este documento |
 | /casos/{slug} | Tabla · Problema · Opciones (A vs. B) · Decisión y por qué · Qué salió bien · Qué salió mal o qué cambiaría · Resultado | Mini-casos (4.3), ampliados después |
