@@ -25,7 +25,6 @@ export const en: Dictionary = {
 		projects: { title: 'Projects', description: 'Experience and projects.' },
 		now: { title: 'Now', description: "What I'm focused on now." },
 		uses: { title: 'Uses', description: 'The tools I use.' },
-		colophon: { title: 'Colophon', description: 'How this site is built.' },
 	},
 	home: {
 		meta: {
@@ -59,6 +58,32 @@ export const en: Dictionary = {
 				},
 			],
 		},
+	},
+	colophon: {
+		meta: {
+			title: 'Colophon · Juan Ignacio Werkalec',
+			description: 'How this site is built, layer by layer, and why I picked each piece.',
+		},
+		title: 'Colophon',
+		lead: 'How this site is built, layer by layer, and why I picked each piece.',
+		table: {
+			caption: 'How this site is built',
+			layer: 'Layer',
+			tech: 'Technology',
+			why: 'Why',
+		},
+		rows: [
+			{ layer: 'Framework', tech: 'Astro', why: "It outputs static HTML and ships no JavaScript the page doesn't need." },
+			{ layer: 'Types', tech: 'TypeScript', why: 'If a translation is missing, the check fails before anything ships.' },
+			{ layer: 'Languages', tech: 'Astro i18n', why: 'One file per page and one route map for ES and EN.' },
+			{ layer: 'Styles', tech: 'CSS with tokens', why: 'No framework: every color and every size comes from a token, with two themes and a dark mode.' },
+			{ layer: 'Typography', tech: 'Atkinson Hyperlegible Next and Commit Mono', why: 'One for easy reading and one as a technical accent. Both are served from this site.' },
+			{ layer: 'Design', tech: 'Claude Design', why: 'The wireframes and the first visual pass. The final calls were mine.' },
+			{ layer: 'Build', tech: 'Claude Code', why: 'It writes the code from specs and plans; I decide and review every section.' },
+			{ layer: 'Deploy', tech: 'Netlify', why: 'Astro recommends it: a static site ships with no extra setup.' },
+		],
+		styleguide: { before: "Want to see each piece? It's in the ", link: 'styleguide', after: '.' },
+		source: { before: 'The code is on ', link: 'GitHub', after: '.' },
 	},
 	styleguide: {
 		meta: {
