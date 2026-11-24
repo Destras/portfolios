@@ -1,0 +1,69 @@
+---
+import { locales, type Locale } from '../i18n/locales';
+import { getDictionary } from '../i18n/dictionaries';
+import { localizedPath, type RouteKey } from '../i18n/routes';
+
+interface Props {
+	locale: Locale;
+	routeKey: RouteKey;
+	class?: string;
+}
+
+// `rest` carries the parent's scope attribute so SiteHeader can place this group in its grid.
+const { locale, routeKey, class: className, ...rest } = Astro.props;
+const t = getDictionary(locale).site;
+---
+
+<div class:list={['lang-switch', className]} role="group" aria-label={t.langLabel} {...rest}>
+	{
+		locales.map((l, i) => (
+			<>
+				{i > 0 && (
+					<span class="lang-switch__sep" aria-hidden="true">
+						·
+					</span>
+				)}
+				{l === locale ? (
+					<span class="lang-switch__current" aria-current="true">
+						{l.toUpperCase()}
+					</span>
+				) : (
+					// Same page in the other language: the route map translates the slug (/es/proyectos/ → /en/projects/).
+					<a class="lang-switch__link" href={localizedPath(routeKey, l)} lang={l} hreflang={l}>
+						{l.toUpperCase()}
+					</a>
+				)}
+			</>
+		))
+	}
+</div>
+
+<style>
+	.lang-switch {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.lang-switch__current {
+		color: var(--color-text);
+	}
+
+	.lang-switch__sep {
+		color: var(--color-text-muted);
+	}
+
+	.lang-switch__link {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap-min);
+		padding-inline: var(--space-2);
+		margin-inline: calc(-1 * var(--space-2));
+		color: var(--color-text-muted);
+		text-decoration: none;
+	}
+
+	.lang-switch__link:hover {
+		color: var(--color-accent);
+	}
+</style>

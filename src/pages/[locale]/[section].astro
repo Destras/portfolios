@@ -1,0 +1,34 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import PlaceholderPage from '../../components/pages/PlaceholderPage.astro';
+import StyleguidePage from '../../components/pages/StyleguidePage.astro';
+import { getDictionary } from '../../i18n/dictionaries';
+import { locales } from '../../i18n/locales';
+import { routes, sectionKeys } from '../../i18n/routes';
+
+// One route per (section × locale), straight from the route map: /es/proyectos/, /en/projects/, …
+// Each route gets its internal key as a prop, so the page never parses the slug.
+export const getStaticPaths = (() =>
+	sectionKeys.flatMap((key) =>
+		locales.map((locale) => ({
+			params: { locale, section: routes[key][locale] },
+			props: { key, locale },
+		})),
+	)) satisfies GetStaticPaths;
+
+const { key, locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+{
+	key === 'styleguide' ? (
+		<Layout title={t.styleguide.meta.title} description={t.styleguide.meta.description} routeKey={key}>
+			<StyleguidePage locale={locale} />
+		</Layout>
+	) : (
+		<Layout title={`${t.pages[key].title} · Juan Ignacio Werkalec`} description={t.pages[key].description} routeKey={key} noindex>
+			<PlaceholderPage title={t.pages[key].title} />
+		</Layout>
+	)
+}

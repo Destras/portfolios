@@ -1,4 +1,8 @@
 ---
-// Exists only so i18n `redirectToDefaultLocale` can emit the / -> /es/ redirect.
-// Astro requires a root index page for it (MissingIndexForInternationalization).
+import { defaultLocale } from '../i18n/locales';
+import { localizedPath } from '../i18n/routes';
+
+// Static build: Astro emits a meta-refresh page to /es/. Accept-Language detection is pending (see TODO.md).
+// 301: the static meta refresh then fires with no delay (Astro uses a 2 s delay for 302).
+return Astro.redirect(localizedPath('home', defaultLocale), 301);
 ---

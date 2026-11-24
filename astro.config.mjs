@@ -4,14 +4,15 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://juaniw.com',
+	// Every URL ends in `/` (/es/proyectos/), so links built by the i18n helpers stay consistent.
+	trailingSlash: 'always',
 	// Locale list must match `locales` in src/i18n/locales.ts.
 	i18n: {
 		locales: ['es', 'en'],
 		defaultLocale: 'es',
 		routing: {
+			// Every locale is prefixed, matching src/pages/[locale]/. The `/` redirect lives in src/pages/index.astro.
 			prefixDefaultLocale: true,
-			// Static build: `/` becomes a meta-refresh page to /es/. Accept-Language detection is pending (see TODO.md).
-			redirectToDefaultLocale: true,
 		},
 	},
 	// Global typefaces, independent of theme and mode. Files live in src/assets/fonts (woff2).

@@ -6,17 +6,24 @@ import '../styles/modes.css';
 import '../styles/foundations.css';
 import '../styles/base.css';
 import '../styles/layout.css';
-import { defaultLocale, getAlternateLinks, isLocale } from '../i18n/locales';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SkipLink from '../components/SkipLink.astro';
+import { defaultLocale, isLocale } from '../i18n/locales';
+import { alternates, localizedUrl, type RouteKey } from '../i18n/routes';
 
 interface Props {
 	title: string;
 	description?: string;
+	/** Which page this is, in route-map terms. Drives canonical, hreflang, nav state and the language switch. */
+	routeKey: RouteKey;
+	/** Keeps placeholder pages out of search results until they have content. */
+	noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, routeKey, noindex = false } = Astro.props;
 // The language comes from the URL prefix, never from a prop, so it can't disagree with the route.
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
-const alternates = getAlternateLinks(Astro.url.pathname, Astro.site!);
 ---
 
 <!doctype html>
@@ -41,9 +48,17 @@ const alternates = getAlternateLinks(Astro.url.pathname, Astro.site!);
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
-		{alternates.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
+		{noindex && <meta name="robots" content="noindex" />}
+		<link rel="canonical" href={localizedUrl(routeKey, lang)} />
+		{alternates(routeKey, Astro.site!).map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 	</head>
 	<body>
+		<SkipLink locale={lang} />
+		<SiteHeader locale={lang} routeKey={routeKey} />
+		<!-- Each page renders its own <main id="contenido" class="page">. -->
 		<slot />
+		<div class="site-footer-wrap">
+			<SiteFooter locale={lang} />
+		</div>
 	</body>
 </html>

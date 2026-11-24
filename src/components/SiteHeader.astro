@@ -1,0 +1,67 @@
+---
+import type { Locale } from '../i18n/locales';
+import { localizedPath, type RouteKey } from '../i18n/routes';
+import LangSwitch from './LangSwitch.astro';
+import SiteNav from './SiteNav.astro';
+
+interface Props {
+	locale: Locale;
+	routeKey: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+---
+
+<header class="site-header">
+	<a class="site-header__brand" href={localizedPath('home', locale)}>Juan Ignacio Werkalec</a>
+	<SiteNav class="site-header__nav" locale={locale} routeKey={routeKey} />
+	<LangSwitch class="site-header__lang" locale={locale} routeKey={routeKey} />
+</header>
+
+<style>
+	/* Mobile: two rows, brand + language on top, nav below. Not sticky. */
+	.site-header {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		grid-template-areas:
+			'brand lang'
+			'nav   nav';
+		align-items: center;
+		row-gap: var(--space-1);
+		padding: var(--space-4) var(--gutter) var(--space-1);
+		border-bottom: var(--border-width) solid var(--color-border);
+		font-family: var(--font-accent);
+		font-size: var(--text-nav);
+		line-height: var(--leading-normal);
+	}
+
+	.site-header__brand {
+		grid-area: brand;
+		color: var(--color-text);
+		font-weight: var(--weight-bold);
+		text-decoration: none;
+	}
+
+	.site-header__brand:hover {
+		color: var(--color-text);
+	}
+
+	.site-header__nav {
+		grid-area: nav;
+	}
+
+	.site-header__lang {
+		grid-area: lang;
+		justify-self: end;
+	}
+
+	/* Desktop: three columns, brand · centered nav · language. */
+	@media (width >= 48rem) /* --bp-md */ {
+		.site-header {
+			grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+			grid-template-areas: 'brand nav lang';
+			min-height: var(--header-height);
+			padding-block: var(--space-3);
+		}
+	}
+</style>
