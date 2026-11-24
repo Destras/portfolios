@@ -1,0 +1,21 @@
+---
+/** Section h2 (design doc §8.7), label variant: small and muted, right above its content. */
+interface Props {
+	/** Target of the section's aria-labelledby. */
+	id: string;
+	text: string;
+}
+
+const { id, text } = Astro.props;
+---
+
+<h2 class="section-title" id={id}>{text}</h2>
+
+<style>
+	.section-title {
+		margin-bottom: var(--space-2);
+		font-size: var(--text-base);
+		font-weight: var(--weight-regular);
+		color: var(--color-text-muted);
+	}
+</style>

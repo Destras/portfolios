@@ -32,6 +32,32 @@ export const es: Dictionary = {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
 			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
 		},
+		hero: {
+			title: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+		},
+		work: {
+			heading: 'Trabajo destacado',
+			items: [
+				{
+					role: 'Full-Stack Engineer y Technical Lead',
+					start: 'abr 2026',
+					end: 'actualidad',
+					summary: 'Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes.',
+				},
+				{
+					role: 'Senior Frontend Engineer',
+					start: 'jun 2024',
+					end: 'oct 2026',
+					summary: 'Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.',
+				},
+				{
+					role: 'Frontend Engineer',
+					start: 'ene 2022',
+					end: 'jun 2024',
+					summary: 'Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan y carga de 3–6 s a ~1 s.',
+				},
+			],
+		},
 	},
 	styleguide: {
 		meta: {

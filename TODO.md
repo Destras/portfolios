@@ -18,6 +18,7 @@
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Bilingual 404 page.
 - [ ] Sitemap and robots (6 MVP URLs).
+- [ ] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp): `public/og-es.png` and `og-en.png` per copy-mvp §4.9 (name + role + "Me gusta crear cosas." / "I like building things.", text only), plus an `ogImage` prop in `Layout.astro` for every page. Dropped from the home spec on 2026-11-24.
 
 ## MVP pages (see .claude/skills/implement-page)
 
@@ -25,7 +26,7 @@
 |---|---|---|---|---|---|
 | Now | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Uses | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Home | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Home | ✅ | ✅ | ✅ | ☐ | ☐ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 When all four are ticked, continue with diseno-juaniw Annex A.5 step 6 (metadata, OG, icons, sitemap, robots), then the A.6 final check.

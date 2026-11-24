@@ -1,6 +1,16 @@
 import type { ColorToken, LayoutToken, TextSizeToken } from '../data/styleguide';
 import type { SectionKey } from './routes';
 
+/** Prose of one home "Trabajo destacado" row. Org and ISO dates live in src/data/home.ts. */
+export interface WorkItem {
+	role: string;
+	/** Display start month, e.g. "abr 2026". */
+	start: string;
+	/** Display end month, or "actualidad" / "Present". */
+	end: string;
+	summary: string;
+}
+
 export interface PageMeta {
 	title: string;
 	description: string;
@@ -39,6 +49,15 @@ export interface Dictionary {
 	pages: Record<PlaceholderKey, PageMeta>;
 	home: {
 		meta: PageMeta;
+		hero: {
+			/** The page's h1. */
+			title: string;
+		};
+		work: {
+			heading: string;
+			/** Same order and length as `workEntries` in src/data/home.ts. */
+			items: readonly [WorkItem, WorkItem, WorkItem];
+		};
 	};
 	styleguide: {
 		meta: PageMeta;

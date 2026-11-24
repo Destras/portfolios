@@ -1,0 +1,89 @@
+---
+/**
+ * Static work rows (design doc §8.8): one row per job, not clickable in the MVP.
+ * Mobile: date on top. Desktop: date column on the left, the rest on the right.
+ */
+interface Item {
+	org: string;
+	role: string;
+	start: string;
+	end: string;
+	startIso: string;
+	/** null when the job is ongoing: the end is text, not a date. */
+	endIso: string | null;
+	summary: string;
+}
+
+interface Props {
+	items: readonly Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="exp-list">
+	{
+		items.map((item) => (
+			<li class="exp-row">
+				<span class="exp-row__date">
+					<time datetime={item.startIso}>{item.start}</time> –{' '}
+					{item.endIso ? <time datetime={item.endIso}>{item.end}</time> : item.end}
+				</span>
+				<div>
+					<p class="exp-row__head">
+						<span class="exp-row__org">{item.org}</span> · <span class="exp-row__role">{item.role}</span>
+					</p>
+					<p class="exp-row__summary">{item.summary}</p>
+				</div>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.exp-list {
+		display: flex;
+		flex-direction: column;
+		border-top: var(--border-width) solid var(--color-border);
+	}
+
+	.exp-row {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		padding-block: var(--space-3);
+		border-bottom: var(--border-width) solid var(--color-border);
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+	}
+
+	.exp-row__date {
+		font-family: var(--font-accent);
+		font-size: var(--text-xs);
+		color: var(--color-text-muted);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.exp-row__head {
+		color: var(--color-text-muted);
+	}
+
+	.exp-row__org {
+		font-weight: var(--weight-semibold);
+		color: var(--color-text);
+	}
+
+	.exp-row__summary {
+		color: var(--color-text);
+		text-wrap: pretty;
+	}
+
+	@media (width >= 48rem) /* --bp-md */ {
+		.exp-row {
+			display: grid;
+			grid-template-columns: var(--row-date-col) minmax(0, 1fr);
+			column-gap: var(--space-4);
+			align-items: baseline;
+		}
+	}
+</style>
