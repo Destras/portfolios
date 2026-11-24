@@ -1,8 +1,24 @@
+---
+import '../styles/themes/salvia.css';
+import '../styles/themes/brasa.css';
+import '../styles/modes.css';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
+		<script is:inline>
+			try {
+				const root = document.documentElement;
+				const theme = localStorage.getItem('theme');
+				const mode = localStorage.getItem('mode');
+				if (['salvia', 'brasa'].includes(theme)) root.dataset.theme = theme;
+				if (['light', 'dark'].includes(mode)) root.dataset.mode = mode;
+			} catch {}
+		</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
@@ -19,5 +35,9 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	body {
+		background-color: var(--color-bg);
 	}
 </style>
