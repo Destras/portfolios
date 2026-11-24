@@ -51,8 +51,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 │   ├── /es/uses               Uses
 │   └── /es/colofon            Colofón (cómo está hecha esta web)
 ├── /en                        Home (mismas rutas: process, projects, case-studies, now, uses, colophon)
-├── /cv-es.pdf                 CV en español
-├── /cv-en.pdf                 CV in English
+├── /cv-en.pdf                 CV (por ahora solo en inglés; /es también linkea a este)
 └── 404                        una por idioma
 ```
 
@@ -318,7 +317,7 @@ Reglas que se aplicaron:
 - [ ] Ronda de copy para las páginas nuevas (4.10): /proceso, los 5 detalles de /proyectos y las versiones largas de los 2 casos.
 
 **Activos (paso 8), fuera de la web:**
-- [ ] **CV:** cambiar el freelance a "Apr 2026 – Present" y separar Split.io y Harness en las dos entradas de la sección 4.4, con las mismas fechas que la web. Exportar `cv-es.pdf` y `cv-en.pdf`.
+- [ ] **CV:** cambiar el freelance a "Apr 2026 – Present" y separar Split.io y Harness en las dos entradas de la sección 4.4, con las mismas fechas que la web. Exportar `cv-en.pdf` (por ahora no hay versión en español).
 - [ ] **GitHub:** ponerle descripción y README a `nextjs-supabase-sample` o hacerlo privado; archivar el fork `react-hooks-testing-complete` (2021).
 - [ ] **LinkedIn:** juaniw.com en la sección de contacto. El titular ya coincide con el rol.
 - [ ] **Carpeta `assets/`** con los CVs. Más adelante: favicon e imagen para redes.

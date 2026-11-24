@@ -55,7 +55,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | Ahora | `/es/now` | `/en/now` | Ahora / Now | copy-mvp §4.7 | **Sí** |
 | Uses | `/es/uses` | `/en/uses` | Uses | copy-mvp §4.8 | **Sí** |
 | 404 | cualquier ruta inexistente | | Esta página no existe. / This page doesn't exist. | copy-mvp §4.9 | **Sí** |
-| CV | `/cv-es.pdf` | `/cv-en.pdf` | — | — | **Sí** |
+| CV | `/cv-en.pdf` | `/cv-en.pdf` | — | — | **Sí** (por ahora solo en inglés) |
 | Proyectos | `/es/proyectos` | `/en/projects` | Proyectos / Projects | Falta | No (fase 2) |
 | Detalle de proyecto | `/es/proyectos/{slug}` | `/en/projects/{slug}` | Nombre del proyecto | Falta | No (fase 2) |
 | Casos de estudio | `/es/casos` | `/en/case-studies` | Casos de estudio / Case studies | Falta | No (fase 2) |
@@ -599,7 +599,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
   <span class="site-nav__sep" aria-hidden="true">·</span>
   <a class="site-nav__link" href="/es/uses">Uses</a>
   <span class="site-nav__sep" aria-hidden="true">·</span>
-  <a class="site-nav__link" href="/cv-es.pdf">CV</a>
+  <a class="site-nav__link" href="/cv-en.pdf">CV</a>
 </nav>
 ```
 ```css
@@ -716,7 +716,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
     <span class="site-footer__sep" aria-hidden="true">·</span>
     <a href="https://github.com/Destras" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (se abre en otra pestaña)</span></a>
     <span class="site-footer__sep" aria-hidden="true">·</span>
-    <a href="/cv-es.pdf">CV</a>
+    <a href="/cv-en.pdf">CV</a>
   </p>
   <p class="site-footer__note">Actualizado en noviembre 2026 · Desde Rosario con amor.</p>
 </footer>
@@ -1384,7 +1384,7 @@ Calculado desde los valores OKLCH, recortados a sRGB. Coincide con el cálculo d
 | `app/icon.svg` (favicon) | SVG con `prefers-color-scheme` adentro | Monograma "JW" en Commit Mono 700, en acento sobre transparente | ☐ |
 | `app/apple-icon.png` | 180 × 180 | El monograma sobre `--color-bg` claro | ☐ |
 | `public/og-es.png` / `og-en.png` | 1200 × 630 | Nombre + rol + "Me gusta crear cosas." / "I like building things.", solo texto, con los colores de la paleta | ☐ |
-| `public/cv-es.pdf` / `cv-en.pdf` | PDF | Con las fechas corregidas (copy-mvp §7) | ☐ |
+| `public/cv-en.pdf` | PDF | Con las fechas corregidas (copy-mvp §7). Por ahora no hay versión en español | ☐ |
 | `app/fonts/CommitMono-400.woff2`, `-700.woff2` | woff2, subset latin | De `@fontsource/commit-mono` (OFL) | ☐ |
 
 ---
@@ -1490,7 +1490,7 @@ styles/
 ├── tokens.css · base.css · layout.css · components.css
 proxy.ts                    ← redirección por idioma (middleware.ts en Next 15)
 public/
-├── cv-es.pdf · cv-en.pdf · og-es.png · og-en.png
+├── cv-en.pdf · og-es.png · og-en.png
 design/                     ← este archivo, copy-mvp.md y lo demás de diseño
 ```
 
@@ -1534,7 +1534,7 @@ design/                     ← este archivo, copy-mvp.md y lo demás de diseño
 
 - [x] Resolver P1 a P6 (confirmadas el 2026-11-24).
 - [ ] Agregar a `copy-mvp.md` los textos de §14.4, en ES y EN.
-- [ ] Exportar `cv-es.pdf` y `cv-en.pdf` con las fechas corregidas.
+- [ ] Exportar `cv-en.pdf` con las fechas corregidas (por ahora no hay versión en español).
 - [ ] Bajar los woff2 de Commit Mono (400 y 700).
 - [ ] Crear el favicon y las 2 imágenes OG (pueden esperar hasta el paso 6 de A.5, pero no hasta el deploy).
 - [ ] Copiar en `design/` del repo: este archivo y `copy-mvp.md`.
