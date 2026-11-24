@@ -1,4 +1,5 @@
 import type { ColorToken, LayoutToken, TextSizeToken } from '../data/styleguide';
+import type { PageKey } from '../components/pages/sectionPages';
 import type { SectionKey } from './routes';
 
 /** Prose of one home "Trabajo destacado" row. Org and ISO dates live in src/data/home.ts. */
@@ -16,8 +17,8 @@ export interface PageMeta {
 	description: string;
 }
 
-/** Sections that only have a placeholder page until their copy is written. */
-export type PlaceholderKey = Exclude<SectionKey, 'styleguide' | 'projects' | 'colophon'>;
+/** Sections without a page in `sectionPages`: they render the noindex placeholder. */
+export type PlaceholderKey = Exclude<SectionKey, PageKey>;
 
 /** One colophon row: layer, technology and why (design doc §8.12 DataTable columns). */
 export interface ColophonRow {
