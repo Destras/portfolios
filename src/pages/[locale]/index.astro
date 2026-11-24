@@ -1,8 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
 
 export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
 ---
 
-<Layout title="Juan Ignacio Werkalec"></Layout>
+<Layout title={t.home.meta.title} description={t.home.meta.description}></Layout>
