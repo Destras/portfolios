@@ -13,3 +13,14 @@
 - [ ] LangSwitch component (switches the locale prefix of the current path).
 - [ ] Bilingual 404 page.
 - [ ] Sitemap and robots (6 MVP URLs).
+
+## MVP pages (see .claude/skills/implement-page)
+
+| Page | Spec | Built ES | Built EN | Verified | Doc updated |
+|---|---|---|---|---|---|
+| Now | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Uses | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Home | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
+
+When all four are ticked, continue with diseno-juaniw Annex A.5 step 6 (metadata, OG, icons, sitemap, robots), then the A.6 final check.
