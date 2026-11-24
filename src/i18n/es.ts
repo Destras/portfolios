@@ -33,7 +33,7 @@ export const es: Dictionary = {
 			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
 		},
 		hero: {
-			title: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+			title: 'Hola! Soy Juani Werkalec,\nun ingeniero web que disfruta tomar features ambiguas y llevarlas a prod cuidando los detalles que separan lo bueno de lo excelente.',
 		},
 		work: {
 			heading: 'Trabajo destacado',

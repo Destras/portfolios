@@ -33,7 +33,7 @@ export const en: Dictionary = {
 			description: "Senior full-stack engineer, UI-focused. Give me the ambiguous stuff; I'll ship it.",
 		},
 		hero: {
-			title: 'I like building things. I own ambiguous features end to end with minimal hand-holding, and I sweat the details that separate good from great.',
+			title: "Hi! I'm Juani Werkalec,\na web engineer who enjoys taking ambiguous features and shipping them to prod, sweating the details that separate good from great.",
 		},
 		work: {
 			heading: 'Featured work',
