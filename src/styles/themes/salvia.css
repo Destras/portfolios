@@ -1,0 +1,5 @@
+/* Salvia theme (default). light-dark(<day>, <night>); modes.css picks the branch via color-scheme. */
+:root,
+:root[data-theme="salvia"] {
+	--color-bg: light-dark(oklch(0.9589 0.0135 145.47), oklch(0.1801 0.0202 144.68));
+}
