@@ -1,0 +1,4 @@
+/* Brasa theme. light-dark(<day>, <night>); modes.css picks the branch via color-scheme. */
+:root[data-theme="brasa"] {
+	--color-bg: light-dark(oklch(0.9905 0.0026 106.45), oklch(0.1208 0.0066 107.35));
+}
