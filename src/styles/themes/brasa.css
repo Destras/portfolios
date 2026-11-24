@@ -1,4 +1,14 @@
 /* Brasa theme. light-dark(<day>, <night>); modes.css picks the branch via color-scheme. */
 :root[data-theme="brasa"] {
 	--color-bg: light-dark(oklch(0.9905 0.0026 106.45), oklch(0.1208 0.0066 107.35));
+	--color-surface: light-dark(oklch(0.965 0.004 60), oklch(0.17 0.006 60));
+	--color-border: light-dark(oklch(0.90 0.005 40), oklch(0.28 0.007 40));
+	--color-text-muted: light-dark(oklch(0.50 0.008 10), oklch(0.70 0.008 10));
+	--color-text: light-dark(oklch(0.2339 0.0095 6.49), oklch(0.9026 0.0067 5.64));
+	--color-accent: light-dark(oklch(0.55 0.178 38.5), oklch(0.6545 0.1945 38.5));
+	--color-accent-hover: light-dark(oklch(0.46 0.149 38.5), oklch(0.72 0.18 40));
+	/* Focus = accent (5.1:1 on light bg; the earlier fixed focus color was 3.4:1). */
+	--color-focus: var(--color-accent);
+	--color-selection: color-mix(in oklch, var(--color-accent) 30%, transparent);
+	--color-on-selection: var(--color-text);
 }

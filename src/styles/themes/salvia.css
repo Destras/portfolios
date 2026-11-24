@@ -2,4 +2,13 @@
 :root,
 :root[data-theme="salvia"] {
 	--color-bg: light-dark(oklch(0.9589 0.0135 145.47), oklch(0.1801 0.0202 144.68));
+	--color-surface: light-dark(oklch(0.985 0.008 145), oklch(0.22 0.020 145));
+	--color-border: light-dark(oklch(0.89 0.015 145), oklch(0.32 0.020 145));
+	--color-text-muted: light-dark(oklch(0.48 0.015 145), oklch(0.72 0.015 145));
+	--color-text: light-dark(oklch(0.1623 0.0105 145.07), oklch(0.96 0.0068 145.52));
+	--color-accent: light-dark(oklch(0.4176 0.0943 142.54), oklch(0.836 0.0844 143.26));
+	--color-accent-hover: light-dark(oklch(0.33 0.085 143), oklch(0.90 0.070 144));
+	--color-focus: var(--color-accent);
+	--color-selection: color-mix(in oklch, var(--color-accent) 30%, transparent);
+	--color-on-selection: var(--color-text);
 }
