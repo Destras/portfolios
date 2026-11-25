@@ -2,13 +2,9 @@ import type { ColorToken, LayoutToken, TextSizeToken } from '../data/styleguide'
 import type { PageKey } from '../components/pages/sectionPages';
 import type { SectionKey } from './routes';
 
-/** Prose of one home "Trabajo destacado" row. Org and ISO dates live in src/data/home.ts. */
-export interface WorkItem {
-	role: string;
-	/** Display start month, e.g. "abr 2026". */
-	start: string;
-	/** Display end month, or "actualidad" / "Present". */
-	end: string;
+/** Home copy that replaces a collection entry's org and summary in "Trabajo destacado" (src/data/home.ts). */
+export interface WorkOverride {
+	org: string;
 	summary: string;
 }
 
@@ -34,7 +30,7 @@ export interface UsesRow {
 	note: string;
 }
 
-/** One fact-list row on the process page: label and value. */
+/** One fact-list row on the home page: label and value. */
 export interface Fact {
 	label: string;
 	value: string;
@@ -57,7 +53,7 @@ export interface Dictionary {
 		/** aria-label of the language switch. */
 		langLabel: string;
 		nav: {
-			process: string;
+			now: string;
 			projects: string;
 		};
 		footer: {
@@ -83,25 +79,6 @@ export interface Dictionary {
 		projectsHeading: string;
 		experienceHeading: string;
 	};
-	/** Process page, the "Sobre mí" design (design/pages/process.md). */
-	process: {
-		/** The description is the lead. */
-		meta: PageMeta;
-		eyebrow: string;
-		/** The page's h1. */
-		title: string;
-		lead: string;
-		actions: {
-			email: string;
-			cv: string;
-		};
-		/** Same order in both locales. The tuple length keeps ES and EN in step. */
-		facts: readonly [Fact, Fact, Fact];
-		origin: {
-			heading: string;
-			paragraphs: readonly [string, string, string];
-		};
-	};
 	/** 404 page (design/pages/404.md). Only EN renders (D-404-7); ES keeps the type symmetric. */
 	notFound: {
 		meta: { title: string };
@@ -126,18 +103,25 @@ export interface Dictionary {
 			stakeholders: string;
 		};
 	};
+	/** Home, the "Sobre mí" design (design/pages/home.md). */
 	home: {
 		meta: PageMeta;
-		hero: {
-			/** The page's h1. */
-			title: string;
+		eyebrow: string;
+		/** The page's h1. */
+		title: string;
+		lead: string;
+		actions: {
+			email: string;
+			cv: string;
 		};
+		/** Same order in both locales. The tuple length keeps ES and EN in step. */
+		facts: readonly [Fact, Fact, Fact];
 		work: {
 			heading: string;
 			/** Link next to the heading, to the projects page. */
 			allLink: string;
-			/** Same order and length as `workEntries` in src/data/home.ts. */
-			items: readonly [WorkItem, WorkItem, WorkItem];
+			/** The clinical platform row: "Freelance" and a longer summary than src/data/projects.json. */
+			clinical: WorkOverride;
 		};
 	};
 	uses: {

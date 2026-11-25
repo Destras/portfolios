@@ -34,7 +34,7 @@ h1, h2, h3, p, ul, ol, dl, dd, figure {
 	margin: 0;
 }
 
-/* Heading defaults. Hero and SectionTitle override them in their components. */
+/* Heading defaults. The home h1 and SectionTitle override them in their own styles. */
 h1 {
 	font-size: var(--text-lg);
 	font-weight: var(--weight-semibold);

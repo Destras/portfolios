@@ -6,7 +6,7 @@ export const es: Dictionary = {
 		navLabel: 'Principal',
 		langLabel: 'Idioma',
 		nav: {
-			process: 'Proceso',
+			now: 'Ahora',
 			projects: 'Proyectos',
 		},
 		footer: {
@@ -32,28 +32,6 @@ export const es: Dictionary = {
 		projectsHeading: 'Proyectos',
 		experienceHeading: 'Experiencia',
 	},
-	process: {
-		meta: {
-			title: 'Proceso · Juan Ignacio Werkalec',
-			description: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
-		},
-		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
-		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
-		lead: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
-		actions: {
-			email: 'Escribime',
-			cv: 'Ver CV',
-		},
-		facts: [
-			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
-			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
-			{ label: 'Idiomas', value: 'Español (nativo), Inglés (avanzado)' },
-		],
-		origin: {
-			heading: 'De dónde vengo',
-			paragraphs: ['TBD', 'TBD', 'TBD'],
-		},
-	},
 	notFound: {
 		meta: { title: '404 · Juan Ignacio Werkalec' },
 		title: 'Esta página no existe.',
@@ -76,32 +54,25 @@ export const es: Dictionary = {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
 			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
 		},
-		hero: {
-			title: 'Hola! Soy Juani Werkalec,\nun ingeniero web que disfruta tomar features ambiguas y llevarlas a prod cuidando los detalles que separan lo bueno de lo excelente.',
+		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
+		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
+		lead: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
+		actions: {
+			email: 'Escribime',
+			cv: 'Ver CV',
 		},
+		facts: [
+			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
+			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
+			{ label: 'Idiomas', value: 'Español (nativo), Inglés (avanzado)' },
+		],
 		work: {
 			heading: 'Trabajo destacado',
 			allLink: 'Todos los proyectos',
-			items: [
-				{
-					role: 'Full-Stack Engineer y Technical Lead',
-					start: 'abr 2026',
-					end: 'actualidad',
-					summary: 'Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes.',
-				},
-				{
-					role: 'Senior Frontend Engineer',
-					start: 'jun 2024',
-					end: 'oct 2026',
-					summary: 'Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.',
-				},
-				{
-					role: 'Frontend Engineer',
-					start: 'ene 2022',
-					end: 'jun 2024',
-					summary: 'Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.',
-				},
-			],
+			clinical: {
+				org: 'Freelance',
+				summary: 'Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes.',
+			},
 		},
 	},
 	uses: {

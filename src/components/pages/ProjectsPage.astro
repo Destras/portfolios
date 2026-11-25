@@ -1,16 +1,15 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import ExperienceList, { type ExperienceItem } from '../ExperienceList.astro';
+import { getCollection } from 'astro:content';
+import WorkList, { type WorkRef } from '../WorkList.astro';
 import PageTitle from '../PageTitle.astro';
 import SectionTitle from '../SectionTitle.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import type { Locale } from '../../i18n/locales';
-import { detailPaths, type WorkKind } from '../../i18n/routes';
-import { getWorkDetails } from '../../lib/work-details';
+import type { WorkKind } from '../../i18n/routes';
 
 /**
  * Projects page body (design/pages/projects.md): Proyectos first, then Experiencia.
- * A row with a Markdown body links to its detail page (design/pages/work-detail.md, D-W10); the rest stay static.
+ * Every entry of each collection, newest first; WorkList links the rows that have a detail page.
  */
 interface Props {
 	locale: Locale;
@@ -19,43 +18,25 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 
-/** Slugs that have a detail page. getWorkDetails also fails the build on a broken locale pair. */
-const withDetail: Record<WorkKind, Set<string>> = {
-	projects: new Set((await getWorkDetails('projects')).map((d) => d.slug)),
-	experiences: new Set((await getWorkDetails('experiences')).map((d) => d.slug)),
-};
-
-type WorkData = CollectionEntry<'projects'>['data'] | CollectionEntry<'experiences'>['data'];
-
-/** One language of an entry, in the row shape ExperienceList takes. A project's name fills the org slot. */
-function toRow(kind: WorkKind, id: string, data: WorkData, org: string): ExperienceItem {
-	return {
-		org,
-		role: data.role[locale],
-		start: data.start[locale],
-		end: data.end[locale],
-		startIso: data.startIso,
-		endIso: data.endIso,
-		summary: data.summary[locale],
-		href: withDetail[kind].has(id) ? detailPaths(kind, id)[locale] : undefined,
-	};
+/** All entries of a collection as WorkList refs, newest first. ISO months sort correctly as strings. */
+async function allRefs(kind: WorkKind): Promise<WorkRef[]> {
+	return (await getCollection(kind))
+		.sort((a, b) => b.data.startIso.localeCompare(a.data.startIso))
+		.map(({ id }) => ({ kind, id }));
 }
 
-/** Newest first. ISO months sort correctly as strings. */
-const byStartDesc = (a: { data: WorkData }, b: { data: WorkData }) => b.data.startIso.localeCompare(a.data.startIso);
-
-const projects = (await getCollection('projects')).sort(byStartDesc).map(({ id, data }) => toRow('projects', id, data, data.name[locale]));
-const experiences = (await getCollection('experiences')).sort(byStartDesc).map(({ id, data }) => toRow('experiences', id, data, data.org));
+const projects = await allRefs('projects');
+const experiences = await allRefs('experiences');
 ---
 
 <main id="contenido" class="page">
 	<PageTitle title={t.projects.title} />
 	<section class="page__section" aria-labelledby="projects-title">
 		<SectionTitle id="projects-title" text={t.projects.projectsHeading} />
-		<ExperienceList items={projects} />
+		<WorkList refs={projects} locale={locale} />
 	</section>
 	<section class="page__section" aria-labelledby="experience-title">
 		<SectionTitle id="experience-title" text={t.projects.experienceHeading} />
-		<ExperienceList items={experiences} />
+		<WorkList refs={experiences} locale={locale} />
 	</section>
 </main>

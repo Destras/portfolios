@@ -1,4 +1,4 @@
-/** Contact facts shared by the footer and the process page. Not prose, so they stay out of the dictionary. */
+/** Contact facts shared by the footer and the home page. Not prose, so they stay out of the dictionary. */
 export const contactEmail = 'juan.werkalec+contactame@gmail.com';
 
 /** Both locales link the EN CV until an ES one exists. */

@@ -41,8 +41,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 
 ```
 /                              → redirige a /es o /en según Accept-Language
-├── /es                        Inicio
-│   ├── /es/proceso            Proceso (cómo trabajo)
+├── /es                        Inicio (Sobre mí; absorbió /proceso el 2026-11-25)
 │   ├── /es/proyectos          Experiencia + Proyectos
 │   │   ├── /es/proyectos/{slug}   plataforma-clinica (2026-11-25)
 │   │   └── /es/experiencia/{slug} harness · split-io · mangoodev (2026-11-25; /es/experiencia sola da 404)
@@ -51,7 +50,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 │   ├── /es/now                Ahora
 │   ├── /es/uses               Uses
 │   └── /es/colofon            Colofón (cómo está hecha esta web)
-├── /en                        Home (mismas rutas: process, projects, experience/{slug}, case-studies, now, uses, colophon)
+├── /en                        Home (mismas rutas: projects, experience/{slug}, case-studies, now, uses, colophon)
 ├── /cv-en.pdf                 CV (por ahora solo en inglés; /es también linkea a este)
 └── 404                        una por idioma
 ```
@@ -66,10 +65,10 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 
 | # | Sección | Para qué |
 |---|---|---|
-| 1 | Header | El nombre lleva al inicio. Proceso · Proyectos · Casos de estudio. ES · EN |
-| 2 | Hero | Quién sos y qué hacés, en 5 segundos. Sin CTA |
-| 3 | Trabajo destacado | Freelance, Harness y Split.io. Cada entrada lleva a su detalle. Tiene dos versiones de wireframe (V1 y V2) |
-| 4 | Cierre | La invitación a LinkedIn |
+| 1 | Header | El nombre lleva al inicio. Ahora · Proyectos · Casos de estudio. ES · EN |
+| 2 | Sobre mí | Eyebrow · h1 · bajada · Escribime / Ver CV · Foco / Herramientas / Idiomas (2026-11-25: reemplaza al Hero; copy en `design/pages/home.md`) |
+| 3 | Trabajo destacado | Freelance, Harness y Split.io |
+| 4 | De dónde vengo | 3 párrafos (TBD). Reemplaza al cierre con LinkedIn |
 | 5 | Footer | LinkedIn, GitHub y CV; Ahora, Uses y Colofón; fecha de actualización y la línea personal |
 
 ---
@@ -91,7 +90,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 | Elemento | ES | EN |
 |---|---|---|
 | Nombre (lleva al inicio) | Juan Ignacio Werkalec | Juan Ignacio Werkalec |
-| Link a proceso | Proceso | Process |
+| Link a ahora (2026-11-25, reemplaza a Proceso) | Ahora | Now |
 | Link a proyectos | Proyectos | Projects |
 | Link a casos | Casos de estudio | Case studies |
 | Selector de idioma | ES · EN | ES · EN |
@@ -293,7 +292,7 @@ Se agregaron el 2026-11-21. Los wireframes las muestran con la estructura y el l
 
 | Página | Estructura | Fuente del copy |
 |---|---|---|
-| /proceso | Sobre mí: eyebrow · h1 · bajada · Escribime / Ver CV · Foco / Herramientas / Idiomas · Trabajo destacado (igual que home) · De dónde vengo (3 párrafos) | Copy en `design/pages/process.md` (2026-11-25). EN traducido por Claude, pendiente de revisión. TBD: párrafos de "De dónde vengo" |
+| ~~/proceso~~ | **Eliminada el 2026-11-25.** Su contenido (Sobre mí) pasó a ser el inicio | `design/pages/home.md` |
 | /proyectos | **Con copy (2026-11-24).** Proyectos (1 fila: Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad · "Web para terapeutas y app para pacientes, en producción." / "Web console for therapists and a patient app, in production.") → Experiencia (Harness, Split.io, MangooDev, sección 4.4). Desde el 2026-11-25, cada fila con detalle es un link con `→` | Este documento + `src/data/*.json` |
 | /proyectos/{slug} | **Borrador (2026-11-25), pendiente de revisión del dueño.** `← Proyectos` / `← Projects` · Título · ficha (Rol / Duración / Stack / Estado / Stakeholders; los datos que faltan no se muestran) · Contexto · Restricciones · Valor. Sin visual | Filas: `src/data/projects.json`. Cuerpo: `src/content/projects/{es,en}/{slug}.md`. Spec: `design/pages/work-detail.md` |
 | /experiencia/{slug} | **Borrador (2026-11-25), pendiente de revisión del dueño.** `← Proyectos` (vuelve a la sección Experiencia) · Título · ficha (Rol / Duración / Stack) · Contexto. Sin visual. Los links de cierre a proyectos y casos esperan a que exista /casos | Filas: `src/data/experiences.json`. Cuerpo: `src/content/experiences/{es,en}/{slug}.md`. Spec: `design/pages/work-detail.md` |

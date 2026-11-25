@@ -1,0 +1,57 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ExperienceList, { type ExperienceItem } from './ExperienceList.astro';
+import type { Locale } from '../i18n/locales';
+import { detailPaths, type WorkKind } from '../i18n/routes';
+import { getWorkDetails } from '../lib/work-details';
+
+/**
+ * Work rows read from the `projects` / `experiences` collections (plan 2026-11-25-clickable-featured-work).
+ * Callers only pass which entries to show, in the order to show them; a row with a Markdown body
+ * links to its detail page (design/pages/work-detail.md, D-W10), the rest stay static.
+ */
+export interface WorkRef {
+	kind: WorkKind;
+	/** Entry id in src/data/{kind}.json. An unknown id fails the build. */
+	id: string;
+	/** Replaces the org slot (a project's name, or an experience's org). */
+	org?: string;
+	/** Replaces the entry's summary. */
+	summary?: string;
+}
+
+interface Props {
+	refs: readonly WorkRef[];
+	locale: Locale;
+}
+
+const { refs, locale } = Astro.props;
+
+type WorkData = CollectionEntry<'projects'>['data'] | CollectionEntry<'experiences'>['data'];
+
+/** Entries by id, and the slugs with a detail page (getWorkDetails also fails the build on a broken locale pair). */
+const kinds: WorkKind[] = ['projects', 'experiences'];
+const data = {} as Record<WorkKind, Map<string, WorkData>>;
+const withDetail = {} as Record<WorkKind, Set<string>>;
+for (const kind of kinds) {
+	data[kind] = new Map((await getCollection(kind)).map((e) => [e.id, e.data as WorkData]));
+	withDetail[kind] = new Set((await getWorkDetails(kind)).map((d) => d.slug));
+}
+
+const rows: ExperienceItem[] = refs.map(({ kind, id, org, summary }) => {
+	const entry = data[kind].get(id);
+	if (!entry) throw new Error(`WorkList: no "${id}" in src/data/${kind}.json`);
+	return {
+		org: org ?? ('name' in entry ? entry.name[locale] : entry.org),
+		role: entry.role[locale],
+		start: entry.start[locale],
+		end: entry.end[locale],
+		startIso: entry.startIso,
+		endIso: entry.endIso,
+		summary: summary ?? entry.summary[locale],
+		href: withDetail[kind].has(id) ? detailPaths(kind, id)[locale] : undefined,
+	};
+});
+---
+
+<ExperienceList items={rows} />
