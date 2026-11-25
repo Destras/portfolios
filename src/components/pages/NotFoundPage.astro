@@ -1,0 +1,77 @@
+---
+/** 404 body (design/pages/404.md). English only (D-404-2), so it reads the EN dictionary directly. */
+import { getDictionary } from '../../i18n/dictionaries';
+import { localizedPath } from '../../i18n/routes';
+import LinkRows from '../LinkRows.astro';
+
+const t = getDictionary('en');
+const rows = [
+	{ label: t.notFound.home, href: localizedPath('home', 'en') },
+	{ label: t.site.nav.now, href: localizedPath('now', 'en') },
+	{ label: t.site.nav.projects, href: localizedPath('projects', 'en') },
+];
+---
+
+<main id="contenido" class="page">
+	<p class="not-found__code" aria-hidden="true">404</p>
+	<h1 class="not-found__title">{t.notFound.title}</h1>
+	<!-- Filled with the missing path by the page script; stays hidden without JS (D-404-4). -->
+	<p class="not-found__path" hidden>{t.notFound.pathPrefix} <code></code></p>
+	<p class="not-found__intro">{t.notFound.intro}</p>
+	<div class="not-found__links">
+		<LinkRows items={rows} />
+	</div>
+</main>
+
+<script>
+	import { displayPath } from '../../scripts/notFoundPath.ts';
+
+	// textContent, never innerHTML: the path is whatever the visitor typed.
+	const line = document.querySelector<HTMLElement>('.not-found__path');
+	const code = line?.querySelector('code');
+	const path = displayPath(location.pathname);
+	if (line && code && path !== null) {
+		code.textContent = path;
+		line.hidden = false;
+	}
+</script>
+
+<style>
+	/* Decorative: muted, not the accent (accent is for interactive elements only, D-404-6). */
+	.not-found__code {
+		font-family: var(--font-accent);
+		font-weight: var(--weight-bold);
+		font-size: var(--text-display);
+		line-height: var(--leading-none);
+		letter-spacing: var(--tracking-display);
+		color: var(--color-text-muted);
+	}
+
+	.not-found__title {
+		margin-top: var(--space-7);
+	}
+
+	.not-found__path {
+		margin-top: var(--space-2);
+		font-family: var(--font-accent);
+		font-size: var(--text-xs);
+		line-height: var(--leading-normal);
+		color: var(--color-text-muted);
+		overflow-wrap: anywhere;
+	}
+
+	.not-found__path code {
+		font-family: inherit;
+		color: var(--color-text);
+	}
+
+	/* No max-width: the intro uses the column (D-404-14). */
+	.not-found__intro {
+		margin-top: var(--space-6);
+		line-height: var(--leading-relaxed);
+	}
+
+	.not-found__links {
+		margin-top: var(--space-7);
+	}
+</style>

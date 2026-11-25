@@ -32,6 +32,13 @@ export const en: Dictionary = {
 		projectsHeading: 'Projects',
 		experienceHeading: 'Experience',
 	},
+	notFound: {
+		meta: { title: '404 · Juan Ignacio Werkalec' },
+		title: "This page doesn't exist.",
+		pathPrefix: "I couldn't find",
+		intro: 'The link may be broken, or the page may have moved. You can keep going from here:',
+		home: 'Home',
+	},
 	workDetail: {
 		back: '← Projects',
 		facts: {
@@ -162,6 +169,7 @@ export const en: Dictionary = {
 			'--text-md': 'Body text',
 			'--text-lg': 'h1 on inner pages',
 			'--text-xl': 'h1 on the home page',
+			'--text-display': 'The 404 mark',
 		},
 		spacing: {
 			heading: 'Spacing',
