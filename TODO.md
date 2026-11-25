@@ -38,7 +38,7 @@
 | Now | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Home | ✅ | ✅ | ✅ | ☐ | ☐ |
-| 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 404 (EN only) | ✅ | n/a | ☐ | ☐ | ☐ |
 | Projects | ✅ | ✅ | ✅ | ☐ | ✅ |
 | Project detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
 | Experience detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
