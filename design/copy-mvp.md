@@ -251,9 +251,18 @@ Sin "buscando trabajo" ni "abierto a oportunidades": la web muestra trabajo, no 
 
 ### 4.8 /uses
 
-**Intro de la categoría IA:**
+**Bajada (y meta description):**
 > **ES:** Uso IA todos los días. La IA acelera; el criterio sigue siendo mío.
 > **EN:** I use AI every day. It speeds me up; the judgment is still mine.
+
+| Campo | ES | EN |
+|---|---|---|
+| Título (h1) | Uses | Uses |
+| Meta title | Uses · Juan Ignacio Werkalec | Uses · Juan Ignacio Werkalec |
+| Caption de la tabla (oculto) | Herramientas que uso | Tools I use |
+| Encabezados | Categoría · Ítem · Comentario | Category · Item · Note |
+
+En EN, la categoría "IA" es "AI" y la "y" de los ítems es "and": "Claude Code and Claude Desktop", "Superpowers and mattpocock-skills" (2026-11-24). La categoría "IA" se repite en las dos filas.
 
 | Categoría | Ítem | ES | EN |
 |---|---|---|---|

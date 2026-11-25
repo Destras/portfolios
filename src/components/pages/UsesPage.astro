@@ -1,0 +1,19 @@
+---
+/** Uses (/es/uses/, /en/uses/): the tools I use (design doc §9.3). Copy: copy-mvp §4.8. */
+import type { Locale } from '../../i18n/locales';
+import { getDictionary } from '../../i18n/dictionaries';
+import PageTitle from '../PageTitle.astro';
+import DataTable from '../DataTable.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const u = getDictionary(locale).uses;
+---
+
+<main id="contenido" class="page">
+	<PageTitle title={u.title} lead={u.lead} />
+	<DataTable caption={u.table.caption} headers={[u.table.cat, u.table.item, u.table.note]} rows={u.rows} />
+</main>

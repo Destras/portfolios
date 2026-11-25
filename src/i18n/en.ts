@@ -23,7 +23,6 @@ export const en: Dictionary = {
 	pages: {
 		process: { title: 'Process', description: 'How I work.' },
 		now: { title: 'Now', description: "What I'm focused on now." },
-		uses: { title: 'Uses', description: 'The tools I use.' },
 	},
 	projects: {
 		meta: {
@@ -66,6 +65,28 @@ export const en: Dictionary = {
 				},
 			],
 		},
+	},
+	uses: {
+		meta: {
+			title: 'Uses · Juan Ignacio Werkalec',
+			description: 'I use AI every day. It speeds me up; the judgment is still mine.',
+		},
+		title: 'Uses',
+		lead: 'I use AI every day. It speeds me up; the judgment is still mine.',
+		table: {
+			caption: 'Tools I use',
+			cat: 'Category',
+			item: 'Item',
+			note: 'Note',
+		},
+		rows: [
+			{ cat: 'Editor', item: 'VS Code', note: 'The usual: fast, extensible, no surprises.' },
+			{ cat: 'Terminal', item: 'iTerm2 + Oh My Zsh', note: 'Shortcuts and autocomplete, so I never type things twice.' },
+			{ cat: 'AI', item: 'Claude Code and Claude Desktop', note: 'Specs first, then tests; the agent writes, I review.' },
+			{ cat: 'AI', item: 'Superpowers and mattpocock-skills', note: 'Agent skills to plan, test and review.' },
+			{ cat: 'Hardware', item: 'MacBook Pro 2021, M1, 64 GB', note: 'Everything open at once, nothing to close.' },
+			{ cat: 'Apps', item: 'Obsidian', note: 'My vault: what I learn and decide gets written down.' },
+		],
 	},
 	colophon: {
 		meta: {

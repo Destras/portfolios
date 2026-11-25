@@ -3,6 +3,7 @@ import type { SectionKey } from '../../i18n/routes';
 import ProjectsPage from './ProjectsPage.astro';
 import StyleguidePage from './StyleguidePage.astro';
 import ColophonPage from './ColophonPage.astro';
+import UsesPage from './UsesPage.astro';
 
 /**
  * Section key → page component, rendered by src/pages/[locale]/[section].astro.
@@ -13,6 +14,7 @@ import ColophonPage from './ColophonPage.astro';
 export const sectionPages = {
 	styleguide: StyleguidePage,
 	projects: ProjectsPage,
+	uses: UsesPage,
 	colophon: ColophonPage,
 } as const satisfies Partial<Record<SectionKey, unknown>>;
 
