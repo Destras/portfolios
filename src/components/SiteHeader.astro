@@ -1,21 +1,25 @@
 ---
 import type { Locale } from '../i18n/locales';
-import { localizedPath, type RouteKey } from '../i18n/routes';
+import { localizedPath, type LocalePaths, type RouteKey } from '../i18n/routes';
 import LangSwitch from './LangSwitch.astro';
 import SiteNav from './SiteNav.astro';
 
 interface Props {
 	locale: Locale;
 	routeKey: RouteKey;
+	/** This page in every locale, for the language switch. */
+	paths: LocalePaths;
+	/** "page" on a section page, "true" on a subpage of it (a work detail). */
+	navCurrent: 'page' | 'true';
 }
 
-const { locale, routeKey } = Astro.props;
+const { locale, routeKey, paths, navCurrent } = Astro.props;
 ---
 
 <header class="site-header">
 	<a class="site-header__brand" href={localizedPath('home', locale)}>Juan Ignacio Werkalec</a>
-	<SiteNav class="site-header__nav" locale={locale} routeKey={routeKey} />
-	<LangSwitch class="site-header__lang" locale={locale} routeKey={routeKey} />
+	<SiteNav class="site-header__nav" locale={locale} routeKey={routeKey} navCurrent={navCurrent} />
+	<LangSwitch class="site-header__lang" locale={locale} paths={paths} />
 </header>
 
 <style>

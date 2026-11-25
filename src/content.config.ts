@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 /**
@@ -22,11 +22,19 @@ const workRow = {
 	/** null when the work is ongoing: the end is text, not a date. */
 	endIso: month.nullable(),
 	summary: localized,
+	/** Detail fact sheet (D-W5): technologies, not translated. */
+	stack: z.array(z.string().min(1)).min(1).optional(),
 };
 
 const projects = defineCollection({
 	loader: file('src/data/projects.json'),
-	schema: z.object({ name: localized, ...workRow }),
+	schema: z.object({
+		name: localized,
+		...workRow,
+		/** Detail fact sheet, projects only (D-W13). */
+		status: localized.optional(),
+		stakeholders: localized.optional(),
+	}),
 });
 
 const experiences = defineCollection({
@@ -34,4 +42,22 @@ const experiences = defineCollection({
 	schema: z.object({ org: z.string().min(1), ...workRow }),
 });
 
-export const collections = { projects, experiences };
+/**
+ * Long-form bodies of the detail pages (ADR 0001): one Markdown file per locale at
+ * src/content/{projects,experiences}/{es,en}/{slug}.md, where {slug} is the JSON row id.
+ * Entry ids look like "es/harness". Bodies carry no frontmatter: the facts live in the JSON row.
+ * Locale completeness is checked by getWorkDetails() in src/lib/work-details.ts, not here.
+ */
+const detailBody = z.object({}).strict();
+
+const projectDetails = defineCollection({
+	loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
+	schema: detailBody,
+});
+
+const experienceDetails = defineCollection({
+	loader: glob({ base: './src/content/experiences', pattern: '**/*.md' }),
+	schema: detailBody,
+});
+
+export const collections = { projects, experiences, projectDetails, experienceDetails };

@@ -54,6 +54,16 @@ export const en: Dictionary = {
 			paragraphs: ['TBD', 'TBD', 'TBD'],
 		},
 	},
+	workDetail: {
+		back: '← Projects',
+		facts: {
+			role: 'Role',
+			duration: 'Duration',
+			stack: 'Stack',
+			status: 'Status',
+			stakeholders: 'Stakeholders',
+		},
+	},
 	home: {
 		meta: {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',

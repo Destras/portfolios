@@ -1,0 +1,34 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../../layouts/Layout.astro';
+import WorkDetailPage from '../../../components/pages/WorkDetailPage.astro';
+import { locales } from '../../../i18n/locales';
+import { detailBases, detailPaths, type WorkKind } from '../../../i18n/routes';
+import { getWorkDetails } from '../../../lib/work-details';
+
+// One route per (kind × detail × locale): /es/proyectos/{slug}/, /en/experience/{slug}/, …
+// Only rows with a Markdown body get a page; getWorkDetails fails the build on a broken locale pair.
+export const getStaticPaths = (async () => {
+	const kinds = Object.keys(detailBases) as WorkKind[];
+	const details = (await Promise.all(kinds.map((kind) => getWorkDetails(kind)))).flat();
+	return details.flatMap((detail) =>
+		locales.map((locale) => ({
+			params: { locale, section: detailBases[detail.kind][locale], slug: detail.slug },
+			props: { locale, detail },
+		})),
+	);
+}) satisfies GetStaticPaths;
+
+const { locale, detail } = Astro.props;
+const { data } = detail.row;
+const title = 'name' in data ? data.name[locale] : data.org;
+---
+
+<Layout
+	title={`${title} · Juan Ignacio Werkalec`}
+	description={data.summary[locale]}
+	routeKey="projects"
+	paths={detailPaths(detail.kind, detail.slug)}
+>
+	<WorkDetailPage locale={locale} detail={detail} />
+</Layout>

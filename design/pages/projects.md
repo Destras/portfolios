@@ -12,7 +12,7 @@ They win over diseno and copy-mvp until those docs are updated (step 9).
 | D-P3 | **Harness and Split.io are one job shown as two entries. No note** under the list | diseno §8.8 and §14.4 (the "un solo empleo, en dos etapas" note) |
 | D-P4 | **MangooDev appears only on this page**, with copy-mvp §4.4's long "Línea" | — (copy-mvp §4.4 already says "solo en /proyectos") |
 | D-P5 | **Freelance is not in this page's Experiencia.** Its work is the single row of a separate "Proyectos" section | copy-mvp §4.10 ("Experiencia (4 filas)"); wireframe `proyectos` (Freelance in Experiencia) |
-| D-P6 | **Order:** h1 → h2 Proyectos → h2 Experiencia (the wireframe has Experiencia first). **Both sections use static `ExperienceList` rows:** no arrow, no link, until the detail pages exist | wireframe `proyectos` (order, `→` arrows); copy-mvp §4.4 "Cada entrada lleva a `/proyectos/{slug}`" |
+| D-P6 | **Order:** h1 → h2 Proyectos → h2 Experiencia (the wireframe has Experiencia first). **Both sections use static `ExperienceList` rows:** no arrow, no link, until the detail pages exist. **Lifted 2026-11-25 by D-W10** (`design/pages/work-detail.md`): rows with a detail page are links with the `→` arrow | wireframe `proyectos` (order, `→` arrows); copy-mvp §4.4 "Cada entrada lleva a `/proyectos/{slug}`" |
 | D-P7 | **No lead under the h1.** Meta description as approved below | — (no source had one) |
 | D-P8 | **Two Astro content collections, `projects` and `experiences`** (`file()` loader, both languages in each entry). **Home is not touched** and keeps `home.work.items` + `src/data/home.ts`. The Harness and Split.io text is duplicated until home is synced (TODO). No `showOn*` flags for now | — |
 
@@ -57,7 +57,7 @@ Note: the h1 and the first h2 both say "Proyectos". The wireframe has the same p
 |---|---|---|---|
 | Section order | Experiencia, then Proyectos | — | Proyectos first (D-P6) |
 | Freelance row | In Experiencia | copy-mvp §4.10: 4 rows | Out of Experiencia; it becomes the Proyectos row (D-P5) |
-| Row arrow `→` / clickable row | Yes (`exp-row__arrow`) | diseno D8, §8.14 (phase 2) | Not built (D-P6) |
+| Row arrow `→` / clickable row | Yes (`exp-row__arrow`) | diseno D8, §8.14 (phase 2) | Built 2026-11-25 for rows with a detail (D-W10) |
 | Row text | V2 short lines | copy-mvp §4.4 | Dictionary/home text and copy-mvp long line (D-P2, D-P4) |
 | `mode-toggle` in the header | Yes | diseno P4 (no button) | Not built (TODO item, out of scope) |
 | `header.page-title > h1` | Yes | diseno §8.7 PageTitle | Build PageTitle from §8.7 |

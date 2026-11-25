@@ -1,6 +1,7 @@
 ---
 /**
- * Static work rows (design doc §8.8): one row per job, not clickable in the MVP.
+ * Work rows (design doc §8.8): one row per job. Static unless the item has an `href`;
+ * then the whole row is a link to its detail page (design/pages/work-detail.md, D-W10).
  * Mobile: date on top. Desktop: date column on the left, the rest on the right.
  */
 export interface ExperienceItem {
@@ -12,6 +13,8 @@ export interface ExperienceItem {
 	/** null when the job is ongoing: the end is text, not a date. */
 	endIso: string | null;
 	summary: string;
+	/** Detail page URL. Without it the row stays static, with today's markup (home relies on that). */
+	href?: string;
 }
 
 interface Props {
@@ -23,20 +26,38 @@ const { items } = Astro.props;
 
 <ul class="exp-list">
 	{
-		items.map((item) => (
-			<li class="exp-row">
+		items.map((item) => {
+			const date = (
 				<span class="exp-row__date">
 					<time datetime={item.startIso}>{item.start}</time> –{' '}
 					{item.endIso ? <time datetime={item.endIso}>{item.end}</time> : item.end}
 				</span>
+			);
+			const content = (
 				<div>
 					<p class="exp-row__head">
 						<span class="exp-row__org">{item.org}</span> · <span class="exp-row__role">{item.role}</span>
 					</p>
 					<p class="exp-row__summary">{item.summary}</p>
 				</div>
-			</li>
-		))
+			);
+			return item.href ? (
+				<li class="exp-row exp-row--linked">
+					<a class="exp-row__link" href={item.href}>
+						{date}
+						{content}
+						<span class="exp-row__arrow" aria-hidden="true">
+							→
+						</span>
+					</a>
+				</li>
+			) : (
+				<li class="exp-row">
+					{date}
+					{content}
+				</li>
+			);
+		})
 	}
 </ul>
 
@@ -78,12 +99,62 @@ const { items } = Astro.props;
 		text-wrap: pretty;
 	}
 
+	/* Linked row: the <a> takes the row's layout and padding; the <li> keeps only the border. */
+	.exp-row.exp-row--linked {
+		display: block;
+		padding-block: 0;
+	}
+
+	.exp-row__link {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: var(--space-1) var(--space-3);
+		margin-inline: calc(-1 * var(--space-3));
+		padding: var(--space-3);
+		border-radius: var(--radius-md);
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.exp-row__arrow {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: start;
+		font-family: var(--font-accent);
+		color: var(--color-text-muted);
+	}
+
+	/* Surface alone is too faint against the page (§8.14), so the org and arrow change too. */
+	.exp-row__link:hover {
+		background: var(--color-surface);
+	}
+
+	.exp-row__link:hover .exp-row__org {
+		color: var(--color-accent-hover);
+		text-decoration: underline;
+	}
+
+	.exp-row__link:hover .exp-row__arrow {
+		color: var(--color-accent-hover);
+	}
+
 	@media (width >= 48rem) /* --bp-md */ {
 		.exp-row {
 			display: grid;
 			grid-template-columns: var(--row-date-col) minmax(0, 1fr);
 			column-gap: var(--space-4);
 			align-items: baseline;
+		}
+
+		.exp-row__link {
+			grid-template-columns: var(--row-date-col) minmax(0, 1fr) auto;
+			column-gap: var(--space-4);
+			align-items: baseline;
+		}
+
+		.exp-row__arrow {
+			grid-column: 3;
+			grid-row: 1;
 		}
 	}
 </style>

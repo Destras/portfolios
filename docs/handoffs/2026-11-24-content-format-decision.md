@@ -1,7 +1,9 @@
 # Handoff: content format for `projects` / `experiences` collections
 
 **Date:** 2026-11-24 · **Repo:** `marcaPersonal/portfolios` (Astro 7) · **Branch at the time:** `feat/projects-page`
-**Status:** Decision agreed in a grilling session. **Nothing implemented, no ADR written yet.** The owner asked to formalize it (ADR) and implement it **when the detail pages are built**, not before.
+**Status:** **Implemented 2026-11-25** with the detail pages. ADR: `docs/adr/0001-content-format-for-work-collections.md`. Plan: `docs/superpowers/plans/2026-11-25-work-detail-pages.md`. Spec: `design/pages/work-detail.md`. The open items below were closed there (D-W1…D-W14); case studies are still pending.
+
+_Original status:_ Decision agreed in a grilling session. Nothing implemented, no ADR written yet. The owner asked to formalize it (ADR) and implement it when the detail pages are built, not before.
 
 ## The question
 Should the site keep `src/data/projects.json` or move to Astro's Markdown content system?

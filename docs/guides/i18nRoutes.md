@@ -396,6 +396,17 @@ export default defineConfig({
 });
 ```
 
+### Detail routes (work detail pages, 2026-11-25)
+
+> Written in English per the repo rule (`portfolios/CLAUDE.md`); the rest of this guide predates it.
+
+Detail pages hang off a section but are not sections themselves: `/es/proyectos/{slug}/` and `/es/experiencia/{slug}/` (EN `/en/projects/{slug}/`, `/en/experience/{slug}/`).
+
+- `detailBases` in `src/i18n/routes.ts` holds the base segment of each kind, keyed by the JSON collection name (`projects`, `experiences`). It is **not** part of `routes`, so `[section].astro` never generates `/es/experiencia/`: that URL is a 404 (D-W3 in `design/pages/work-detail.md`).
+- `detailPaths(kind, slug)` returns the page's path in every locale. The slug is the JSON row `id` and is the same in both locales; only the base segment is translated.
+- `Layout` takes an optional `paths: LocalePaths`. Without it, the page uses `sectionPaths(routeKey)`. With it, canonical, hreflang and the language switch use the detail's paths, and the nav marks `routeKey` with `aria-current="true"` (a subpage) instead of `"page"`.
+- The route is `src/pages/[locale]/[section]/[slug].astro`. Its `getStaticPaths` comes from `getWorkDetails()` (`src/lib/work-details.ts`), which also fails the build when a body is missing a locale (ADR `docs/adr/0001-content-format-for-work-collections.md`).
+
 ---
 
 ## 12. Cuidados y límites
