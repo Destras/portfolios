@@ -1,0 +1,57 @@
+---
+/**
+ * The site's only 404 (design/pages/404.md): English, served by the host for every missing URL (D-404-2).
+ * Own shell, not Layout: Layout takes the language from the URL, which is `es` here because
+ * Astro.currentLocale falls back to defaultLocale (D-404-9). Keep the <head> in sync with Layout.astro,
+ * minus canonical and hreflang (a noindex page has no canonical URL).
+ */
+import { Font } from 'astro:assets';
+import '../styles/themes/salvia.css';
+import '../styles/themes/brasa.css';
+import '../styles/modes.css';
+import '../styles/foundations.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SkipLink from '../components/SkipLink.astro';
+import NotFoundPage from '../components/pages/NotFoundPage.astro';
+import { getDictionary } from '../i18n/dictionaries';
+import { sectionPaths } from '../i18n/routes';
+
+const t = getDictionary('en');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<Font cssVariable="--font-sans" preload />
+		<Font cssVariable="--font-mono" preload />
+		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
+		<script is:inline>
+			try {
+				const root = document.documentElement;
+				const theme = localStorage.getItem('theme');
+				const mode = localStorage.getItem('mode');
+				if (['salvia', 'brasa'].includes(theme)) root.dataset.theme = theme;
+				if (['light', 'dark'].includes(mode)) root.dataset.mode = mode;
+			} catch {}
+		</script>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{t.notFound.meta.title}</title>
+		<meta name="robots" content="noindex" />
+	</head>
+	<body>
+		<SkipLink locale="en" />
+		<!-- routeKey "home" marks no nav item; the language switch's ES link goes to /es/ (D-404-12). -->
+		<SiteHeader locale="en" routeKey="home" paths={sectionPaths('home')} navCurrent="page" />
+		<NotFoundPage />
+		<div class="site-footer-wrap">
+			<SiteFooter locale="en" />
+		</div>
+	</body>
+</html>
