@@ -15,7 +15,7 @@
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
 - [ ] Replace the placeholder page (now) with a real one and drop its noindex. Projects, Uses, Colophon and Process are done (Colophon has draft copy, pending owner review).
-- [ ] Process page: replace the `TBD` copy (years, English level, origin paragraphs) and review the EN translation (design/pages/process.md).
+- [ ] Process page: replace the `TBD` copy (origin paragraphs) and review the EN translation (design/pages/process.md).
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
 - [ ] Bilingual 404 page.

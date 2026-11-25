@@ -6,15 +6,14 @@ import ExperienceList from '../../components/ExperienceList.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
 import { localizedPath } from '../../i18n/routes';
-import { workEntries } from '../../data/home';
+import { featuredWork } from '../../data/home';
 
 export const getStaticPaths = localeStaticPaths;
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 
-// Facts and prose share the same order (both are 3-tuples, so the types keep them in step).
-const work = workEntries.map((entry, i) => ({ ...entry, ...t.home.work.items[i] }));
+const work = featuredWork(t);
 ---
 
 <Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home">

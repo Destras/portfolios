@@ -35,11 +35,11 @@ export const es: Dictionary = {
 	process: {
 		meta: {
 			title: 'Proceso · Juan Ignacio Werkalec',
-			description: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+			description: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
-		title: 'Ingeniero frontend y full-stack con TBD+ años construyendo productos digitales y aplicaciones web.',
-		lead: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
+		lead: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
 		actions: {
 			email: 'Escribime',
 			cv: 'Ver CV',
@@ -47,7 +47,7 @@ export const es: Dictionary = {
 		facts: [
 			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
 			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
-			{ label: 'Idiomas', value: 'Español (nativo), Inglés (TBD)' },
+			{ label: 'Idiomas', value: 'Español (nativo), Inglés (avanzado)' },
 		],
 		origin: {
 			heading: 'De dónde vengo',

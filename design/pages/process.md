@@ -7,7 +7,7 @@
 | # | Decision | Overrides / fills |
 |---|---|---|
 | D-PR1 | The design's "Sobre mí" page is built at the existing `process` route. Slugs and nav label ("Proceso" / "Process") stay | copy-mvp §4.10 said /proceso = "cómo trabajo" (updated) |
-| D-PR2 | Copy not yet written is the literal `TBD`: years in the h1, English level, the three "De dónde vengo" paragraphs | Lorem ipsum and `[N]` / `[nivel]` in the design |
+| D-PR2 | Copy not yet written is the literal `TBD`: the three "De dónde vengo" paragraphs | Lorem ipsum and `[N]` / `[nivel]` in the design |
 | D-PR3 | EN copy translated by Claude from the ES copy, pending owner review | MISSING COPY (no EN anywhere) |
 | D-PR4 | Ships production-ready: no `noindex`, even with `TBD` strings | diseno §2 "fase 2" |
 | D-PR5 | Header mode toggle out of scope (open TODO item) | Design header |
@@ -28,27 +28,27 @@
   - https://docs.astro.build/en/basics/astro-components/#slots
 
 ## Structure (top to bottom)
-`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` with h2 "De dónde vengo" (SectionTitle strong) + 3 paragraphs.
+`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` "Trabajo destacado" (same SectionTitle + link to projects + ExperienceList rows as home, via `featuredWork()` in `src/data/home.ts`; owner, 2026-11-25) → `section[aria-labelledby]` with h2 "De dónde vengo" (SectionTitle strong) + 3 paragraphs.
 
 ## Copy
 
 | Dictionary key | ES | EN |
 |---|---|---|
 | `process.meta.title` | Proceso · Juan Ignacio Werkalec | Process · Juan Ignacio Werkalec |
-| `process.meta.description` | Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente. | I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great. |
+| `process.meta.description` | Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente. | I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great. |
 | `process.eyebrow` | Juan Ignacio Werkalec — Rosario, y remoto | Juan Ignacio Werkalec — Rosario, and remote |
-| `process.title` (h1) | Ingeniero frontend y full-stack con TBD+ años construyendo productos digitales y aplicaciones web. | Frontend and full-stack engineer with TBD+ years building digital products and web applications. |
-| `process.lead` | Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente. | I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great. |
+| `process.title` (h1) | Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web. | Full-stack web engineer with 6 years building digital products and web applications. |
+| `process.lead` | Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente. | I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great. |
 | `process.actions.email` | Escribime | Email me |
 | `process.actions.cv` | Ver CV | View CV |
 | `process.facts[0]` | Foco · Aplicaciones web, design systems, productos de punta a punta | Focus · Web applications, design systems, end-to-end products |
 | `process.facts[1]` | Herramientas · TypeScript, React, Next.js, Node.js, GraphQL, Supabase | Tools · TypeScript, React, Next.js, Node.js, GraphQL, Supabase |
-| `process.facts[2]` | Idiomas · Español (nativo), Inglés (TBD) | Languages · Spanish (native), English (TBD) |
+| `process.facts[2]` | Idiomas · Español (nativo), Inglés (avanzado) | Languages · Spanish (native), English (advanced) |
 | `process.origin.heading` | De dónde vengo | Where I come from |
 | `process.origin.paragraphs` | `TBD`, `TBD`, `TBD` | `TBD`, `TBD`, `TBD` |
 
 ## Open items
-- `TBD`: years in the h1, English level, the three origin paragraphs.
+- `TBD`: the three origin paragraphs.
 - EN translation pending owner review.
 - Header mode toggle (TODO.md).
 - diseno §2 / P2 still list Proceso as "fase 2" with copy "Falta" (change proposed, not applied).

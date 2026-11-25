@@ -35,11 +35,11 @@ export const en: Dictionary = {
 	process: {
 		meta: {
 			title: 'Process · Juan Ignacio Werkalec',
-			description: 'I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great.',
+			description: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, and remote',
-		title: 'Frontend and full-stack engineer with TBD+ years building digital products and web applications.',
-		lead: 'I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great.',
+		title: 'Full-stack web engineer with 6 years building digital products and web applications.',
+		lead: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
 		actions: {
 			email: 'Email me',
 			cv: 'View CV',
@@ -47,7 +47,7 @@ export const en: Dictionary = {
 		facts: [
 			{ label: 'Focus', value: 'Web applications, design systems, end-to-end products' },
 			{ label: 'Tools', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
-			{ label: 'Languages', value: 'Spanish (native), English (TBD)' },
+			{ label: 'Languages', value: 'Spanish (native), English (advanced)' },
 		],
 		origin: {
 			heading: 'Where I come from',

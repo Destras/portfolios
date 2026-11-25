@@ -35,15 +35,15 @@
 | Dictionary key | ES | EN |
 |---|---|---|
 | `process.meta.title` | Proceso · Juan Ignacio Werkalec | Process · Juan Ignacio Werkalec |
-| `process.meta.description` | Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente. | I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great. |
+| `process.meta.description` | Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente. | I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great. |
 | `process.eyebrow` | Juan Ignacio Werkalec — Rosario, y remoto | Juan Ignacio Werkalec — Rosario, and remote |
-| `process.title` (h1) | Ingeniero frontend y full-stack con TBD+ años construyendo productos digitales y aplicaciones web. | Frontend and full-stack engineer with TBD+ years building digital products and web applications. |
-| `process.lead` | Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente. | I like building things. I take on ambiguous features with minimal hand-holding and care about the details that separate good from great. |
+| `process.title` (h1) | Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web. | Full-stack web engineer with 6 years building digital products and web applications. |
+| `process.lead` | Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente. | I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great. |
 | `process.actions.email` | Escribime | Email me |
 | `process.actions.cv` | Ver CV | View CV |
 | `process.facts[0]` | Foco · Aplicaciones web, design systems, productos de punta a punta | Focus · Web applications, design systems, end-to-end products |
 | `process.facts[1]` | Herramientas · TypeScript, React, Next.js, Node.js, GraphQL, Supabase | Tools · TypeScript, React, Next.js, Node.js, GraphQL, Supabase |
-| `process.facts[2]` | Idiomas · Español (nativo), Inglés (TBD) | Languages · Spanish (native), English (TBD) |
+| `process.facts[2]` | Idiomas · Español (nativo), Inglés (avanzado) | Languages · Spanish (native), English (advanced) |
 | `process.origin.heading` | De dónde vengo | Where I come from |
 | `process.origin.paragraphs` | `TBD`, `TBD`, `TBD` | `TBD`, `TBD`, `TBD` |
 
