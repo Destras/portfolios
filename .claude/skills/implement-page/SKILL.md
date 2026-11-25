@@ -1,7 +1,7 @@
 ---
 name: implement-page
 description: Use when the owner runs /implement-page to spec and build one juaniw.com page (now, uses, home, 404, or a phase-2 page) from design/wireframes.html, design/diseno-juaniw.md and design/copy-mvp.md.
-argument-hint: <now|uses|home|404|projects|project-detail|case-studies|case|process|colophon>
+argument-hint: <now|uses|home|404|projects|project-detail|case-studies|case|colophon>
 disable-model-invocation: true
 ---
 

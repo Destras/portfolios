@@ -19,7 +19,7 @@ export const workEntries = [
 	{ id: 'split-io', org: 'Split.io', startIso: '2022-01', endIso: '2024-06' },
 ] as const satisfies readonly [WorkEntry, WorkEntry, WorkEntry];
 
-/** Featured work rows for one locale: facts merged with their prose. Shared by home and the process page. */
+/** Featured work rows for one locale: facts merged with their prose. Used by the home page. */
 export function featuredWork(t: Dictionary): ExperienceItem[] {
 	// Facts and prose share the same order (both are 3-tuples, so the types keep them in step).
 	return workEntries.map((entry, i) => ({ ...entry, ...t.home.work.items[i] }));

@@ -14,8 +14,8 @@
 - [ ] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Needs an adapter and on-demand rendering of `/` (`Astro.preferredLocale`). Today `/` is a static meta-refresh to /es/.
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
-- [ ] Replace the placeholder page (now) with a real one and drop its noindex. Projects, Uses, Colophon and Process are done (Colophon has draft copy, pending owner review).
-- [ ] Process page: replace the `TBD` copy (origin paragraphs) and review the EN translation (design/pages/process.md).
+- [ ] Replace the placeholder page (now) with a real one and drop its noindex. Projects, Uses and Colophon are done. Now is linked from the header nav since 2026-11-25 (Colophon has draft copy, pending owner review).
+- [ ] Home: replace the `TBD` copy ("De dónde vengo" paragraphs) and review the EN translation (design/pages/home.md).
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
 - [ ] Bilingual 404 page.
@@ -37,12 +37,11 @@
 |---|---|---|---|---|---|
 | Now | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Home | ✅ | ✅ | ✅ | ☐ | ☐ |
+| Home ("Sobre mí", moved from Process 2026-11-25) | ✅ | ✅ | ✅ | ☐ | ✅ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Projects | ✅ | ✅ | ✅ | ☐ | ✅ |
 | Project detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
 | Experience detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
 | Colophon (phase 2) | ✅ | ✅ | ✅ | ☐ | ☐ |
-| Process ("Sobre mí") | ✅ | ✅ | ✅ | ☐ | ✅ |
 
 When all six are ticked, continue with diseno-juaniw Annex A.5 step 6 (metadata, OG, icons, sitemap, robots), then the A.6 final check.

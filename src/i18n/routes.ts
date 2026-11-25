@@ -7,7 +7,6 @@ import { locales, type Locale } from './locales';
  * `satisfies` fails the type check if a section is missing a locale.
  */
 export const routes = {
-	process: { es: 'proceso', en: 'process' },
 	projects: { es: 'proyectos', en: 'projects' },
 	now: { es: 'now', en: 'now' },
 	uses: { es: 'uses', en: 'uses' },

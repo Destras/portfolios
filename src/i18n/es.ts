@@ -6,7 +6,7 @@ export const es: Dictionary = {
 		navLabel: 'Principal',
 		langLabel: 'Idioma',
 		nav: {
-			process: 'Proceso',
+			now: 'Ahora',
 			projects: 'Proyectos',
 		},
 		footer: {
@@ -32,10 +32,20 @@ export const es: Dictionary = {
 		projectsHeading: 'Proyectos',
 		experienceHeading: 'Experiencia',
 	},
-	process: {
+	workDetail: {
+		back: '← Proyectos',
+		facts: {
+			role: 'Rol',
+			duration: 'Duración',
+			stack: 'Stack',
+			status: 'Estado',
+			stakeholders: 'Stakeholders',
+		},
+	},
+	home: {
 		meta: {
-			title: 'Proceso · Juan Ignacio Werkalec',
-			description: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
+			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
+			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
 		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
@@ -52,25 +62,6 @@ export const es: Dictionary = {
 		origin: {
 			heading: 'De dónde vengo',
 			paragraphs: ['TBD', 'TBD', 'TBD'],
-		},
-	},
-	workDetail: {
-		back: '← Proyectos',
-		facts: {
-			role: 'Rol',
-			duration: 'Duración',
-			stack: 'Stack',
-			status: 'Estado',
-			stakeholders: 'Stakeholders',
-		},
-	},
-	home: {
-		meta: {
-			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
-			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
-		},
-		hero: {
-			title: 'Hola! Soy Juani Werkalec,\nun ingeniero web que disfruta tomar features ambiguas y llevarlas a prod cuidando los detalles que separan lo bueno de lo excelente.',
 		},
 		work: {
 			heading: 'Trabajo destacado',
