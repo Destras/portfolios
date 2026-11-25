@@ -6,14 +6,13 @@
 |---|---|---|---|---|---|---|
 | `now` | `ahora` | `/es/now/` | `/en/now/` | §9.2 | §4.7, §4.9 | Yes |
 | `uses` | `uses` | `/es/uses/` | `/en/uses/` | §9.3 | §4.8 | Yes |
-| `home` | `inicio` | `/es/` | `/en/` | §9.1 | §4.2–4.5, §4.9 | Yes |
+| `home` | `inicio` (outdated; the source is `design/proceso.html`) | `/es/` | `/en/` | §9.1 (outdated; spec `design/pages/home.md`) | §4.9; copy in `design/pages/home.md` | Yes ("Sobre mí" since 2026-11-25; the Process page was merged into it) |
 | `404` | none | any missing route (`src/pages/404.astro`) | (bilingual) | §9.4 | §4.9 | Yes |
 | `projects` | `proyectos` | `/es/proyectos/` | `/en/projects/` | §2 only (§9.5 proposed) | §4.4; rows in `src/data/*.json` (see Shared decisions) | Yes (2026-11-24) |
 | `project-detail` | none | `/es/proyectos/{slug}/` (`plataforma-clinica`) | `/en/projects/{slug}/` | §8.11, §8.14 (spec `design/pages/work-detail.md`) | §4.10; body in `src/content/projects/` (draft) | Yes (2026-11-25) |
 | `experience-detail` | none | `/es/experiencia/{slug}/` (`harness`, `split-io`, `mangoodev`) | `/en/experience/{slug}/` | same as `project-detail` | body in `src/content/experiences/` (draft) | Yes (2026-11-25) |
 | `case-studies` | `casos` | `/es/casos/` | `/en/case-studies/` | §2 only | §4.10: no copy | Phase 2 |
 | `case` | `configs-ai-configs` | `/es/casos/{slug}/` | `/en/case-studies/{slug}/` | §2 only | §4.10: no copy | Phase 2 |
-| `process` | `proceso` | `/es/proceso/` | `/en/process/` | §2 only | §4.10: no copy | Phase 2 |
 | `colophon` | `colofon` | `/es/colofon/` | `/en/colophon/` | §2 only | §4.10: no copy | Phase 2 |
 
 Suggested order: **now** (the simplest; it tests the layout), then **uses**, **home** and **404**.

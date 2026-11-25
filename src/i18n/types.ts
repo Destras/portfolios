@@ -34,7 +34,7 @@ export interface UsesRow {
 	note: string;
 }
 
-/** One fact-list row on the process page: label and value. */
+/** One fact-list row on the home page: label and value. */
 export interface Fact {
 	label: string;
 	value: string;
@@ -57,7 +57,7 @@ export interface Dictionary {
 		/** aria-label of the language switch. */
 		langLabel: string;
 		nav: {
-			process: string;
+			now: string;
 			projects: string;
 		};
 		footer: {
@@ -83,25 +83,6 @@ export interface Dictionary {
 		projectsHeading: string;
 		experienceHeading: string;
 	};
-	/** Process page, the "Sobre mí" design (design/pages/process.md). */
-	process: {
-		/** The description is the lead. */
-		meta: PageMeta;
-		eyebrow: string;
-		/** The page's h1. */
-		title: string;
-		lead: string;
-		actions: {
-			email: string;
-			cv: string;
-		};
-		/** Same order in both locales. The tuple length keeps ES and EN in step. */
-		facts: readonly [Fact, Fact, Fact];
-		origin: {
-			heading: string;
-			paragraphs: readonly [string, string, string];
-		};
-	};
 	/** Project and experience detail pages (design/pages/work-detail.md). Bodies live in src/content/**. */
 	workDetail: {
 		/** Back link above the h1, to the projects page. */
@@ -115,12 +96,19 @@ export interface Dictionary {
 			stakeholders: string;
 		};
 	};
+	/** Home, the "Sobre mí" design (design/pages/home.md). */
 	home: {
 		meta: PageMeta;
-		hero: {
-			/** The page's h1. */
-			title: string;
+		eyebrow: string;
+		/** The page's h1. */
+		title: string;
+		lead: string;
+		actions: {
+			email: string;
+			cv: string;
 		};
+		/** Same order in both locales. The tuple length keeps ES and EN in step. */
+		facts: readonly [Fact, Fact, Fact];
 		work: {
 			heading: string;
 			/** Link next to the heading, to the projects page. */

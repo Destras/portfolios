@@ -6,7 +6,7 @@ export const en: Dictionary = {
 		navLabel: 'Main',
 		langLabel: 'Language',
 		nav: {
-			process: 'Process',
+			now: 'Now',
 			projects: 'Projects',
 		},
 		footer: {
@@ -32,28 +32,6 @@ export const en: Dictionary = {
 		projectsHeading: 'Projects',
 		experienceHeading: 'Experience',
 	},
-	process: {
-		meta: {
-			title: 'Process · Juan Ignacio Werkalec',
-			description: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
-		},
-		eyebrow: 'Juan Ignacio Werkalec — Rosario, and remote',
-		title: 'Full-stack web engineer with 6 years building digital products and web applications.',
-		lead: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
-		actions: {
-			email: 'Email me',
-			cv: 'View CV',
-		},
-		facts: [
-			{ label: 'Focus', value: 'Web applications, design systems, end-to-end products' },
-			{ label: 'Tools', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
-			{ label: 'Languages', value: 'Spanish (native), English (advanced)' },
-		],
-		origin: {
-			heading: 'Where I come from',
-			paragraphs: ['TBD', 'TBD', 'TBD'],
-		},
-	},
 	workDetail: {
 		back: '← Projects',
 		facts: {
@@ -69,9 +47,18 @@ export const en: Dictionary = {
 			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
 			description: "Senior full-stack engineer, UI-focused. Give me the ambiguous stuff; I'll ship it.",
 		},
-		hero: {
-			title: "Hi! I'm Juani Werkalec,\na web engineer who enjoys taking ambiguous features and shipping them to prod, sweating the details that separate good from great.",
+		eyebrow: 'Juan Ignacio Werkalec — Rosario, and remote',
+		title: 'Full-stack web engineer with 6 years building digital products and web applications.',
+		lead: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
+		actions: {
+			email: 'Email me',
+			cv: 'View CV',
 		},
+		facts: [
+			{ label: 'Focus', value: 'Web applications, design systems, end-to-end products' },
+			{ label: 'Tools', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
+			{ label: 'Languages', value: 'Spanish (native), English (advanced)' },
+		],
 		work: {
 			heading: 'Featured work',
 			allLink: 'All projects',

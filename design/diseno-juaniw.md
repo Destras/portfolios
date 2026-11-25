@@ -60,7 +60,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | Detalle de proyecto | `/es/proyectos/{slug}` | `/en/projects/{slug}` | Nombre del proyecto | Falta | No (fase 2) |
 | Casos de estudio | `/es/casos` | `/en/case-studies` | Casos de estudio / Case studies | Falta | No (fase 2) |
 | Caso | `/es/casos/{slug}` | `/en/case-studies/{slug}` | Nombre del caso | Falta | No (fase 2) |
-| Proceso | `/es/proceso` | `/en/process` | Proceso / Process | Falta | No (fase 2) |
+| ~~Proceso~~ | — | — | — | Eliminada el 2026-11-25: su contenido (Sobre mí) es ahora el Inicio (`design/pages/home.md`) | — |
 | Colofón | `/es/colofon` | `/en/colophon` | Colofón / Colophon | Falta | No (fase 2) |
 
 - **Redirección de `/`:** a `/es` o `/en` según `Accept-Language`. Si el primer idioma es español (`es`, `es-AR`, etc.), va a `/es`; en cualquier otro caso, a `/en`. Es una redirección 307, para que no quede cacheada. Ver Anexo A.3.
