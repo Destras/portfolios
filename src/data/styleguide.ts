@@ -57,17 +57,20 @@ export const textSizes = [
 	{ name: '--text-md', value: 'clamp(1rem, 0.9780rem + 0.0939vw, 1.0625rem)' },
 	{ name: '--text-lg', value: 'clamp(1.5rem, 1.4120rem + 0.3756vw, 1.75rem)' },
 	{ name: '--text-xl', value: 'clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem)' },
+	{ name: '--text-display', value: 'clamp(4rem, 3.2958rem + 3.0047vw, 6rem)' },
 ] as const;
 
 export type TextSizeToken = (typeof textSizes)[number]['name'];
 
 export const typeTokens = [
+	['--leading-none', '1'],
 	['--leading-tight', '1.3'],
 	['--leading-hero', '1.35'],
 	['--leading-normal', '1.5'],
 	['--leading-relaxed', '1.6'],
 	['--tracking-tight', '-0.01em'],
 	['--tracking-caps', '0.05em'],
+	['--tracking-display', '-0.04em'],
 ];
 
 export const spaces = [

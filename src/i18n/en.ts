@@ -191,6 +191,7 @@ export const en: Dictionary = {
 			'--text-md': 'Body text',
 			'--text-lg': 'h1 on inner pages',
 			'--text-xl': 'h1 on the home page',
+			'--text-display': 'The 404 mark',
 		},
 		spacing: {
 			heading: 'Spacing',

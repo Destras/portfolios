@@ -191,6 +191,7 @@ export const es: Dictionary = {
 			'--text-md': 'Texto de lectura',
 			'--text-lg': 'h1 de las páginas internas',
 			'--text-xl': 'h1 del inicio',
+			'--text-display': 'Marca del 404',
 		},
 		spacing: {
 			heading: 'Espaciado',
