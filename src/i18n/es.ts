@@ -62,26 +62,10 @@ export const es: Dictionary = {
 		work: {
 			heading: 'Trabajo destacado',
 			allLink: 'Todos los proyectos',
-			items: [
-				{
-					role: 'Full-Stack Engineer y Technical Lead',
-					start: 'abr 2026',
-					end: 'actualidad',
-					summary: 'Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes.',
-				},
-				{
-					role: 'Senior Frontend Engineer',
-					start: 'jun 2024',
-					end: 'oct 2026',
-					summary: 'Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.',
-				},
-				{
-					role: 'Frontend Engineer',
-					start: 'ene 2022',
-					end: 'jun 2024',
-					summary: 'Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.',
-				},
-			],
+			clinical: {
+				org: 'Freelance',
+				summary: 'Del primer meeting a producción en ~6 meses: plataforma clínica web + app mobile que reemplaza las planillas de un centro de 150 pacientes.',
+			},
 		},
 	},
 	uses: {

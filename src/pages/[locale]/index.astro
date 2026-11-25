@@ -1,20 +1,19 @@
 ---
 /** Home (/es/, /en/): the "Sobre mí" design (design/pages/home.md). */
 import Layout from '../../layouts/Layout.astro';
-import ExperienceList from '../../components/ExperienceList.astro';
+import WorkList from '../../components/WorkList.astro';
 import ButtonLink from '../../components/ButtonLink.astro';
 import SectionTitle from '../../components/SectionTitle.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
 import { localizedPath } from '../../i18n/routes';
 import { contactEmail, cvHref } from '../../data/contact';
-import { featuredWork } from '../../data/home';
+import { featuredRefs } from '../../data/home';
 
 export const getStaticPaths = localeStaticPaths;
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
-const work = featuredWork(t);
 ---
 
 <Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home">
@@ -42,7 +41,7 @@ const work = featuredWork(t);
 				text={t.home.work.heading}
 				link={{ href: localizedPath('projects', locale), label: t.home.work.allLink }}
 			/>
-			<ExperienceList items={work} />
+			<WorkList refs={featuredRefs(t)} locale={locale} />
 		</section>
 	</main>
 </Layout>
