@@ -1,0 +1,15 @@
+[
+	{
+		"id": "plataforma-clinica",
+		"name": { "es": "Plataforma de seguimiento clínico", "en": "Clinical follow-up platform" },
+		"role": { "es": "Full-Stack Engineer y Technical Lead", "en": "Full-Stack Engineer and Technical Lead" },
+		"start": { "es": "abr 2026", "en": "Apr 2026" },
+		"end": { "es": "actualidad", "en": "Present" },
+		"startIso": "2026-04",
+		"endIso": null,
+		"summary": {
+			"es": "Web para terapeutas y app para pacientes, en producción.",
+			"en": "Web console for therapists and a patient app, in production."
+		}
+	}
+]

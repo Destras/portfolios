@@ -8,7 +8,7 @@
 | `uses` | `uses` | `/es/uses/` | `/en/uses/` | §9.3 | §4.8 | Yes |
 | `home` | `inicio` | `/es/` | `/en/` | §9.1 | §4.2–4.5, §4.9 | Yes |
 | `404` | none | any missing route (`src/pages/404.astro`) | (bilingual) | §9.4 | §4.9 | Yes |
-| `projects` | `proyectos` | `/es/proyectos/` | `/en/projects/` | §2 only | §4.10: no copy | Phase 2 |
+| `projects` | `proyectos` | `/es/proyectos/` | `/en/projects/` | §2 only (§9.5 proposed) | §4.4; rows in `src/data/*.json` (see Shared decisions) | Yes (2026-11-24) |
 | `project-detail` | `plataforma-clinica`, `harness` | `/es/proyectos/{slug}/` | `/en/projects/{slug}/` | §2 only | §4.10: no copy | Phase 2 |
 | `case-studies` | `casos` | `/es/casos/` | `/en/case-studies/` | §2 only | §4.10: no copy | Phase 2 |
 | `case` | `configs-ai-configs` | `/es/casos/{slug}/` | `/en/case-studies/{slug}/` | §2 only | §4.10: no copy | Phase 2 |
@@ -25,6 +25,14 @@ Decisions the owner made after diseno and copy-mvp were written. They win over t
 
 - **Copy source:** `design/copy-mvp.md`. Ignore other copies of it, such as `../fase3/copy-mvp.md`.
 - **CV (2026-11-24):** for now there is only one CV, in English: `design/cv-en.pdf`. There is no `cv-es.pdf`. The CV link in both locales (footer "CV" / "Résumé") points to `/cv-en.pdf`. The first page that links it copies `design/cv-en.pdf` to `public/cv-en.pdf`. diseno and copy-mvp already reflect this.
+
+- **Projects page (2026-11-24, spec `design/pages/projects.md`, D-P1…D-P8):**
+  - `/proyectos` is in the MVP, without `noindex`.
+  - Its rows come from two content collections, `projects` and `experiences` (`src/data/*.json`, both languages in each entry). Home doesn't use them yet; syncing it is a TODO.
+  - Harness and Split.io are one job shown as two entries, with **no note**.
+  - Split.io's role is "Frontend Engineer", and its summary keeps "JPMorgan". That's an owner exception to copy-mvp §1 and to step 8's "must not appear" list, until copy-mvp is updated.
+  - MangooDev appears only on /proyectos.
+  - Freelance is home-only in Experience. On /proyectos its work is the one row of the "Proyectos" section, which goes before "Experiencia". The rows are static.
 
 ## now: diseno §9.2
 - **The tricky part:** the update date goes **inside** `.page-title` (with `margin-top: var(--space-2)`), not floating on its own.
