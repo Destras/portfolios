@@ -17,7 +17,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | **P3** | Inicio V1 o V2 | **Ninguna de las dos tal cual:** los 3 mini-casos con su ficha técnica (lo que define `copy-mvp` §4.3) y la experiencia en filas (V2) | V1: bloques por empresa, sin ficha. V2: filas, sin mini-casos | §8.8, §8.9, §9.1 |
 | **P4** | Modo | **Sigue al sistema** (`prefers-color-scheme`), sin botón. `data-mode` queda solo para probar | Lo que dice la v1: el modo se fuerza con `data-mode` y nunca sigue al sistema. Pero sin un botón, el modo oscuro no aparece nunca | §5.4, §6 |
 | **P5** | LinkedIn | **Se mantiene.** Es el CTA secundario de `copy-mvp` §4.5 | La v1 dice "No usás LinkedIn". Si es así, hay que reescribir el cierre | §8.4, §9.1, copy |
-| **P6** | Nombres de empresas | **Como en `copy-mvp` §4.4:** Harness, Split.io y MangooDev SRL. JPMorgan Chase no aparece | La v1 dice "solo Harness". Si es así, Split.io y MangooDev pasan a descripciones genéricas | §8.8, §8.9, copy |
+| **P6** | Nombres de empresas | **Como en `copy-mvp` §4.4:** Harness, Split.io y MangooDev SRL. JPMorgan Chase solo aparece en el resumen de Split.io (decisión del 2026-11-24) | La v1 dice "solo Harness". Si es así, Split.io y MangooDev pasan a descripciones genéricas | §8.8, §8.9, copy |
 
 > **P5 y P6:** manda `copy-mvp.md`. Las notas de la v1 ("No usás LinkedIn", "solo Harness") quedan descartadas.
 
@@ -56,7 +56,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | Uses | `/es/uses` | `/en/uses` | Uses | copy-mvp §4.8 | **Sí** |
 | 404 | cualquier ruta inexistente | | Esta página no existe. / This page doesn't exist. | copy-mvp §4.9 | **Sí** |
 | CV | `/cv-en.pdf` | `/cv-en.pdf` | — | — | **Sí** (por ahora solo en inglés) |
-| Proyectos | `/es/proyectos` | `/en/projects` | Proyectos / Projects | Falta | No (fase 2) |
+| Proyectos | `/es/proyectos` | `/en/projects` | Proyectos / Projects | `src/data/*.json` + diccionario (ver §9.5) | **Sí** (desde el 2026-11-24) |
 | Detalle de proyecto | `/es/proyectos/{slug}` | `/en/projects/{slug}` | Nombre del proyecto | Falta | No (fase 2) |
 | Casos de estudio | `/es/casos` | `/en/case-studies` | Casos de estudio / Case studies | Falta | No (fase 2) |
 | Caso | `/es/casos/{slug}` | `/en/case-studies/{slug}` | Nombre del caso | Falta | No (fase 2) |
@@ -788,7 +788,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 |---|---|
 | Clase | `.page-title` (+ `__lead`) · `.section-title` (+ `--strong`) · `.section-lead` |
 | Para qué | `h1` de las páginas internas, con bajada opcional · `h2` de cada sección (etiqueta o fuerte) · párrafo de apertura de una sección |
-| Dónde se usa | PageTitle: Ahora, Uses, 404. SectionTitle: Proyectos y Experiencia del inicio. SectionLead: la apertura de Proyectos |
+| Dónde se usa | PageTitle: Ahora, Uses, 404, Proyectos. SectionTitle: Proyectos y Experiencia del inicio. SectionLead: la apertura de Proyectos |
 | Tokens | `--text-lg`, `--text-md`, `--text-base`, `--leading-tight`, `--tracking-tight`, `--color-text`, `--color-text-muted`, `--space-2`, `--space-4`, `--space-6`, `--space-10` |
 | Estados | No son interactivos |
 | Mobile vs. desktop | Igual |
@@ -846,16 +846,16 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 
 | Campo | Valor |
 |---|---|
-| Clase | `.exp-list`, `.exp-row` (+ `__date`, `__head`, `__org`, `__role`, `__summary`) · `.exp-note` |
+| Clase | `.exp-list`, `.exp-row` (+ `__date`, `__head`, `__org`, `__role`, `__summary`) |
 | Para qué | La trayectoria: una fila por etapa, **no clickeable** en el MVP (no hay páginas de detalle) |
-| Dónde se usa | Inicio, sección Experiencia |
+| Dónde se usa | Inicio (Trabajo destacado) y /proyectos (secciones Proyectos y Experiencia) |
 | Tokens | `--font-accent`, `--text-xs`, `--text-base`, `--text-sm`, `--leading-normal`, `--color-text`, `--color-text-muted`, `--color-border`, `--row-date-col`, `--space-1`, `--space-3`, `--space-4` |
 | Estados | Sin estados (estática) |
 | Mobile vs. desktop | Mobile: fecha arriba; debajo, "**Empresa** · rol" y el resumen. Desktop: dos columnas, con la fecha a la izquierda y el resto a la derecha |
 | Accesibilidad | `<ul>` con `<li>`; el período va en `<time>` cuando es una fecha concreta |
 
 > **Cambio respecto de la v1 (D8):** la fila de la v1 tenía 5 columnas y era un link. Como en el MVP no hay detalle y el rol "Full-Stack Engineer y Technical Lead" no entra en una columna angosta, la fila pasa a 2 columnas. La versión clickeable vuelve en la fase 2.
-> **Orden** (copy-mvp §4.4): Freelance (sigue activo) → Harness → Split.io → MangooDev. Debajo, una nota aclara que Split.io y Harness fueron un solo empleo.
+> **Orden** (copy-mvp §4.4): Freelance (sigue activo) → Harness → Split.io → MangooDev. Sin nota: Harness y Split.io son un solo empleo mostrado en dos entradas (decisión del 2026-11-24). En /proyectos el freelance no va en Experiencia: su trabajo es la fila de la sección Proyectos (§9.5).
 
 ```html
 <ul class="exp-list">
@@ -868,7 +868,6 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
   </li>
   <!-- Harness · jun 2024 – oct 2026 / Split.io · ene 2022 – jun 2024 / MangooDev SRL · dic 2020 – ene 2022 -->
 </ul>
-<p class="exp-note">Harness compró Split.io en 2024: fue un solo empleo, en dos etapas.</p>
 ```
 ```css
 /* styles/components.css — ExperienceList */
@@ -907,12 +906,6 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 .exp-row__summary {
   color: var(--color-text);
   text-wrap: pretty;
-}
-
-.exp-note {
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
 }
 
 @media (width >= 48rem) {
@@ -1318,6 +1311,21 @@ Todas usan: `SkipLink` → `SiteHeader` → `<main id="contenido" class="page">`
 - **Secciones:** PageTitle → dos CtaLink: "Volver al inicio →" (`/es`) y "Back home →" (`/en`) (copy-mvp §4.9).
 - **Meta:** `noindex`.
 
+### 9.5 Proyectos — `/es/proyectos` / `/en/projects`
+- **h1:** Proyectos / Projects. Sin bajada.
+- **Meta:** title "Proyectos · Juan Ignacio Werkalec" / "Projects · Juan Ignacio Werkalec"; description en copy-mvp §4.9.
+- **Secciones, en orden:**
+
+  | # | Sección | Componente | Datos |
+  |---|---|---|---|
+  | 1 | Título | PageTitle | Diccionario (`projects.title`) |
+  | 2 | Proyectos | SectionTitle + ExperienceList | Colección `projects` (`src/data/projects.json`): la plataforma clínica |
+  | 3 | Experiencia | SectionTitle + ExperienceList | Colección `experiences` (`src/data/experiences.json`): Harness, Split.io, MangooDev SRL |
+
+- **Filas fijas** (sin flecha ni link) hasta que existan las páginas de detalle. Sin nota debajo de la experiencia.
+- **Referencia visual:** wireframe `proyectos` (el orden de las secciones está invertido a propósito).
+- **Spec:** `design/pages/projects.md` (decisiones D-P1…D-P8 del 2026-11-24).
+
 ---
 
 ## 10. Interacción y movimiento
@@ -1443,7 +1451,6 @@ Calculado desde los valores OKLCH, recortados a sRGB. Coincide con el cálculo d
 |---|---|---|
 | Título de la sección de proyectos | Proyectos | Projects |
 | Título de la sección de experiencia | Experiencia | Experience |
-| Nota de la experiencia | Harness compró Split.io en 2024: fue un solo empleo, en dos etapas. | Harness acquired Split.io in 2024: one job, two stages. |
 | Etiquetas de la ficha | Rol · Duración · Contexto · Stack · Estado | Role · Duration · Context · Stack · Status |
 | Etiquetas del mini-caso | Problema · Decisión · Lo que cambiaría · Resultado | Problem · Decision · What I'd change · Result |
 | Skip link | Saltar al contenido | Skip to content |

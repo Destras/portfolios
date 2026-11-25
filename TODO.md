@@ -14,8 +14,9 @@
 - [ ] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Needs an adapter and on-demand rendering of `/` (`Astro.preferredLocale`). Today `/` is a static meta-refresh to /es/.
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
-- [ ] Replace the placeholder pages (process, projects, now) with real ones and drop their noindex. Colophon is done (draft copy, pending owner review). Uses is done.
+- [ ] Replace the placeholder pages (process, now) with real ones and drop their noindex. Projects, Uses and Colophon are done (Colophon has draft copy, pending owner review).
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
+- [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
 - [ ] Bilingual 404 page.
 - [ ] Sitemap and robots (6 MVP URLs).
 - [ ] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp): `public/og-es.png` and `og-en.png` per copy-mvp §4.9 (name + role + "Me gusta crear cosas." / "I like building things.", text only), plus an `ogImage` prop in `Layout.astro` for every page. Dropped from the home spec on 2026-11-24.
@@ -28,6 +29,7 @@
 | Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Home | ✅ | ✅ | ✅ | ☐ | ☐ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Projects | ✅ | ✅ | ✅ | ☐ | ✅ |
 | Colophon (phase 2) | ✅ | ✅ | ✅ | ☐ | ☐ |
 
-When all four are ticked, continue with diseno-juaniw Annex A.5 step 6 (metadata, OG, icons, sitemap, robots), then the A.6 final check.
+When all six are ticked, continue with diseno-juaniw Annex A.5 step 6 (metadata, OG, icons, sitemap, robots), then the A.6 final check.

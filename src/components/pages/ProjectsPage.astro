@@ -1,0 +1,49 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ExperienceList, { type ExperienceItem } from '../ExperienceList.astro';
+import PageTitle from '../PageTitle.astro';
+import SectionTitle from '../SectionTitle.astro';
+import { getDictionary } from '../../i18n/dictionaries';
+import type { Locale } from '../../i18n/locales';
+
+/** Projects page body (design/pages/projects.md): Proyectos first, then Experiencia, both as static rows. */
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+type WorkData = CollectionEntry<'projects'>['data'] | CollectionEntry<'experiences'>['data'];
+
+/** One language of an entry, in the row shape ExperienceList takes. A project's name fills the org slot. */
+function toRow(data: WorkData, org: string): ExperienceItem {
+	return {
+		org,
+		role: data.role[locale],
+		start: data.start[locale],
+		end: data.end[locale],
+		startIso: data.startIso,
+		endIso: data.endIso,
+		summary: data.summary[locale],
+	};
+}
+
+/** Newest first. ISO months sort correctly as strings. */
+const byStartDesc = (a: { data: WorkData }, b: { data: WorkData }) => b.data.startIso.localeCompare(a.data.startIso);
+
+const projects = (await getCollection('projects')).sort(byStartDesc).map(({ data }) => toRow(data, data.name[locale]));
+const experiences = (await getCollection('experiences')).sort(byStartDesc).map(({ data }) => toRow(data, data.org));
+---
+
+<main id="contenido" class="page">
+	<PageTitle title={t.projects.title} />
+	<section class="page__section" aria-labelledby="projects-title">
+		<SectionTitle id="projects-title" text={t.projects.projectsHeading} />
+		<ExperienceList items={projects} />
+	</section>
+	<section class="page__section" aria-labelledby="experience-title">
+		<SectionTitle id="experience-title" text={t.projects.experienceHeading} />
+		<ExperienceList items={experiences} />
+	</section>
+</main>

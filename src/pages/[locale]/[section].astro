@@ -2,9 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Layout from '../../layouts/Layout.astro';
 import PlaceholderPage from '../../components/pages/PlaceholderPage.astro';
-import StyleguidePage from '../../components/pages/StyleguidePage.astro';
-import ColophonPage from '../../components/pages/ColophonPage.astro';
-import UsesPage from '../../components/pages/UsesPage.astro';
+import { isPageKey, sectionPages } from '../../components/pages/sectionPages';
 import { getDictionary } from '../../i18n/dictionaries';
 import { locales } from '../../i18n/locales';
 import { routes, sectionKeys } from '../../i18n/routes';
@@ -21,24 +19,18 @@ export const getStaticPaths = (() =>
 
 const { key, locale } = Astro.props;
 const t = getDictionary(locale);
+
+// A section with a page in `sectionPages` renders it with its own meta; any other one is a noindex placeholder.
+// `Page` is capitalized because Astro only renders a dynamic tag from a capitalized variable.
+const { Page, meta, placeholderTitle } = isPageKey(key)
+	? { Page: sectionPages[key], meta: t[key].meta, placeholderTitle: null }
+	: {
+			Page: null,
+			meta: { title: `${t.pages[key].title} · Juan Ignacio Werkalec`, description: t.pages[key].description },
+			placeholderTitle: t.pages[key].title,
+		};
 ---
 
-{
-	key === 'styleguide' ? (
-		<Layout title={t.styleguide.meta.title} description={t.styleguide.meta.description} routeKey={key}>
-			<StyleguidePage locale={locale} />
-		</Layout>
-	) : key === 'uses' ? (
-		<Layout title={t.uses.meta.title} description={t.uses.meta.description} routeKey={key}>
-			<UsesPage locale={locale} />
-		</Layout>
-	) : key === 'colophon' ? (
-		<Layout title={t.colophon.meta.title} description={t.colophon.meta.description} routeKey={key}>
-			<ColophonPage locale={locale} />
-		</Layout>
-	) : (
-		<Layout title={`${t.pages[key].title} · Juan Ignacio Werkalec`} description={t.pages[key].description} routeKey={key} noindex>
-			<PlaceholderPage title={t.pages[key].title} />
-		</Layout>
-	)
-}
+<Layout title={meta.title} description={meta.description} routeKey={key} noindex={!Page}>
+	{Page ? <Page locale={locale} /> : <PlaceholderPage title={placeholderTitle} />}
+</Layout>

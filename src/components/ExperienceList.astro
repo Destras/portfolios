@@ -3,7 +3,7 @@
  * Static work rows (design doc §8.8): one row per job, not clickable in the MVP.
  * Mobile: date on top. Desktop: date column on the left, the rest on the right.
  */
-interface Item {
+export interface ExperienceItem {
 	org: string;
 	role: string;
 	start: string;
@@ -15,7 +15,7 @@ interface Item {
 }
 
 interface Props {
-	items: readonly Item[];
+	items: readonly ExperienceItem[];
 }
 
 const { items } = Astro.props;

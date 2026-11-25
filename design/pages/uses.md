@@ -78,7 +78,7 @@ No new CSS: the page reuses `PageTitle` and `DataTable` (both built for Colophon
 |---|---|---|---|---|
 | Title | PageTitle (§8.7) | `title`, `lead` | ✅ | |
 | Table | DataTable (§8.12) | `caption`, `headers`, `rows` (`cat`/`item`/`note`) | ✅ | `UsesRow` has the same shape as DataTable's `Row`, so rows pass straight through |
-| Page | — | `locale` | ✅ new: `src/components/pages/UsesPage.astro` | Rendered by `[section].astro`; `uses` left the `PlaceholderKey` set |
+| Page | — | `locale` | ✅ new: `src/components/pages/UsesPage.astro` | Registered in `src/components/pages/sectionPages.ts` (after merging `main`, which added the section page map); `[section].astro` renders it with `t.uses.meta` |
 
 ## States and edge cases
 - Longer EN text: no row is longer in EN in a way that changes the layout. At 1440 px "Superpowers y mattpocock-skills" wraps at the hyphen inside the 15rem item column (also in the wireframe's column width). Acceptable.
@@ -99,7 +99,7 @@ No new CSS: the page reuses `PageTitle` and `DataTable` (both built for Colophon
 ## Open items
 - [x] **diseno §14.4:** Uses headers and caption marked as moved to copy-mvp §4.8 (applied 2026-11-24).
 - [x] **diseno §9.3 / §8.12:** §9.3 points to copy-mvp §4.8 and records D-U5/D-U6; §8.12 "Dónde se usa" → "Uses y Colofón" (applied 2026-11-24).
-- [ ] **Merge with `feat/projects-page`:** both branches edit `src/i18n/{types,es,en}.ts` and `[section].astro` (D-U8).
+- [x] **Merge with `main` (projects page, #10):** conflicts in `TODO.md`, `types.ts` and `[section].astro` resolved by taking main's section page map and adding `uses` to it (2026-11-24).
 
 ## Verification (step 8)
 - check + build: `astro check` 0 errors, 0 warnings, 0 hints; build 15 pages, complete.

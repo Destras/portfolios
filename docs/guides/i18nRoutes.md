@@ -367,10 +367,10 @@ HTML generado para `/es/proyectos/` (salida real del build):
 1. `routes.ts`: `contact: { es: "contacto", en: "contact" }`
 2. `ui.ts`: agregar `"nav.contact"` y `"contact.title"` en ambos idiomas.
 3. Crear `components/pages/ContactPage.astro`.
-4. `[section].astro`: registrar `contact: ContactPage` en `pages`.
+4. `src/components/pages/sectionPages.ts`: registrar `contact: ContactPage` en `sectionPages`. Darle `contact.meta` (title y description) en `Dictionary` (`src/i18n/types.ts`) y en `es.ts`/`en.ts`, y sacar `pages.contact` de los dos diccionarios. Mientras no esté en el mapa, `[section].astro` la renderiza como placeholder con `noindex`: si te olvidás de este paso, `astro check` **no** falla, la sección queda como placeholder.
 5. Agregar el link en el `<nav>` del layout.
 
-Si te olvidás del paso 1 (algún idioma) o del 4, `astro check` falla.
+Si te olvidás del paso 1 (algún idioma), `astro check` falla. El paso 4 no lo detecta el check (ver arriba).
 
 ### Agregar un idioma (ej. portugués)
 
