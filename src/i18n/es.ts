@@ -21,7 +21,6 @@ export const es: Dictionary = {
 		},
 	},
 	pages: {
-		process: { title: 'Proceso', description: 'Cómo trabajo.' },
 		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
 	},
 	projects: {
@@ -32,6 +31,28 @@ export const es: Dictionary = {
 		title: 'Proyectos',
 		projectsHeading: 'Proyectos',
 		experienceHeading: 'Experiencia',
+	},
+	process: {
+		meta: {
+			title: 'Proceso · Juan Ignacio Werkalec',
+			description: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+		},
+		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
+		title: 'Ingeniero frontend y full-stack con TBD+ años construyendo productos digitales y aplicaciones web.',
+		lead: 'Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.',
+		actions: {
+			email: 'Escribime',
+			cv: 'Ver CV',
+		},
+		facts: [
+			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
+			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
+			{ label: 'Idiomas', value: 'Español (nativo), Inglés (TBD)' },
+		],
+		origin: {
+			heading: 'De dónde vengo',
+			paragraphs: ['TBD', 'TBD', 'TBD'],
+		},
 	},
 	home: {
 		meta: {

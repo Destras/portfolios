@@ -1,0 +1,54 @@
+---
+/** Pill-shaped link that looks like a button (process page actions). Label goes in the default slot. */
+interface Props {
+	href: string;
+	variant: 'primary' | 'secondary';
+	/** Appends a decorative ↗ (hidden from screen readers). */
+	arrow?: boolean;
+}
+
+const { href, variant, arrow = false } = Astro.props;
+---
+
+<a class:list={['button-link', `button-link--${variant}`]} href={href}>
+	<slot />
+	{arrow && <span aria-hidden="true">↗</span>}
+</a>
+
+<style>
+	/* Focus comes from the global :focus-visible in base.css. */
+	.button-link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		min-height: var(--tap-min);
+		padding-inline: var(--space-5);
+		border-radius: var(--radius-full);
+		font-family: var(--font-accent);
+		font-size: var(--text-sm);
+		line-height: var(--leading-tight);
+		text-decoration: none;
+	}
+
+	.button-link--primary {
+		background: var(--color-text);
+		color: var(--color-bg);
+	}
+
+	/* No text on an accent background (design-tokens rule): the pill turns into an accent outline. */
+	.button-link--primary:hover {
+		background: var(--color-bg);
+		color: var(--color-accent);
+		box-shadow: inset 0 0 0 var(--border-width) var(--color-accent);
+	}
+
+	.button-link--secondary {
+		background: var(--color-surface);
+		color: var(--color-text);
+		box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
+	}
+
+	.button-link--secondary:hover {
+		color: var(--color-accent);
+	}
+</style>

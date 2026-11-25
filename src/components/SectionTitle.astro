@@ -6,9 +6,11 @@ interface Props {
 	text: string;
 	/** Optional link on the same line, aligned right (e.g. "Todos los proyectos"). Kept outside the h2. */
 	link?: { href: string; label: string };
+	/** `label` (default): small and muted. `strong`: body size, semibold, no bottom margin (process page). */
+	variant?: 'label' | 'strong';
 }
 
-const { id, text, link } = Astro.props;
+const { id, text, link, variant = 'label' } = Astro.props;
 ---
 
 {
@@ -18,7 +20,9 @@ const { id, text, link } = Astro.props;
 			<a class="section-title-link" href={link.href}>{link.label}</a>
 		</div>
 	) : (
-		<h2 class="section-title section-title--spaced" id={id}>{text}</h2>
+		<h2 class:list={['section-title', variant === 'strong' ? 'section-title--strong' : 'section-title--spaced']} id={id}>
+			{text}
+		</h2>
 	)
 }
 
@@ -27,6 +31,12 @@ const { id, text, link } = Astro.props;
 		font-size: var(--text-base);
 		font-weight: var(--weight-regular);
 		color: var(--color-text-muted);
+	}
+
+	.section-title--strong {
+		font-size: var(--text-md);
+		font-weight: var(--weight-semibold);
+		color: var(--color-text);
 	}
 
 	.section-title--spaced,

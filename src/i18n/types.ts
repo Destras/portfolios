@@ -34,6 +34,12 @@ export interface UsesRow {
 	note: string;
 }
 
+/** One fact-list row on the process page: label and value. */
+export interface Fact {
+	label: string;
+	value: string;
+}
+
 /** A sentence with one inline link: `before` + link + `after`. */
 export interface InlineLink {
 	before: string;
@@ -76,6 +82,25 @@ export interface Dictionary {
 		title: string;
 		projectsHeading: string;
 		experienceHeading: string;
+	};
+	/** Process page, the "Sobre mí" design (design/pages/process.md). */
+	process: {
+		/** The description is the lead. */
+		meta: PageMeta;
+		eyebrow: string;
+		/** The page's h1. */
+		title: string;
+		lead: string;
+		actions: {
+			email: string;
+			cv: string;
+		};
+		/** Same order in both locales. The tuple length keeps ES and EN in step. */
+		facts: readonly [Fact, Fact, Fact];
+		origin: {
+			heading: string;
+			paragraphs: readonly [string, string, string];
+		};
 	};
 	home: {
 		meta: PageMeta;

@@ -4,6 +4,7 @@ import ProjectsPage from './ProjectsPage.astro';
 import StyleguidePage from './StyleguidePage.astro';
 import ColophonPage from './ColophonPage.astro';
 import UsesPage from './UsesPage.astro';
+import ProcessPage from './ProcessPage.astro';
 
 /**
  * Section key → page component, rendered by src/pages/[locale]/[section].astro.
@@ -16,6 +17,7 @@ export const sectionPages = {
 	projects: ProjectsPage,
 	uses: UsesPage,
 	colophon: ColophonPage,
+	process: ProcessPage,
 } as const satisfies Partial<Record<SectionKey, unknown>>;
 
 export type PageKey = keyof typeof sectionPages;
