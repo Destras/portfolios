@@ -109,10 +109,6 @@ export interface Dictionary {
 		};
 		/** Same order in both locales. The tuple length keeps ES and EN in step. */
 		facts: readonly [Fact, Fact, Fact];
-		origin: {
-			heading: string;
-			paragraphs: readonly [string, string, string];
-		};
 		work: {
 			heading: string;
 			/** Link next to the heading, to the projects page. */

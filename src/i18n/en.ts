@@ -59,10 +59,6 @@ export const en: Dictionary = {
 			{ label: 'Tools', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
 			{ label: 'Languages', value: 'Spanish (native), English (advanced)' },
 		],
-		origin: {
-			heading: 'Where I come from',
-			paragraphs: ['TBD', 'TBD', 'TBD'],
-		},
 		work: {
 			heading: 'Featured work',
 			allLink: 'All projects',

@@ -12,6 +12,7 @@
 | D-HP4 | Meta title and description stay the home ones (`home.meta`) |
 | D-HP5 | The copy lives under `home.*` in the dictionary (the `process` group, `home.hero` and `site.nav.process` are gone) |
 | D-HP6 | Markup and styles live in `src/pages/[locale]/index.astro`. `ProcessPage.astro` and `Hero.astro` are deleted |
+| D-HP7 | "De dónde vengo" is removed from the page (and its `TBD` strings from the dictionary) until its copy is written. It comes back below Featured work |
 
 ## Owner decisions: the "Sobre mí" page (2026-11-25, built as Process)
 
@@ -41,7 +42,7 @@
   - https://docs.astro.build/en/guides/styling/#scoped-styles (move to home)
 
 ## Structure (top to bottom)
-`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` "Trabajo destacado" (SectionTitle + link to projects + ExperienceList rows, via `featuredWork()` in `src/data/home.ts`) → `section[aria-labelledby]` with h2 "De dónde vengo" (SectionTitle strong) + 3 paragraphs.
+`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` "Trabajo destacado" (SectionTitle + link to projects + ExperienceList rows, via `featuredWork()` in `src/data/home.ts`). ("De dónde vengo" removed until its copy exists, D-HP7.)
 
 ## Copy
 
@@ -55,18 +56,18 @@
 | `home.facts[0]` | Foco · Aplicaciones web, design systems, productos de punta a punta | Focus · Web applications, design systems, end-to-end products |
 | `home.facts[1]` | Herramientas · TypeScript, React, Next.js, Node.js, GraphQL, Supabase | Tools · TypeScript, React, Next.js, Node.js, GraphQL, Supabase |
 | `home.facts[2]` | Idiomas · Español (nativo), Inglés (avanzado) | Languages · Spanish (native), English (advanced) |
-| `home.origin.heading` | De dónde vengo | Where I come from |
-| `home.origin.paragraphs` | `TBD`, `TBD`, `TBD` | `TBD`, `TBD`, `TBD` |
+| ~~`home.origin.heading`~~ (removed, D-HP7) | De dónde vengo | Where I come from |
+| ~~`home.origin.paragraphs`~~ (removed, D-HP7) | `TBD`, `TBD`, `TBD` | `TBD`, `TBD`, `TBD` |
 
 ## Open items
-- `TBD`: the three origin paragraphs.
+- "De dónde vengo": write the heading's 3 paragraphs and add the section back (D-HP7).
 - EN translation pending owner review.
 - Header mode toggle (TODO.md).
 
 ## Verification results: move to home (2026-11-25)
 - `npm run check`: 36 files, 0 errors, 0 warnings, 0 hints · `npm run build`: 21 pages, complete.
 - `dist/es/proceso/` and `dist/en/process/` are not generated. No "Hola! Soy Juani" / "Hi! I'm Juani" and no `/proceso/` or `/process/` link anywhere in `dist`.
-- `/es/` and `/en/`: h1 "Ingeniero web fullstack…" / "Full-stack web engineer…" → h2 "Trabajo destacado" / "Featured work" → h2 "De dónde vengo" / "Where I come from"; one mailto each.
+- `/es/` and `/en/`: h1 "Ingeniero web fullstack…" / "Full-stack web engineer…" → h2 "Trabajo destacado" / "Featured work" (then "De dónde vengo", removed afterwards by D-HP7); one mailto each.
 - Nav: `Ahora · Proyectos` / `Now · Projects`; on `/es/now/` "Ahora" has `aria-current="page"`.
 
 ## Verification results: Process page (2026-11-25)

@@ -44,10 +44,6 @@ const work = featuredWork(t);
 			/>
 			<ExperienceList items={work} />
 		</section>
-		<section class="origin" aria-labelledby="origin">
-			<SectionTitle id="origin" text={t.home.origin.heading} variant="strong" />
-			{t.home.origin.paragraphs.map((paragraph) => <p class="origin__text">{paragraph}</p>)}
-		</section>
 	</main>
 </Layout>
 
@@ -69,8 +65,7 @@ const work = featuredWork(t);
 		text-wrap: pretty;
 	}
 
-	.about-lead,
-	.origin__text {
+	.about-lead {
 		font-size: var(--text-md);
 		line-height: var(--leading-relaxed);
 		color: var(--color-text);
@@ -123,13 +118,6 @@ const work = featuredWork(t);
 	}
 
 	.work {
-		margin-top: var(--space-section);
-	}
-
-	.origin {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
 		margin-top: var(--space-section);
 	}
 </style>
