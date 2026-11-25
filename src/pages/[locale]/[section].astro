@@ -2,10 +2,11 @@
 import type { GetStaticPaths } from 'astro';
 import Layout from '../../layouts/Layout.astro';
 import PlaceholderPage from '../../components/pages/PlaceholderPage.astro';
-import { isPageKey, sectionPages } from '../../components/pages/sectionPages';
+import { isPageKey, sectionPages, type PageKey } from '../../components/pages/sectionPages';
 import { getDictionary } from '../../i18n/dictionaries';
 import { locales } from '../../i18n/locales';
-import { routes, sectionKeys } from '../../i18n/routes';
+import { routes, sectionKeys, type SectionKey } from '../../i18n/routes';
+import type { PageMeta } from '../../i18n/types';
 
 // One route per (section × locale), straight from the route map: /es/proyectos/, /en/projects/, …
 // Each route gets its internal key as a prop, so the page never parses the slug.
@@ -22,15 +23,21 @@ const t = getDictionary(locale);
 
 // A section with a page in `sectionPages` renders it with its own meta; any other one is a noindex placeholder.
 // `Page` is capitalized because Astro only renders a dynamic tag from a capitalized variable.
-const { Page, meta, placeholderTitle } = isPageKey(key)
-	? { Page: sectionPages[key], meta: t[key].meta, placeholderTitle: null }
-	: {
-			Page: null,
-			meta: { title: `${t.pages[key].title} · Juan Ignacio Werkalec`, description: t.pages[key].description },
-			placeholderTitle: t.pages[key].title,
-		};
+// `t.pages` is read through a widened type: when every section has a page, `PlaceholderKey` is `never`.
+const placeholders: Partial<Record<SectionKey, PageMeta>> = t.pages;
+function placeholderFor(section: SectionKey): PageMeta {
+	const entry = placeholders[section];
+	if (!entry) throw new Error(`Section "${section}" has neither a page nor a placeholder entry.`);
+	return entry;
+}
+
+const Page = isPageKey(key) ? sectionPages[key] : null;
+const placeholder = isPageKey(key) ? null : placeholderFor(key);
+const meta = placeholder
+	? { title: `${placeholder.title} · Juan Ignacio Werkalec`, description: placeholder.description }
+	: t[key as PageKey].meta;
 ---
 
 <Layout title={meta.title} description={meta.description} routeKey={key} noindex={!Page}>
-	{Page ? <Page locale={locale} /> : <PlaceholderPage title={placeholderTitle} />}
+	{placeholder ? <PlaceholderPage title={placeholder.title} /> : Page && <Page locale={locale} />}
 </Layout>

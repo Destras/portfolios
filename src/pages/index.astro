@@ -2,7 +2,8 @@
 import { defaultLocale } from '../i18n/locales';
 import { localizedPath } from '../i18n/routes';
 
-// Static build: Astro emits a meta-refresh page to /es/. Accept-Language detection is pending (see TODO.md).
+// Static build: Astro emits a meta-refresh page to /es/. On Cloudflare, public/_redirects answers / with a real 301
+// first, so this page is the fallback for `astro preview` and other hosts. Accept-Language detection is pending (see TODO.md).
 // 301: the static meta refresh then fires with no delay (Astro uses a 2 s delay for 302).
 return Astro.redirect(localizedPath('home', defaultLocale), 301);
 ---

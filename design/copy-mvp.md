@@ -47,7 +47,7 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 │   │   └── /es/experiencia/{slug} harness · split-io · mangoodev (2026-11-25; /es/experiencia sola da 404)
 │   ├── /es/casos              Casos de estudio
 │   │   └── /es/casos/{slug}       configs-ai-configs · pantalla-de-entrada
-│   ├── /es/now                Ahora
+│   ├── /es/now                Now
 │   ├── /es/uses               Uses
 │   └── /es/colofon            Colofón (cómo está hecha esta web)
 ├── /en                        Home (mismas rutas: projects, experience/{slug}, case-studies, now, uses, colophon)
@@ -65,11 +65,11 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 
 | # | Sección | Para qué |
 |---|---|---|
-| 1 | Header | El nombre lleva al inicio. Ahora · Proyectos · Casos de estudio. ES · EN |
+| 1 | Header | El nombre lleva al inicio. Now · Proyectos · Casos de estudio. ES · EN |
 | 2 | Sobre mí | Eyebrow · h1 · bajada · Escribime / Ver CV · Foco / Herramientas / Idiomas (2026-11-25: reemplaza al Hero; copy en `design/pages/home.md`) |
 | 3 | Trabajo destacado | Freelance, Harness y Split.io |
 | 4 | De dónde vengo | 3 párrafos (TBD). Reemplaza al cierre con LinkedIn |
-| 5 | Footer | LinkedIn, GitHub y CV; Ahora, Uses y Colofón; fecha de actualización y la línea personal |
+| 5 | Footer | LinkedIn, GitHub y CV; Now, Uses y Colofón; fecha de actualización y la línea personal |
 
 ---
 
@@ -90,12 +90,12 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 | Elemento | ES | EN |
 |---|---|---|
 | Nombre (lleva al inicio) | Juan Ignacio Werkalec | Juan Ignacio Werkalec |
-| Link a ahora (2026-11-25, reemplaza a Proceso) | Ahora | Now |
+| Link a now (2026-11-25, reemplaza a Proceso; "Now" también en ES desde el 2026-11-25) | Now | Now |
 | Link a proyectos | Proyectos | Projects |
 | Link a casos | Casos de estudio | Case studies |
 | Selector de idioma | ES · EN | ES · EN |
 
-Ahora, Uses, CV y GitHub salieron del header y quedan en el footer (4.6). El rol (Senior Full-Stack Engineer) sigue en el `<title>` y en la imagen para redes; ya no va en el header. En mobile, el header va en dos filas hasta que se rediseñe el menú.
+Now, Uses, CV y GitHub salieron del header y quedan en el footer (4.6). El rol (Senior Full-Stack Engineer) sigue en el `<title>` y en la imagen para redes; ya no va en el header. En mobile, el header va en dos filas hasta que se rediseñe el menú.
 
 ### 4.2 Hero
 > **ES:** Me gusta crear cosas. Tomo features ambiguas con mínimo hand holding y cuido los detalles que separan lo bueno de lo excelente.
@@ -228,26 +228,73 @@ El link va sobre la palabra "LinkedIn". No va un botón.
 | Elemento | ES | EN |
 |---|---|---|
 | Links externos | LinkedIn · GitHub · CV | LinkedIn · GitHub · Résumé |
-| Rutas secundarias | Ahora · Uses · Colofón | Now · Uses · Colophon |
+| Rutas secundarias | Now · Uses · Colofón | Now · Uses · Colophon |
 | Texto accesible de GitHub | GitHub (se abre en otra pestaña) | GitHub (opens in a new tab) |
 | Fecha | Actualizado en {mes} {año} | Updated {month} {year} |
 | Línea personal | Desde Rosario con amor. | From Rosario, with love. |
 
 ### 4.7 /now
 
+Reemplazado el 2026-11-25 a partir del borrador del dueño (`design/now.md`); spec en `design/pages/now.md` (D-N1…D-N9). **El EN es un borrador de Claude, pendiente de revisión del dueño.**
+
+| Campo | ES | EN |
+|---|---|---|
+| Título (h1) | Now | Now |
+| Meta title | Now · Juan Ignacio Werkalec | Now · Juan Ignacio Werkalec |
+| Meta description | En qué estoy ahora: un billing service en Go, muay thai y charlas sobre problemas que la tecnología puede alivianar. | What I'm up to now: a billing service in Go, muay thai, and conversations about problems technology can lighten. |
+| Línea de actualización | Actualizado el 25 de noviembre de 2026 · Rosario | Updated November 25, 2026 · Rosario |
+
 > **ES**
-> *Actualizado el 20 de noviembre de 2026. Inspirado en [nownownow.com](https://nownownow.com).*
-> - **Trabajando en:** la plataforma de seguimiento clínico, acompañando la migración de los 150 pacientes.
-> - **Construyendo:** esta web, en público.
-> - **Escribiendo:** el caso completo de Configs y AI Configs.
+> **Trabajo**
+> Freelance. Con ganas de sumarme a un equipo para hacer crecer un producto.
+>
+> **Construyendo**
+> - **Billing service**: un microservicio que envía recordatorios de pago, genera links de pago y lleva el estado de las cuotas de cada cliente.
+>
+> **Aprendiendo**
+> - **Go**: lo aprendo construyendo el billing service.
+>
+> **Fuera del trabajo**
+> - Entreno muay thai: templa el cuerpo y la cabeza.
+> - Le cocino al amor de mi vida.
+> - Paseo a mi perro.
+>
+> **Últimas películas**
+> - [Asesinato en el Expreso de Oriente](https://es.wikipedia.org/wiki/Murder_on_the_Orient_Express_(pel%C3%ADcula_de_2017))
+> - [Muerte en el Nilo](https://es.wikipedia.org/wiki/Muerte_en_el_Nilo_(pel%C3%ADcula_de_2022))
+> - [Cacería en Venecia](https://es.wikipedia.org/wiki/A_Haunting_in_Venice)
+>
+> **Abierto a**
+> Charlar sobre problemas donde la tecnología pueda alivianar el peso.
+>
+> *Esta es una [página /now](https://nownownow.com/about): lo que tengo en foco en este momento.*
 
 > **EN**
-> *Updated November 20, 2026. Inspired by [nownownow.com](https://nownownow.com).*
-> - **Working on:** the clinical follow-up platform, helping migrate its 150 patients.
-> - **Building:** this site, in public.
-> - **Writing:** the full Configs and AI Configs case study.
+> **Work**
+> Freelance. Keen to join a team and help grow a product.
+>
+> **Building**
+> - **Billing service**: a microservice that sends payment reminders, creates payment links and tracks each client's installments.
+>
+> **Learning**
+> - **Go**: I'm learning it by building the billing service.
+>
+> **Outside work**
+> - I train muay thai: it tempers body and mind.
+> - I cook for the love of my life.
+> - I walk my dog.
+>
+> **Latest films**
+> - [Murder on the Orient Express](https://en.wikipedia.org/wiki/Murder_on_the_Orient_Express_(2017_film))
+> - [Death on the Nile](https://en.wikipedia.org/wiki/Death_on_the_Nile_(2022_film))
+> - [A Haunting in Venice](https://en.wikipedia.org/wiki/A_Haunting_in_Venice)
+>
+> **Open to**
+> Talking through problems where technology can lighten the load.
+>
+> *This is a [/now page](https://nownownow.com/about): what I'm focused on right now.*
 
-Sin "buscando trabajo" ni "abierto a oportunidades": la web muestra trabajo, no lo pide. "Leyendo" y "Fuera de la pantalla" se suman cuando tengas algo real.
+Tono: "Trabajo" y "Abierto a" muestran disponibilidad sin pedir trabajo (reemplaza la regla anterior "sin 'buscando trabajo' ni 'abierto a oportunidades'"). Películas: título de Hispanoamérica en ES y original en EN, cada una a la Wikipedia de su idioma; links externos en pestaña nueva.
 
 ### 4.8 /uses
 

@@ -18,7 +18,7 @@ Plan: `docs/superpowers/plans/2026-11-25-clickable-featured-work.md`.
 |---|---|
 | D-HP1 | The home shows the "Sobre mí" design. The old Hero ("Hola! Soy Juani…") is removed |
 | D-HP2 | The Process page is deleted. `/es/proceso/` and `/en/process/` are 404s, no redirects (the site is not live yet) |
-| D-HP3 | Header nav: `Ahora · Proyectos` ("Proceso" removed). `/now` is still a noindex placeholder. The footer keeps "Ahora" too |
+| D-HP3 | Header nav: `Ahora · Proyectos` ("Proceso" removed). `/now` is still a noindex placeholder. The footer keeps "Ahora" too. **Superseded 2026-11-25** by design/pages/now.md (D-N4): the label is "Now" and /now is a real page |
 | D-HP4 | Meta title and description stay the home ones (`home.meta`) |
 | D-HP5 | The copy lives under `home.*` in the dictionary (the `process` group, `home.hero` and `site.nav.process` are gone) |
 | D-HP6 | Markup and styles live in `src/pages/[locale]/index.astro`. `ProcessPage.astro` and `Hero.astro` are deleted |

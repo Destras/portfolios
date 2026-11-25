@@ -43,6 +43,18 @@ export interface InlineLink {
 	after: string;
 }
 
+/** A /now list item: an optional bold name, then the text. */
+export interface NowItem {
+	name?: string;
+	text: string;
+}
+
+/** An external link (opens in a new tab). */
+export interface ExternalLink {
+	label: string;
+	href: string;
+}
+
 /** Every piece of prose on the site. Facts (names, values, tokens) stay out of it. */
 export interface Dictionary {
 	/** Chrome shared by every page: skip link, header and footer. */
@@ -140,6 +152,27 @@ export interface Dictionary {
 		};
 		/** Same order in both locales. The tuple length keeps ES and EN in step. */
 		rows: readonly [UsesRow, UsesRow, UsesRow, UsesRow, UsesRow, UsesRow];
+	};
+	/** Now page (design/pages/now.md). */
+	now: {
+		meta: PageMeta;
+		/** The page's h1. */
+		title: string;
+		/** Update line under the h1: `{label} {date} · {place}`. The date's ISO value lives in NowPage.astro. */
+		updated: {
+			label: string;
+			date: string;
+			place: string;
+		};
+		work: { heading: string; body: string };
+		building: { heading: string; items: readonly [NowItem] };
+		learning: { heading: string; items: readonly [NowItem] };
+		offline: { heading: string; items: readonly [NowItem, NowItem, NowItem] };
+		/** Links to Wikipedia in the page's language. */
+		films: { heading: string; items: readonly [ExternalLink, ExternalLink, ExternalLink] };
+		openTo: { heading: string; body: string };
+		/** Closing line: the link goes to nownownow.com/about (external, new tab). */
+		closing: InlineLink;
 	};
 	colophon: {
 		meta: PageMeta;

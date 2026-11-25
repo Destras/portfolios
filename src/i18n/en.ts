@@ -20,9 +20,7 @@ export const en: Dictionary = {
 			signoff: 'From Rosario, with love.',
 		},
 	},
-	pages: {
-		now: { title: 'Now', description: "What I'm focused on now." },
-	},
+	pages: {},
 	projects: {
 		meta: {
 			title: 'Projects · Juan Ignacio Werkalec',
@@ -96,6 +94,52 @@ export const en: Dictionary = {
 			{ cat: 'Hardware', item: 'MacBook Pro 2021, M1, 64 GB', note: 'Everything open at once, nothing to close.' },
 			{ cat: 'Apps', item: 'Obsidian', note: 'My vault: what I learn and decide gets written down.' },
 		],
+	},
+	now: {
+		meta: {
+			title: 'Now · Juan Ignacio Werkalec',
+			description: "What I'm up to now: a billing service in Go, muay thai, and conversations about problems technology can lighten.",
+		},
+		title: 'Now',
+		updated: { label: 'Updated', date: 'November 25, 2026', place: 'Rosario' },
+		work: {
+			heading: 'Work',
+			body: 'Freelance. Keen to join a team and help grow a product.',
+		},
+		building: {
+			heading: 'Building',
+			items: [
+				{
+					name: 'Billing service',
+					text: "a microservice that sends payment reminders, creates payment links and tracks each client's installments.",
+				},
+			],
+		},
+		learning: {
+			heading: 'Learning',
+			items: [{ name: 'Go', text: "I'm learning it by building the billing service." }],
+		},
+		offline: {
+			heading: 'Outside work',
+			items: [
+				{ text: 'I train muay thai: it tempers body and mind.' },
+				{ text: 'I cook for the love of my life.' },
+				{ text: 'I walk my dog.' },
+			],
+		},
+		films: {
+			heading: 'Latest films',
+			items: [
+				{ label: 'Murder on the Orient Express', href: 'https://en.wikipedia.org/wiki/Murder_on_the_Orient_Express_(2017_film)' },
+				{ label: 'Death on the Nile', href: 'https://en.wikipedia.org/wiki/Death_on_the_Nile_(2022_film)' },
+				{ label: 'A Haunting in Venice', href: 'https://en.wikipedia.org/wiki/A_Haunting_in_Venice' },
+			],
+		},
+		openTo: {
+			heading: 'Open to',
+			body: 'Talking through problems where technology can lighten the load.',
+		},
+		closing: { before: 'This is a ', link: '/now page', after: ": what I'm focused on right now." },
 	},
 	colophon: {
 		meta: {

@@ -1,0 +1,124 @@
+---
+/** Now (/es/now/, /en/now/): what I'm focused on right now (design/pages/now.md). Copy: copy-mvp §4.7. */
+import type { Locale } from '../../i18n/locales';
+import type { NowItem } from '../../i18n/types';
+import { getDictionary } from '../../i18n/dictionaries';
+import PageTitle from '../PageTitle.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+/** Machine-readable date of the update line. Change it together with `now.updated.date` in both dictionaries. */
+const NOW_UPDATED_ISO = '2026-11-25';
+const NOWNOWNOW_URL = 'https://nownownow.com/about';
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const n = t.now;
+const newTab = t.site.footer.newTab;
+
+/** The list blocks, in page order. Work and Open to are paragraphs and stay in the markup. */
+const listBlocks: { id: string; heading: string; items: readonly NowItem[] }[] = [
+	{ id: 'now-building', ...n.building },
+	{ id: 'now-learning', ...n.learning },
+	{ id: 'now-offline', ...n.offline },
+];
+---
+
+<main id="contenido" class="page">
+	<PageTitle title={n.title}>
+		<p class="now-updated">
+			{n.updated.label} <time datetime={NOW_UPDATED_ISO}>{n.updated.date}</time> · {n.updated.place}
+		</p>
+	</PageTitle>
+
+	<section class="now-block" aria-labelledby="now-work">
+		<SectionTitle id="now-work" text={n.work.heading} />
+		<p class="now-text">{n.work.body}</p>
+	</section>
+
+	{
+		listBlocks.map((block) => (
+			<section class="now-block" aria-labelledby={block.id}>
+				<SectionTitle id={block.id} text={block.heading} />
+				<ul class="now-items">
+					{block.items.map((item) => (
+						<li>
+							{item.name && (
+								<>
+									<strong>{item.name}</strong>:{' '}
+								</>
+							)}
+							{item.text}
+						</li>
+					))}
+				</ul>
+			</section>
+		))
+	}
+
+	<section class="now-block" aria-labelledby="now-films">
+		<SectionTitle id="now-films" text={n.films.heading} />
+		<ul class="now-items">
+			{
+				n.films.items.map((film) => (
+					<li>
+						<a href={film.href} target="_blank" rel="noopener">
+							{film.label}
+							<span class="visually-hidden">{newTab}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="now-block" aria-labelledby="now-open">
+		<SectionTitle id="now-open" text={n.openTo.heading} />
+		<p class="now-text">{n.openTo.body}</p>
+	</section>
+
+	<p class="now-updated now-closing">
+		{n.closing.before}<a href={NOWNOWNOW_URL} target="_blank" rel="noopener"
+			>{n.closing.link}<span class="visually-hidden">{newTab}</span></a
+		>{n.closing.after}
+	</p>
+</main>
+
+<style>
+	/* Update and closing lines: NowList `.now-updated` (design doc §8.13). Link color, underline and focus come from the global `a`. */
+	.now-updated {
+		margin-top: var(--space-2);
+		font-family: var(--font-accent);
+		font-size: var(--text-xs);
+		line-height: var(--leading-normal);
+		color: var(--color-text-muted);
+		text-wrap: pretty;
+	}
+
+	.now-block + .now-block {
+		margin-top: var(--space-10);
+	}
+
+	.now-text,
+	.now-items {
+		line-height: var(--leading-relaxed);
+		text-wrap: pretty;
+	}
+
+	.now-items {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.now-items strong {
+		font-weight: var(--weight-bold);
+	}
+
+	.now-closing {
+		margin-top: var(--space-10);
+	}
+</style>
