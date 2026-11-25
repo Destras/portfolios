@@ -2,13 +2,9 @@ import type { ColorToken, LayoutToken, TextSizeToken } from '../data/styleguide'
 import type { PageKey } from '../components/pages/sectionPages';
 import type { SectionKey } from './routes';
 
-/** Prose of one home "Trabajo destacado" row. Org and ISO dates live in src/data/home.ts. */
-export interface WorkItem {
-	role: string;
-	/** Display start month, e.g. "abr 2026". */
-	start: string;
-	/** Display end month, or "actualidad" / "Present". */
-	end: string;
+/** Home copy that replaces a collection entry's org and summary in "Trabajo destacado" (src/data/home.ts). */
+export interface WorkOverride {
+	org: string;
 	summary: string;
 }
 
@@ -113,8 +109,8 @@ export interface Dictionary {
 			heading: string;
 			/** Link next to the heading, to the projects page. */
 			allLink: string;
-			/** Same order and length as `workEntries` in src/data/home.ts. */
-			items: readonly [WorkItem, WorkItem, WorkItem];
+			/** The clinical platform row: "Freelance" and a longer summary than src/data/projects.json. */
+			clinical: WorkOverride;
 		};
 	};
 	uses: {

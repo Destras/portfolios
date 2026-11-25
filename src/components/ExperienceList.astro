@@ -13,7 +13,7 @@ export interface ExperienceItem {
 	/** null when the job is ongoing: the end is text, not a date. */
 	endIso: string | null;
 	summary: string;
-	/** Detail page URL. Without it the row stays static, with today's markup (home relies on that). */
+	/** Detail page URL. Without it the row stays static (no link, no arrow). */
 	href?: string;
 }
 

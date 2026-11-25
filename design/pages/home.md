@@ -2,6 +2,16 @@
 
 > **Status: built and verified automatically, waiting for the owner's manual checks.** The "Sobre mí" design was first built as the Process page (plan: `docs/superpowers/plans/2026-11-25-process-page.md`). The same day the owner moved it to the home and deleted the Process page (plan: `docs/superpowers/plans/2026-11-25-home-from-process.md`). This spec replaces the earlier home spec (Hero → Trabajo destacado, 2026-11-24; see git history).
 
+## Owner decisions: clickable featured work (2026-11-25)
+
+Plan: `docs/superpowers/plans/2026-11-25-clickable-featured-work.md`.
+
+| # | Decision |
+|---|---|
+| D-CW1 | "Trabajo destacado" rows link to their detail pages, exactly like the Projects page. Both pages render `WorkList.astro`, which reads the collections; they only pass different entries |
+| D-CW2 | Rows: project `plataforma-clinica` (shown as "Freelance"), experiences `harness`, `split-io` (`featuredRefs()` in `src/data/home.ts`) |
+| D-CW4 | The clinical row keeps its home copy: `org` "Freelance" and the long summary come from `home.work.clinical` in the dictionary. Everything else comes from `src/data/*.json` |
+
 ## Owner decisions: move to home (2026-11-25)
 
 | # | Decision |
@@ -42,7 +52,7 @@
   - https://docs.astro.build/en/guides/styling/#scoped-styles (move to home)
 
 ## Structure (top to bottom)
-`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` "Trabajo destacado" (SectionTitle + link to projects + ExperienceList rows, via `featuredWork()` in `src/data/home.ts`). ("De dónde vengo" removed until its copy exists, D-HP7.)
+`main.page` → eyebrow `p` → `h1` → lead `p` → button row (Escribime primary, Ver CV ↗ secondary) → `dl` fact list (Foco, Herramientas, Idiomas) → `section[aria-labelledby]` "Trabajo destacado" (SectionTitle + link to projects + `WorkList` rows, linked to their detail pages, via `featuredRefs()` in `src/data/home.ts`). ("De dónde vengo" removed until its copy exists, D-HP7.)
 
 ## Copy
 
@@ -63,6 +73,11 @@
 - "De dónde vengo": write the heading's 3 paragraphs and add the section back (D-HP7).
 - EN translation pending owner review.
 - Header mode toggle (TODO.md).
+
+## Verification results: clickable featured work (2026-11-25)
+- `npm run check`: 0 errors, 0 warnings, 0 hints · `npm run build`: 21 pages, complete.
+- `/es/` rows link to `/es/proyectos/plataforma-clinica/`, `/es/experiencia/harness/`, `/es/experiencia/split-io/`; `/en/` to `/en/projects/plataforma-clinica/`, `/en/experience/harness/`, `/en/experience/split-io/`. All six targets exist in `dist`.
+- Against the build from before the change: the `<main>` of every page is identical except the home, where the only difference is the link markup (`exp-row--linked`, `<a>`, arrow). Copy unchanged. Generated CSS is identical.
 
 ## Verification results: move to home (2026-11-25)
 - `npm run check`: 36 files, 0 errors, 0 warnings, 0 hints · `npm run build`: 21 pages, complete.
