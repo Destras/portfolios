@@ -18,7 +18,7 @@
 - [ ] Process page: replace the `TBD` copy (origin paragraphs) and review the EN translation (design/pages/process.md).
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
-- [ ] Bilingual 404 page.
+- [x] 404 page (EN only, design/pages/404.md).
 - [ ] Sitemap and robots (6 MVP URLs).
 - [ ] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp): `public/og-es.png` and `og-en.png` per copy-mvp §4.9 (name + role + "Me gusta crear cosas." / "I like building things.", text only), plus an `ogImage` prop in `Layout.astro` for every page. Dropped from the home spec on 2026-11-24.
 
@@ -38,7 +38,7 @@
 | Now | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Home | ✅ | ✅ | ✅ | ☐ | ☐ |
-| 404 (EN only) | ✅ | n/a | ☐ | ☐ | ☐ |
+| 404 (EN only) | ✅ | n/a | ✅ | ✅ | ☐ |
 | Projects | ✅ | ✅ | ✅ | ☐ | ✅ |
 | Project detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
 | Experience detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
