@@ -54,6 +54,13 @@ export const en: Dictionary = {
 			paragraphs: ['TBD', 'TBD', 'TBD'],
 		},
 	},
+	notFound: {
+		meta: { title: '404 · Juan Ignacio Werkalec' },
+		title: "This page doesn't exist.",
+		pathPrefix: "I couldn't find",
+		intro: 'The link may be broken, or the page may have moved. You can keep going from here:',
+		home: 'Home',
+	},
 	workDetail: {
 		back: '← Projects',
 		facts: {

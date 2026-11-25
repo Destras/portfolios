@@ -54,6 +54,13 @@ export const es: Dictionary = {
 			paragraphs: ['TBD', 'TBD', 'TBD'],
 		},
 	},
+	notFound: {
+		meta: { title: '404 · Juan Ignacio Werkalec' },
+		title: 'Esta página no existe.',
+		pathPrefix: 'No encontré',
+		intro: 'Puede que el link esté roto o que la página se haya movido. Desde acá podés seguir por alguna de estas:',
+		home: 'Inicio',
+	},
 	workDetail: {
 		back: '← Proyectos',
 		facts: {

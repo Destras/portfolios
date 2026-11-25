@@ -102,6 +102,17 @@ export interface Dictionary {
 			paragraphs: readonly [string, string, string];
 		};
 	};
+	/** 404 page (design/pages/404.md). Only EN renders (D-404-7); ES keeps the type symmetric. */
+	notFound: {
+		meta: { title: string };
+		/** The page's h1. */
+		title: string;
+		/** Precedes the missing path, which the page script appends as <code>. */
+		pathPrefix: string;
+		intro: string;
+		/** Label of the home row. The other rows reuse site.nav. */
+		home: string;
+	};
 	/** Project and experience detail pages (design/pages/work-detail.md). Bodies live in src/content/**. */
 	workDetail: {
 		/** Back link above the h1, to the projects page. */
