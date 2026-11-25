@@ -90,6 +90,7 @@ export const spaces = [
 export const radii = [
 	['--radius-sm', '4px'],
 	['--radius-md', '6px'],
+	['--radius-full', '999px'],
 ];
 
 export const layoutTokens = [

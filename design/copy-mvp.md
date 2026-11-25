@@ -292,7 +292,7 @@ Se agregaron el 2026-11-21. Los wireframes las muestran con la estructura y el l
 
 | Página | Estructura | Fuente del copy |
 |---|---|---|
-| /proceso | Texto corrido con subtítulos cortos: cómo trabajo, en palabras reales | Ronda de copy (las reglas de /uses y los mini-casos dan pistas: "specs primero, tests después", "primero el feedback") |
+| /proceso | Sobre mí: eyebrow · h1 · bajada · Escribime / Ver CV · Foco / Herramientas / Idiomas · Trabajo destacado (igual que home) · De dónde vengo (3 párrafos) | Copy en `design/pages/process.md` (2026-11-25). EN traducido por Claude, pendiente de revisión. TBD: párrafos de "De dónde vengo" |
 | /proyectos | **Con copy (2026-11-24).** Proyectos (1 fila: Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad · "Web para terapeutas y app para pacientes, en producción." / "Web console for therapists and a patient app, in production.") → Experiencia (Harness, Split.io, MangooDev, sección 4.4). Filas sin link | Este documento + `src/data/*.json` |
 | /proyectos/{slug} | Título · tabla (Rol / Duración / Stack / Estado / Stakeholders) · Contexto · Restricciones · Valor · visual opcional. Las experiencias cierran con links a sus proyectos y casos | `datos.md` |
 | /casos | Lista de 2 filas, con el mismo formato | Este documento |
