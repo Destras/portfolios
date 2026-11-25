@@ -102,6 +102,19 @@ export interface Dictionary {
 			paragraphs: readonly [string, string, string];
 		};
 	};
+	/** Project and experience detail pages (design/pages/work-detail.md). Bodies live in src/content/**. */
+	workDetail: {
+		/** Back link above the h1, to the projects page. */
+		back: string;
+		/** FactSheet labels (D-W13). */
+		facts: {
+			role: string;
+			duration: string;
+			stack: string;
+			status: string;
+			stakeholders: string;
+		};
+	};
 	home: {
 		meta: PageMeta;
 		hero: {

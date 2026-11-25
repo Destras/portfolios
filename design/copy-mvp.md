@@ -44,13 +44,14 @@ Las siglas se escriben completas la primera vez que aparecen en cada página: *B
 ├── /es                        Inicio
 │   ├── /es/proceso            Proceso (cómo trabajo)
 │   ├── /es/proyectos          Experiencia + Proyectos
-│   │   └── /es/proyectos/{slug}   freelance · harness · split-io · mangoodev · plataforma-clinica
+│   │   ├── /es/proyectos/{slug}   plataforma-clinica (2026-11-25)
+│   │   └── /es/experiencia/{slug} harness · split-io · mangoodev (2026-11-25; /es/experiencia sola da 404)
 │   ├── /es/casos              Casos de estudio
 │   │   └── /es/casos/{slug}       configs-ai-configs · pantalla-de-entrada
 │   ├── /es/now                Ahora
 │   ├── /es/uses               Uses
 │   └── /es/colofon            Colofón (cómo está hecha esta web)
-├── /en                        Home (mismas rutas: process, projects, case-studies, now, uses, colophon)
+├── /en                        Home (mismas rutas: process, projects, experience/{slug}, case-studies, now, uses, colophon)
 ├── /cv-en.pdf                 CV (por ahora solo en inglés; /es también linkea a este)
 └── 404                        una por idioma
 ```
@@ -180,7 +181,7 @@ Ya no están en el inicio. Cada mini-caso es el contenido provisorio de su pági
 ### 4.4 Trabajo destacado (inicio) y Experiencia (/proyectos)
 Formato: **empresa · rol · período**, y una línea de máximo 15 palabras. Harness y Split.io van como **dos trabajos** (decisión del 2026-11-21); la línea de Harness aclara la compra.
 
-El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos** muestra Harness, Split.io y MangooDev en Experiencia; el freelance va como la fila de Proyectos (4.10). Por ahora las filas no llevan link (2026-11-24); cuando existan los detalles, cada entrada lleva a `/proyectos/{slug}`.
+El **inicio** muestra Freelance, Harness y Split.io, en ese orden. **/proyectos** muestra Harness, Split.io y MangooDev en Experiencia; el freelance va como la fila de Proyectos (4.10). Desde el 2026-11-25, cada entrada con detalle lleva a `/proyectos/{slug}` (proyectos) o a `/experiencia/{slug}` (experiencias); en el inicio siguen sin link.
 
 **Freelance · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad** (`freelance`)
 | | ES | EN |
@@ -293,8 +294,9 @@ Se agregaron el 2026-11-21. Los wireframes las muestran con la estructura y el l
 | Página | Estructura | Fuente del copy |
 |---|---|---|
 | /proceso | Sobre mí: eyebrow · h1 · bajada · Escribime / Ver CV · Foco / Herramientas / Idiomas · Trabajo destacado (igual que home) · De dónde vengo (3 párrafos) | Copy en `design/pages/process.md` (2026-11-25). EN traducido por Claude, pendiente de revisión. TBD: párrafos de "De dónde vengo" |
-| /proyectos | **Con copy (2026-11-24).** Proyectos (1 fila: Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad · "Web para terapeutas y app para pacientes, en producción." / "Web console for therapists and a patient app, in production.") → Experiencia (Harness, Split.io, MangooDev, sección 4.4). Filas sin link | Este documento + `src/data/*.json` |
-| /proyectos/{slug} | Título · tabla (Rol / Duración / Stack / Estado / Stakeholders) · Contexto · Restricciones · Valor · visual opcional. Las experiencias cierran con links a sus proyectos y casos | `datos.md` |
+| /proyectos | **Con copy (2026-11-24).** Proyectos (1 fila: Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · abr 2026 – actualidad · "Web para terapeutas y app para pacientes, en producción." / "Web console for therapists and a patient app, in production.") → Experiencia (Harness, Split.io, MangooDev, sección 4.4). Desde el 2026-11-25, cada fila con detalle es un link con `→` | Este documento + `src/data/*.json` |
+| /proyectos/{slug} | **Borrador (2026-11-25), pendiente de revisión del dueño.** `← Proyectos` / `← Projects` · Título · ficha (Rol / Duración / Stack / Estado / Stakeholders; los datos que faltan no se muestran) · Contexto · Restricciones · Valor. Sin visual | Filas: `src/data/projects.json`. Cuerpo: `src/content/projects/{es,en}/{slug}.md`. Spec: `design/pages/work-detail.md` |
+| /experiencia/{slug} | **Borrador (2026-11-25), pendiente de revisión del dueño.** `← Proyectos` (vuelve a la sección Experiencia) · Título · ficha (Rol / Duración / Stack) · Contexto. Sin visual. Los links de cierre a proyectos y casos esperan a que exista /casos | Filas: `src/data/experiences.json`. Cuerpo: `src/content/experiences/{es,en}/{slug}.md`. Spec: `design/pages/work-detail.md` |
 | /casos | Lista de 2 filas, con el mismo formato | Este documento |
 | /casos/{slug} | Tabla · Problema · Opciones (A vs. B) · Decisión y por qué · Qué salió bien · Qué salió mal o qué cambiaría · Resultado | Mini-casos (4.3), ampliados después |
 | /colofón | Tabla de Capa · Tecnología · Por qué | Borrador abajo (2026-11-24) |

@@ -1,16 +1,17 @@
 ---
 import { locales, type Locale } from '../i18n/locales';
 import { getDictionary } from '../i18n/dictionaries';
-import { localizedPath, type RouteKey } from '../i18n/routes';
+import type { LocalePaths } from '../i18n/routes';
 
 interface Props {
 	locale: Locale;
-	routeKey: RouteKey;
+	/** The current page in every locale. */
+	paths: LocalePaths;
 	class?: string;
 }
 
 // `rest` carries the parent's scope attribute so SiteHeader can place this group in its grid.
-const { locale, routeKey, class: className, ...rest } = Astro.props;
+const { locale, paths, class: className, ...rest } = Astro.props;
 const t = getDictionary(locale).site;
 ---
 
@@ -29,7 +30,7 @@ const t = getDictionary(locale).site;
 					</span>
 				) : (
 					// Same page in the other language: the route map translates the slug (/es/proyectos/ → /en/projects/).
-					<a class="lang-switch__link" href={localizedPath(routeKey, l)} lang={l} hreflang={l}>
+					<a class="lang-switch__link" href={paths[l]} lang={l} hreflang={l}>
 						{l.toUpperCase()}
 					</a>
 				)}

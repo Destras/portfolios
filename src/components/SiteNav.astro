@@ -6,11 +6,13 @@ import { localizedPath, type RouteKey } from '../i18n/routes';
 interface Props {
 	locale: Locale;
 	routeKey: RouteKey;
+	/** "page" on the section itself, "true" on one of its subpages (a work detail). */
+	navCurrent: 'page' | 'true';
 	class?: string;
 }
 
 // `rest` carries the parent's scope attribute so SiteHeader can place this nav in its grid.
-const { locale, routeKey, class: className, ...rest } = Astro.props;
+const { locale, routeKey, navCurrent, class: className, ...rest } = Astro.props;
 const t = getDictionary(locale).site;
 
 // "Casos de estudio" joins later, once its pages exist.
@@ -32,7 +34,7 @@ const items = [
 				<a
 					class="site-nav__link"
 					href={localizedPath(item.key, locale)}
-					aria-current={item.key === routeKey ? 'page' : undefined}
+					aria-current={item.key === routeKey ? navCurrent : undefined}
 				>
 					{item.label}
 				</a>
@@ -60,16 +62,16 @@ const items = [
 	}
 
 	.site-nav__link:hover,
-	.site-nav__link[aria-current='page'] {
+	.site-nav__link[aria-current] {
 		color: var(--color-accent);
 	}
 
-	.site-nav__link[aria-current='page']:hover {
+	.site-nav__link[aria-current]:hover {
 		color: var(--color-accent-hover);
 	}
 
-	/* Current page: a dot under the label. */
-	.site-nav__link[aria-current='page']::after {
+	/* Current page or section: a dot under the label. */
+	.site-nav__link[aria-current]::after {
 		content: '';
 		position: absolute;
 		left: 50%;

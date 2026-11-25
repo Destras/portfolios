@@ -10,18 +10,24 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SkipLink from '../components/SkipLink.astro';
 import { defaultLocale, isLocale } from '../i18n/locales';
-import { alternates, localizedUrl, type RouteKey } from '../i18n/routes';
+import { alternates, sectionPaths, type LocalePaths, type RouteKey } from '../i18n/routes';
 
 interface Props {
 	title: string;
 	description?: string;
-	/** Which page this is, in route-map terms. Drives canonical, hreflang, nav state and the language switch. */
+	/** Which section this page belongs to, in route-map terms. Drives the nav state. */
 	routeKey: RouteKey;
+	/**
+	 * This page's path in every locale (canonical, hreflang, language switch). Defaults to the section's own paths.
+	 * Passing it marks the page as a subpage of `routeKey` (a work detail): the nav marks it `aria-current="true"`.
+	 */
+	paths?: LocalePaths;
 	/** Keeps placeholder pages out of search results until they have content. */
 	noindex?: boolean;
 }
 
-const { title, description, routeKey, noindex = false } = Astro.props;
+const { title, description, routeKey, paths: subpagePaths, noindex = false } = Astro.props;
+const paths = subpagePaths ?? sectionPaths(routeKey);
 // The language comes from the URL prefix, never from a prop, so it can't disagree with the route.
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 ---
@@ -49,12 +55,12 @@ const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
 		{noindex && <meta name="robots" content="noindex" />}
-		<link rel="canonical" href={localizedUrl(routeKey, lang)} />
-		{alternates(routeKey, Astro.site!).map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
+		<link rel="canonical" href={new URL(paths[lang], Astro.site).href} />
+		{alternates(paths, Astro.site!).map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 	</head>
 	<body>
 		<SkipLink locale={lang} />
-		<SiteHeader locale={lang} routeKey={routeKey} />
+		<SiteHeader locale={lang} routeKey={routeKey} paths={paths} navCurrent={subpagePaths ? 'true' : 'page'} />
 		<!-- Each page renders its own <main id="contenido" class="page">. -->
 		<slot />
 		<div class="site-footer-wrap">

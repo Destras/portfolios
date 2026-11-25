@@ -9,7 +9,8 @@
 | `home` | `inicio` | `/es/` | `/en/` | §9.1 | §4.2–4.5, §4.9 | Yes |
 | `404` | none | any missing route (`src/pages/404.astro`) | (bilingual) | §9.4 | §4.9 | Yes |
 | `projects` | `proyectos` | `/es/proyectos/` | `/en/projects/` | §2 only (§9.5 proposed) | §4.4; rows in `src/data/*.json` (see Shared decisions) | Yes (2026-11-24) |
-| `project-detail` | `plataforma-clinica`, `harness` | `/es/proyectos/{slug}/` | `/en/projects/{slug}/` | §2 only | §4.10: no copy | Phase 2 |
+| `project-detail` | none | `/es/proyectos/{slug}/` (`plataforma-clinica`) | `/en/projects/{slug}/` | §8.11, §8.14 (spec `design/pages/work-detail.md`) | §4.10; body in `src/content/projects/` (draft) | Yes (2026-11-25) |
+| `experience-detail` | none | `/es/experiencia/{slug}/` (`harness`, `split-io`, `mangoodev`) | `/en/experience/{slug}/` | same as `project-detail` | body in `src/content/experiences/` (draft) | Yes (2026-11-25) |
 | `case-studies` | `casos` | `/es/casos/` | `/en/case-studies/` | §2 only | §4.10: no copy | Phase 2 |
 | `case` | `configs-ai-configs` | `/es/casos/{slug}/` | `/en/case-studies/{slug}/` | §2 only | §4.10: no copy | Phase 2 |
 | `process` | `proceso` | `/es/proceso/` | `/en/process/` | §2 only | §4.10: no copy | Phase 2 |
@@ -33,6 +34,13 @@ Decisions the owner made after diseno and copy-mvp were written. They win over t
   - Split.io's role is "Frontend Engineer", and its summary keeps "JPMorgan". That's an owner exception to copy-mvp §1 and to step 8's "must not appear" list, until copy-mvp is updated.
   - MangooDev appears only on /proyectos.
   - Freelance is home-only in Experience. On /proyectos its work is the one row of the "Proyectos" section, which goes before "Experiencia". The rows are static.
+
+- **Work detail pages (2026-11-25, spec `design/pages/work-detail.md`, D-W1…D-W14, ADR `docs/adr/0001-content-format-for-work-collections.md`):**
+  - Rows stay in `src/data/*.json`; bodies are Markdown in `src/content/{projects,experiences}/{es,en}/{slug}.md`. A body missing in one locale fails the build.
+  - Experiences live at `/es/experiencia/{slug}/` · `/en/experience/{slug}/` (not under `/proyectos/`). No index page.
+  - Projects: Contexto · Restricciones · Valor. Experiences: Contexto only. No visual.
+  - Draft copy with literal `TBD` for missing facts, pending owner review.
+  - /proyectos rows with a body are links (lifts D-P6). Home is untouched.
 
 ## now: diseno §9.2
 - **The tricky part:** the update date goes **inside** `.page-title` (with `margin-top: var(--space-2)`), not floating on its own.

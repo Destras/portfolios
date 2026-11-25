@@ -22,6 +22,15 @@
 - [ ] Sitemap and robots (6 MVP URLs).
 - [ ] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp): `public/og-es.png` and `og-en.png` per copy-mvp §4.9 (name + role + "Me gusta crear cosas." / "I like building things.", text only), plus an `ogImage` prop in `Layout.astro` for every page. Dropped from the home spec on 2026-11-24.
 
+
+## Detail copy TBDs (draft 2026-11-25, design/pages/work-detail.md)
+
+- [ ] src/data/projects.json: `plataforma-clinica` → `stakeholders` (es, en)
+- [ ] src/data/experiences.json: `mangoodev` → `stack`
+- [ ] src/content/experiences/{es,en}/split-io.md: "Segmentación avanzada para enterprise" / "Advanced segmentation for enterprise" line
+- [ ] Detail pages: closing links to case studies once `/casos` exists (copy-mvp §4.10).
+- [ ] Detail pages: owner review of the draft body copy and fact values (copy-mvp §4.10 marks them as draft).
+
 ## MVP pages (see .claude/skills/implement-page)
 
 | Page | Spec | Built ES | Built EN | Verified | Doc updated |
@@ -31,6 +40,8 @@
 | Home | ✅ | ✅ | ✅ | ☐ | ☐ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Projects | ✅ | ✅ | ✅ | ☐ | ✅ |
+| Project detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
+| Experience detail | ✅ | ✅ | ✅ | ✅ | ☐ (diseno §8.8/§8.11/§9 proposals pending) |
 | Colophon (phase 2) | ✅ | ✅ | ✅ | ☐ | ☐ |
 | Process ("Sobre mí") | ✅ | ✅ | ✅ | ☐ | ✅ |
 

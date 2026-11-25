@@ -1,4 +1,4 @@
-import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from 'astro:i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { locales, type Locale } from './locales';
 
 /**
@@ -16,6 +16,18 @@ export const routes = {
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type SectionKey = keyof typeof routes;
+
+/**
+ * Base segment of each kind of work detail page: /es/proyectos/{slug}/, /es/experiencia/{slug}/.
+ * Not part of `routes`, so no section page is generated for them (/es/experiencia/ is a 404, D-W3).
+ * Keys are the JSON collection names in src/content.config.ts.
+ */
+export const detailBases = {
+	projects: routes.projects,
+	experiences: { es: 'experiencia', en: 'experience' },
+} as const satisfies Record<string, Record<Locale, string>>;
+
+export type WorkKind = keyof typeof detailBases;
 export type RouteKey = 'home' | SectionKey;
 
 export const sectionKeys = Object.keys(routes) as SectionKey[];
@@ -29,15 +41,25 @@ export function localizedPath(key: RouteKey, locale: Locale): string {
 	return getRelativeLocaleUrl(locale, slugFor(key, locale));
 }
 
-/** Absolute URL (uses `site`): localizedUrl('projects', 'es') → 'https://juaniw.com/es/proyectos/' */
-export function localizedUrl(key: RouteKey, locale: Locale): string {
-	return getAbsoluteLocaleUrl(locale, slugFor(key, locale));
+/** One page's relative path in every locale, with a trailing slash. Drives canonical, hreflang and the language switch. */
+export type LocalePaths = Record<Locale, string>;
+
+/** sectionPaths('projects') → { es: '/es/proyectos/', en: '/en/projects/' } */
+export function sectionPaths(key: RouteKey): LocalePaths {
+	return Object.fromEntries(locales.map((locale) => [locale, localizedPath(key, locale)])) as LocalePaths;
+}
+
+/** detailPaths('experiences', 'harness') → { es: '/es/experiencia/harness/', en: '/en/experience/harness/' } */
+export function detailPaths(kind: WorkKind, slug: string): LocalePaths {
+	return Object.fromEntries(
+		locales.map((locale) => [locale, getRelativeLocaleUrl(locale, `${detailBases[kind][locale]}/${slug}`)]),
+	) as LocalePaths;
 }
 
 /** hreflang alternates of a page. x-default points to `/`, which picks the language (design doc §2). */
-export function alternates(key: RouteKey, site: URL): { hreflang: Locale | 'x-default'; href: string }[] {
+export function alternates(paths: LocalePaths, site: URL): { hreflang: Locale | 'x-default'; href: string }[] {
 	return [
-		...locales.map((locale) => ({ hreflang: locale, href: localizedUrl(key, locale) })),
+		...locales.map((locale) => ({ hreflang: locale, href: new URL(paths[locale], site).href })),
 		{ hreflang: 'x-default' as const, href: new URL('/', site).href },
 	];
 }

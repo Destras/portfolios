@@ -1,0 +1,87 @@
+---
+import { render } from 'astro:content';
+import FactSheet, { type FactItem } from '../FactSheet.astro';
+import PageTitle from '../PageTitle.astro';
+import { getDictionary } from '../../i18n/dictionaries';
+import type { Locale } from '../../i18n/locales';
+import { localizedPath, type WorkKind } from '../../i18n/routes';
+import type { WorkDetail } from '../../lib/work-details';
+
+/** Project or experience detail body (design/pages/work-detail.md): back link, h1, fact sheet, Markdown body. */
+interface Props {
+	locale: Locale;
+	detail: WorkDetail<WorkKind>;
+}
+
+const { locale, detail } = Astro.props;
+const t = getDictionary(locale);
+const { data } = detail.row;
+const isProject = 'name' in data;
+
+// D-W13: projects show five facts, experiences three. Absent optional fields are skipped.
+const facts: (FactItem | null)[] = [
+	{ label: t.workDetail.facts.role, value: data.role[locale] },
+	{ label: t.workDetail.facts.duration, value: `${data.start[locale]} – ${data.end[locale]}` },
+	data.stack ? { label: t.workDetail.facts.stack, value: data.stack.join(', ') } : null,
+	isProject && data.status ? { label: t.workDetail.facts.status, value: data.status[locale] } : null,
+	isProject && data.stakeholders ? { label: t.workDetail.facts.stakeholders, value: data.stakeholders[locale] } : null,
+];
+
+// D-W14: experiences go back to their own section of the projects page.
+const backHref = localizedPath('projects', locale) + (isProject ? '' : '#experience-title');
+
+const { Content } = await render(detail.entries[locale]);
+---
+
+<main id="contenido" class="page">
+	<a class="work-detail__back" href={backHref}>{t.workDetail.back}</a>
+	<PageTitle title={isProject ? data.name[locale] : data.org} />
+	<FactSheet items={facts.filter((f): f is FactItem => f !== null)} />
+	<div class="work-detail__body">
+		<Content />
+	</div>
+</main>
+
+<style>
+	.work-detail__back {
+		display: inline-block;
+		margin-bottom: var(--space-4);
+		font-family: var(--font-accent);
+		font-size: var(--text-sm);
+	}
+
+	.work-detail__body {
+		margin-top: var(--space-10);
+		line-height: var(--leading-relaxed);
+	}
+
+	/* Markdown headings use the SectionTitle tokens (src/components/SectionTitle.astro). */
+	.work-detail__body :global(h2) {
+		margin-top: var(--space-10);
+		margin-bottom: var(--space-2);
+		font-size: var(--text-base);
+		font-weight: var(--weight-regular);
+		color: var(--color-text-muted);
+	}
+
+	.work-detail__body :global(h2:first-child) {
+		margin-top: 0;
+	}
+
+	.work-detail__body :global(p) {
+		text-wrap: pretty;
+	}
+
+	.work-detail__body :global(p + p),
+	.work-detail__body :global(ul) {
+		margin-top: var(--space-4);
+	}
+
+	.work-detail__body :global(ul) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding-inline-start: var(--space-5);
+		list-style: disc;
+	}
+</style>

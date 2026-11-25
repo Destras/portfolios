@@ -19,7 +19,8 @@
 		"summary": {
 			"es": "Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.",
 			"en": "Built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers."
-		}
+		},
+		"stack": ["React", "TypeScript", "GraphQL", "Node.js"]
 	},
 	{
 		"id": "split-io",
@@ -41,7 +42,8 @@
 		"summary": {
 			"es": "Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.",
 			"en": "Feature flag frontend for 500+ customers: advanced segmentation for enterprise and flag archiving for JPMorgan."
-		}
+		},
+		"stack": ["React", "React Query", "GraphQL"]
 	},
 	{
 		"id": "mangoodev",
@@ -63,6 +65,7 @@
 		"summary": {
 			"es": "Sistema de compliance de proveedores para una farmacéutica multinacional. Creé el design system del equipo.",
 			"en": "Supplier compliance system for a multinational pharma company. Built the team's design system."
-		}
+		},
+		"stack": ["TBD"]
 	}
 ]
