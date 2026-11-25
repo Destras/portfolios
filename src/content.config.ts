@@ -51,12 +51,12 @@ const experiences = defineCollection({
 const detailBody = z.object({}).strict();
 
 const projectDetails = defineCollection({
-	loader: glob({ base: './src/content/projects', pattern: '*/*.md' }),
+	loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
 	schema: detailBody,
 });
 
 const experienceDetails = defineCollection({
-	loader: glob({ base: './src/content/experiences', pattern: '*/*.md' }),
+	loader: glob({ base: './src/content/experiences', pattern: '**/*.md' }),
 	schema: detailBody,
 });
 
