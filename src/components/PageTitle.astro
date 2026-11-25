@@ -1,5 +1,5 @@
 ---
-/** Inner-page h1 with an optional lead (design doc §8.7, PageTitle). */
+/** Inner-page h1 with an optional lead and an optional default slot after it (design doc §8.7, PageTitle). */
 interface Props {
 	title: string;
 	lead?: string;
@@ -11,6 +11,8 @@ const { title, lead } = Astro.props;
 <header class="page-title">
 	<h1>{title}</h1>
 	{lead && <p class="page-title__lead">{lead}</p>}
+	<!-- Optional extra line inside the title block (e.g. the /now update line, design doc §8.13). -->
+	<slot />
 </header>
 
 <style>

@@ -6,12 +6,12 @@ export const es: Dictionary = {
 		navLabel: 'Principal',
 		langLabel: 'Idioma',
 		nav: {
-			now: 'Ahora',
+			now: 'Now',
 			projects: 'Proyectos',
 		},
 		footer: {
 			cv: 'CV',
-			now: 'Ahora',
+			now: 'Now',
 			uses: 'Uses',
 			colophon: 'Colofón',
 			styleguide: 'Styleguide',
@@ -20,9 +20,7 @@ export const es: Dictionary = {
 			signoff: 'Desde Rosario con amor.',
 		},
 	},
-	pages: {
-		now: { title: 'Ahora', description: 'En qué estoy ahora.' },
-	},
+	pages: {},
 	projects: {
 		meta: {
 			title: 'Proyectos · Juan Ignacio Werkalec',
@@ -89,6 +87,55 @@ export const es: Dictionary = {
 			{ cat: 'Hardware', item: 'MacBook Pro 2021, M1, 64 GB', note: 'Todo abierto a la vez, sin cerrar nada.' },
 			{ cat: 'Apps', item: 'Obsidian', note: 'Mi vault: lo que aprendo y decido queda escrito.' },
 		],
+	},
+	now: {
+		meta: {
+			title: 'Now · Juan Ignacio Werkalec',
+			description: 'En qué estoy ahora: un billing service en Go, muay thai y charlas sobre problemas que la tecnología puede alivianar.',
+		},
+		title: 'Now',
+		updated: { label: 'Actualizado el', date: '25 de noviembre de 2026', place: 'Rosario' },
+		work: {
+			heading: 'Trabajo',
+			body: 'Freelance. Con ganas de sumarme a un equipo para hacer crecer un producto.',
+		},
+		building: {
+			heading: 'Construyendo',
+			items: [
+				{
+					name: 'Billing service',
+					text: 'un microservicio que envía recordatorios de pago, genera links de pago y lleva el estado de las cuotas de cada cliente.',
+				},
+			],
+		},
+		learning: {
+			heading: 'Aprendiendo',
+			items: [{ name: 'Go', text: 'lo aprendo construyendo el billing service.' }],
+		},
+		offline: {
+			heading: 'Fuera del trabajo',
+			items: [
+				{ text: 'Entreno muay thai: templa el cuerpo y la cabeza.' },
+				{ text: 'Le cocino al amor de mi vida.' },
+				{ text: 'Paseo a mi perro.' },
+			],
+		},
+		films: {
+			heading: 'Últimas películas',
+			items: [
+				{
+					label: 'Asesinato en el Expreso de Oriente',
+					href: 'https://es.wikipedia.org/wiki/Murder_on_the_Orient_Express_(pel%C3%ADcula_de_2017)',
+				},
+				{ label: 'Muerte en el Nilo', href: 'https://es.wikipedia.org/wiki/Muerte_en_el_Nilo_(pel%C3%ADcula_de_2022)' },
+				{ label: 'Cacería en Venecia', href: 'https://es.wikipedia.org/wiki/A_Haunting_in_Venice' },
+			],
+		},
+		openTo: {
+			heading: 'Abierto a',
+			body: 'Charlar sobre problemas donde la tecnología pueda alivianar el peso.',
+		},
+		closing: { before: 'Esta es una ', link: 'página /now', after: ': lo que tengo en foco en este momento.' },
 	},
 	colophon: {
 		meta: {

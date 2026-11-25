@@ -52,7 +52,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | Página | Ruta ES | Ruta EN | h1 | Copy | En el MVP |
 |---|---|---|---|---|---|
 | Inicio | `/es` | `/en` | La frase del hero | copy-mvp §4.2–4.5 | **Sí** |
-| Ahora | `/es/now` | `/en/now` | Ahora / Now | copy-mvp §4.7 | **Sí** |
+| Now | `/es/now` | `/en/now` | Now / Now (2026-11-25) | copy-mvp §4.7 | **Sí** |
 | Uses | `/es/uses` | `/en/uses` | Uses | copy-mvp §4.8 | **Sí** |
 | 404 | cualquier ruta inexistente | | Esta página no existe. / This page doesn't exist. | copy-mvp §4.9 | **Sí** |
 | CV | `/cv-en.pdf` | `/cv-en.pdf` | — | — | **Sí** (por ahora solo en inglés) |
@@ -595,7 +595,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 
 ```html
 <nav class="site-nav" aria-label="Principal">
-  <a class="site-nav__link" href="/es/now" aria-current="page">Ahora</a>
+  <a class="site-nav__link" href="/es/now" aria-current="page">Now</a>
   <span class="site-nav__sep" aria-hidden="true">·</span>
   <a class="site-nav__link" href="/es/uses">Uses</a>
   <span class="site-nav__sep" aria-hidden="true">·</span>
@@ -788,7 +788,7 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 |---|---|
 | Clase | `.page-title` (+ `__lead`) · `.section-title` (+ `--strong`) · `.section-lead` |
 | Para qué | `h1` de las páginas internas, con bajada opcional · `h2` de cada sección (etiqueta o fuerte) · párrafo de apertura de una sección |
-| Dónde se usa | PageTitle: Ahora, Uses, 404, Proyectos. SectionTitle: Proyectos y Experiencia del inicio. SectionLead: la apertura de Proyectos |
+| Dónde se usa | PageTitle: Ahora, Uses, 404, Proyectos. SectionTitle: Proyectos y Experiencia del inicio, y los bloques de Now. SectionLead: la apertura de Proyectos |
 | Tokens | `--text-lg`, `--text-md`, `--text-base`, `--leading-tight`, `--tracking-tight`, `--color-text`, `--color-text-muted`, `--space-2`, `--space-4`, `--space-6`, `--space-10` |
 | Estados | No son interactivos |
 | Mobile vs. desktop | Igual |
@@ -1215,49 +1215,48 @@ Todo el CSS va en `styles/components.css`. Los componentes de la **fase 2** est�
 
 ### 8.13 NowList
 
+Cambiado el 2026-11-25 (`design/pages/now.md`, D-N3/D-N5/D-N9): ya no es una sola lista con etiquetas en negrita, sino la línea de actualización + un bloque con `h2` (SectionTitle) por tema + una línea de cierre.
+
 | Campo | Valor |
 |---|---|
-| Clase | `.now-updated`, `.now-list` |
-| Para qué | La fecha de actualización y lo que estás haciendo ahora |
-| Dónde se usa | Ahora |
-| Tokens | `--font-accent`, `--text-xs`, `--leading-normal`, `--leading-relaxed`, `--color-text`, `--color-text-muted`, `--space-2`, `--space-5`, `--space-10` |
-| Estados | El link de la línea de actualización: normal · hover · focus-visible |
+| Clase | `.now-updated` (línea de actualización y de cierre), `.now-block`, `.now-text`, `.now-items`, `.now-closing` |
+| Para qué | La fecha de actualización, lo que estás haciendo ahora (por tema) y el link a nownownow |
+| Dónde se usa | Now (`src/components/pages/NowPage.astro`) |
+| Tokens | `--font-accent`, `--text-xs`, `--leading-normal`, `--leading-relaxed`, `--weight-bold`, `--color-text-muted`, `--space-2`, `--space-10` |
+| Estados | Links de películas y de cierre: normal · hover · focus-visible (los del `a` global) |
 | Mobile vs. desktop | Igual |
-| Accesibilidad | `<ul>`; la etiqueta va en `<strong>` (700); la fecha, en `<time datetime>` |
+| Accesibilidad | Cada bloque es un `<section aria-labelledby>` con su `h2`; las listas son `<ul>`; el nombre en negrita va en `<strong>` (700); la fecha, en `<time datetime>`. Links externos: pestaña nueva, `rel="noopener"` y el aviso oculto |
 
 ```html
 <header class="page-title">
-  <h1>Ahora</h1>
-  <p class="now-updated">Actualizado el <time datetime="2026-11-20">20 de noviembre de 2026</time>. Inspirado en <a href="https://nownownow.com">nownownow.com</a>.</p>
+  <h1>Now</h1>
+  <p class="now-updated">Actualizado el <time datetime="2026-11-25">25 de noviembre de 2026</time> · Rosario</p>
 </header>
-<ul class="now-list">
-  <li><strong>Trabajando en:</strong> la plataforma de seguimiento clínico, …</li>
-</ul>
+<section class="now-block" aria-labelledby="now-work">
+  <h2 class="section-title" id="now-work">Trabajo</h2>
+  <p class="now-text">Freelance. …</p>
+</section>
+<section class="now-block" aria-labelledby="now-building">
+  <h2 class="section-title" id="now-building">Construyendo</h2>
+  <ul class="now-items"><li><strong>Billing service</strong>: …</li></ul>
+</section>
+<!-- … -->
+<p class="now-updated now-closing">Esta es una <a href="https://nownownow.com/about" target="_blank" rel="noopener">página /now<span class="visually-hidden"> (se abre en otra pestaña)</span></a>: …</p>
 ```
 ```css
-/* styles/components.css — NowList */
 .now-updated {
-  margin-top: var(--space-2); /* va dentro de .page-title, debajo del h1 */
+  margin-top: var(--space-2); /* va dentro de .page-title, debajo del h1 (slot de PageTitle) */
   font-family: var(--font-accent);
   font-size: var(--text-xs);
   line-height: var(--leading-normal);
   color: var(--color-text-muted);
-}
-
-.now-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  line-height: var(--leading-relaxed);
-}
-
-.now-list strong {
-  font-weight: 700;
-}
-
-.now-list li {
   text-wrap: pretty;
 }
+.now-block + .now-block { margin-top: var(--space-10); }
+.now-text, .now-items { line-height: var(--leading-relaxed); text-wrap: pretty; }
+.now-items { display: flex; flex-direction: column; gap: var(--space-2); }
+.now-items strong { font-weight: var(--weight-bold); }
+.now-closing { margin-top: var(--space-10); }
 ```
 
 ### 8.14 Componentes de la fase 2 (sin código en el MVP)
@@ -1293,11 +1292,12 @@ Todas usan: `SkipLink` → `SiteHeader` → `<main id="contenido" class="page">`
 - **Mobile:** las fichas pasan a una fila por dato; la experiencia, a filas apiladas.
 - **Referencia visual:** "Final webpage" (estilos) + este documento (estructura).
 
-### 9.2 Ahora — `/es/now` / `/en/now`
-- **h1:** Ahora / Now.
-- **Meta:** title "Ahora · Juan Ignacio Werkalec" / "Now · Juan Ignacio Werkalec"; la description es el primer ítem de la lista.
-- **Secciones:** PageTitle → NowList (copy-mvp §4.7).
-- **Referencia:** Ahora-desktop-final, Ahora-mobile-final.
+### 9.2 Now — `/es/now` / `/en/now`
+- **h1:** Now (en ES y en EN, 2026-11-25; también el link del nav y del footer).
+- **Meta:** title "Now · Juan Ignacio Werkalec" en los dos idiomas; la description es una frase propia (copy-mvp §4.7).
+- **Secciones:** PageTitle (h1 + línea de actualización) → bloques Trabajo · Construyendo · Aprendiendo · Fuera del trabajo · Últimas películas · Abierto a (SectionTitle + párrafo o lista) → línea de cierre con el link a nownownow (§8.13, copy-mvp §4.7).
+- **Spec:** `design/pages/now.md`.
+- **Referencia:** Ahora-desktop-final, Ahora-mobile-final (solo para la línea de actualización y el ritmo; la estructura cambió).
 
 ### 9.3 Uses — `/es/uses` / `/en/uses`
 - **h1:** Uses.
@@ -1434,6 +1434,7 @@ Calculado desde los valores OKLCH, recortados a sRGB. Coincide con el cálculo d
 | D10 | Footer con Ahora · Uses · Colofón | Solo LinkedIn · GitHub · CV y la nota | Ahora y Uses ya están en el nav; Colofón es de la fase 2 |
 | D11 | EN y footer sin área táctil suficiente | EN de 44 px; footer de 29 px | Áreas táctiles |
 | D12 | Interlineados 1.45/1.5/1.55/1.6; radios de 3, 4 y 6 px; subrayados de 3 y 4 px | 1.5/1.6; 4 y 6 px; 0.25em | Unificación (§14.2 de la v1) |
+| D13 | Ahora = una lista con etiquetas en negrita; h1 "Ahora"; nownownow en la línea de actualización | h1 "Now"; un bloque con `h2` por tema; nownownow en una línea de cierre | El borrador del dueño (`design/now.md`, 2026-11-25) tiene bloques con listas y links que no entran en una lista plana |
 
 ### 14.2 Contradicciones con `copy-mvp.md` (resueltas)
 - **P5, LinkedIn:** se mantiene como CTA del cierre.

@@ -14,7 +14,8 @@
 - [ ] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Needs an adapter and on-demand rendering of `/` (`Astro.preferredLocale`). Today `/` is a static meta-refresh to /es/.
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
-- [ ] Replace the placeholder page (now) with a real one and drop its noindex. Projects, Uses and Colophon are done. Now is linked from the header nav since 2026-11-25 (Colophon has draft copy, pending owner review).
+- [x] Replace the placeholder page (now) with a real one and drop its noindex (2026-11-25, design/pages/now.md).
+- [ ] Now: owner review of the EN draft copy (copy-mvp §4.7). When updating the page, change `now.updated.date` in both dictionaries and `NOW_UPDATED_ISO` in `NowPage.astro`.
 - [ ] Home: write the "De dónde vengo" / "Where I come from" section (heading + 3 paragraphs) and add it back below Featured work (removed 2026-11-25 until its copy exists; SectionTitle `strong` variant is kept for it). Review the EN translation (design/pages/home.md).
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
@@ -35,7 +36,7 @@
 
 | Page | Spec | Built ES | Built EN | Verified | Doc updated |
 |---|---|---|---|---|---|
-| Now | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Now | ✅ | ✅ | ✅ | ☐ (owner manual checks) | ✅ |
 | Uses | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Home ("Sobre mí", moved from Process 2026-11-25) | ✅ | ✅ | ✅ | ☐ | ✅ |
 | 404 | ☐ | ☐ | ☐ | ☐ | ☐ |
