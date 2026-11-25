@@ -21,7 +21,8 @@
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
 - [x] 404 page (EN only, design/pages/404.md).
 - [ ] Sitemap and robots (6 MVP URLs).
-- [ ] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp): `public/og-es.png` and `og-en.png` per copy-mvp §4.9 (name + role + "Me gusta crear cosas." / "I like building things.", text only), plus an `ogImage` prop in `Layout.astro` for every page. Dropped from the home spec on 2026-11-24.
+- [x] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp). Decided 2026-11-25: one language-neutral `public/og.png` (1200×630, JW mark + name, no role or tagline) for every page, instead of `og-es.png`/`og-en.png` per copy-mvp §4.9. `Layout.astro` emits the `og:*` and `twitter:card` tags.
+- [ ] Custom domain: add the `juaniw.com` zone to Cloudflare, then add `"routes": [{ "pattern": "juaniw.com", "custom_domain": true }]` to `wrangler.jsonc`, and redirect `www.juaniw.com` → `juaniw.com` with a Redirect Rule.
 
 
 ## Detail copy TBDs (draft 2026-11-25, design/pages/work-detail.md)

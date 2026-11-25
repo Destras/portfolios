@@ -1,0 +1,3 @@
+# Cloudflare Workers static assets (copied to dist/). Redirects run before assets, so this wins over dist/index.html.
+# A real 301 instead of the meta refresh: link-preview crawlers don't follow meta refresh, so sharing the bare domain showed no card.
+/ /es/ 301
