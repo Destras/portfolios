@@ -23,6 +23,19 @@ const rows = [
 	</div>
 </main>
 
+<script>
+	import { displayPath } from '../../scripts/notFoundPath.ts';
+
+	// textContent, never innerHTML: the path is whatever the visitor typed.
+	const line = document.querySelector<HTMLElement>('.not-found__path');
+	const code = line?.querySelector('code');
+	const path = displayPath(location.pathname);
+	if (line && code && path !== null) {
+		code.textContent = path;
+		line.hidden = false;
+	}
+</script>
+
 <style>
 	/* Decorative: muted, not the accent (accent is for interactive elements only, D-404-6). */
 	.not-found__code {
