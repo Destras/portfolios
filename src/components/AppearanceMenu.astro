@@ -250,6 +250,14 @@ const modes = [
 		type Theme,
 	} from '../scripts/appearance';
 
+	function read(key: 'theme' | 'mode'): string | null {
+		try {
+			return localStorage.getItem(key);
+		} catch {
+			return null;
+		}
+	}
+
 	function store(key: 'theme' | 'mode', value: string) {
 		try {
 			localStorage.setItem(key, value);
@@ -271,12 +279,17 @@ const modes = [
 			this.#panel = this.querySelector('.appearance__panel')!;
 			this.#current = this.querySelector('.appearance__current')!;
 			const themeGroup = this.querySelector<HTMLElement>('[data-group="theme"]')!;
+			const modeGroup = this.querySelector<HTMLElement>('[data-group="mode"]')!;
 
 			this.#button.addEventListener('click', () => this.#setOpen(!this.#isOpen()));
-			this.addEventListener('change', (event) => {
-				const input = event.target as HTMLInputElement;
-				if (input.name === 'appearance-theme') this.apply({ theme: parseTheme(input.value) });
-				if (input.name === 'appearance-mode') this.apply({ mode: parseMode(input.value) ?? undefined });
+			themeGroup.addEventListener('change', (event) => {
+				this.apply({ theme: parseTheme((event.target as HTMLInputElement).value) });
+			});
+			// Mode on click, not change: clicking the mode already shown (the system's) must still lock it,
+			// and that fires no change. Arrow keys fire click too.
+			modeGroup.addEventListener('click', (event) => {
+				const mode = parseMode((event.target as HTMLInputElement).value);
+				if (mode && mode !== parseMode(read('mode'))) this.apply({ mode });
 			});
 			themeGroup.addEventListener('pointerdown', () => (this.#pointer = true));
 			themeGroup.addEventListener('keydown', () => (this.#pointer = false));
@@ -286,29 +299,31 @@ const modes = [
 					this.#setOpen(false, true);
 				}
 			});
-			this.addEventListener('keydown', (event) => {
+			// On document: Safari doesn't focus buttons on click, so after a mouse open the key goes to <body>.
+			document.addEventListener('keydown', (event) => {
 				if (event.key === 'Escape' && this.#isOpen()) this.#setOpen(false, true);
 			});
 			document.addEventListener('click', (event) => {
 				if (!this.contains(event.target as Node)) this.#setOpen(false);
 			});
 			this.#systemDark.addEventListener('change', () => this.#render());
+			// Back/forward cache restores the page as it was; the choice may have changed on another page since.
+			window.addEventListener('pageshow', (event) => {
+				if (event.persisted) this.#syncFromStorage();
+			});
 
 			this.#render();
 		}
 
 		/** Writes the choice to <html> and localStorage, then refreshes the control. */
 		apply(change: { theme?: Theme; mode?: Mode }) {
+			// Store now, not inside the transition callback (it runs a frame later): leaving the page right away keeps the choice.
+			if (change.theme) store('theme', change.theme);
+			if (change.mode) store('mode', change.mode);
 			const update = () => {
 				const root = document.documentElement;
-				if (change.theme) {
-					root.dataset.theme = change.theme;
-					store('theme', change.theme);
-				}
-				if (change.mode) {
-					root.dataset.mode = change.mode;
-					store('mode', change.mode);
-				}
+				if (change.theme) root.dataset.theme = change.theme;
+				if (change.mode) root.dataset.mode = change.mode;
 				this.#render();
 			};
 			// Cross-fade the whole page (base.css sets the timing); instant without the API or with reduced motion.
@@ -318,6 +333,17 @@ const modes = [
 			});
 			if (animate) document.startViewTransition(update);
 			else update();
+		}
+
+		/** Same rules as the pre-paint script in Layout.astro: valid stored values win, the rest is default/system. */
+		#syncFromStorage() {
+			const root = document.documentElement;
+			root.dataset.theme = parseTheme(read('theme'));
+			const mode = parseMode(read('mode'));
+			if (mode) root.dataset.mode = mode;
+			else delete root.dataset.mode;
+			this.#setOpen(false);
+			this.#render();
 		}
 
 		#isOpen() {
