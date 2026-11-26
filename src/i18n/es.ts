@@ -177,7 +177,7 @@ export const es: Dictionary = {
 			description: 'Los tokens y estilos base de juaniw.com.',
 		},
 		intro:
-			'Los tokens y los estilos base de este sitio: colores, tipografía, espaciado y los elementos de HTML sin clases. Todo lo que se ve acá usa el tema y el modo activos. El modo sigue al de tu sistema: si lo cambiás, la página cambia con él.',
+			'Los tokens y los estilos base de este sitio: colores, tipografía, espaciado y los elementos de HTML sin clases. Todo lo que se ve acá usa el tema y el modo activos. El modo sigue al de tu sistema hasta que elijas uno en el selector del header.',
 		color: {
 			heading: 'Color',
 			lead: 'El acento es solo para lo que se puede tocar. Si lo sacás, la página se entiende igual.',

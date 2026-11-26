@@ -174,7 +174,7 @@ export const en: Dictionary = {
 			description: 'The tokens and base styles of juaniw.com.',
 		},
 		intro:
-			"The tokens and base styles of this site: colors, typography, spacing and plain HTML elements. Everything you see here uses the active theme and mode. The mode follows your system's: change it and the page changes with it.",
+			"The tokens and base styles of this site: colors, typography, spacing and plain HTML elements. Everything you see here uses the active theme and mode. The mode follows your system's until you pick one in the header's selector.",
 		color: {
 			heading: 'Color',
 			lead: "The accent is only for things you can click or tap. Take it away and the page still makes sense.",

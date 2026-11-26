@@ -1,10 +1,10 @@
 # TODO
 
-- [ ] Mode toggle in the header (the moon icon in design/wireframes.html). Conflicts with design doc P4 (mode follows the system, no button): decide two vs three states (light/dark vs +system), icon and transition.
-- [ ] Theme and mode controls: theme selector (salvia/brasa) and system/day/night toggle. They write to localStorage (keys theme and mode) and to data-theme/data-mode on <html>.
+- [x] Mode toggle in the header (the moon icon in design/wireframes.html). Replaced by the theme + mode selector (2026-11-26, docs/adr/0002-theme-and-mode-selector.md): two states, system until the first pick.
+- [x] Theme and mode controls (2026-11-26, `src/components/AppearanceMenu.astro`): theme selector (salvia/brasa) and day/night toggle. They write to localStorage (keys theme and mode) and to data-theme/data-mode on <html>.
 - [x] Remaining color tokens (--color-surface, --color-border, --color-text, --color-text-muted, --color-accent, --color-accent-hover, --color-focus, --color-selection, --color-on-selection) for salvia and brasa.
-- [x] Create src/styles/foundations.css (typography, weights, spacing, radii, layout). Motion tokens are still pending, together with the transition item below.
-- [ ] Transition when changing theme or mode (needs duration and easing tokens).
+- [x] Create src/styles/foundations.css (typography, weights, spacing, radii, layout). Motion tokens added 2026-11-26 (`--duration-theme`, `--ease-standard`).
+- [x] Transition when changing theme or mode (2026-11-26: View Transitions cross-fade, `--duration-theme`, `--ease-standard`).
 - [ ] If <ClientRouter /> is added, re-apply theme and mode on astro:after-swap (see https://docs.astro.build/en/guides/view-transitions/#script-behavior-with-view-transitions).
 - [x] SkipLink, SiteHeader, SiteNav, LangSwitch and SiteFooter (src/components/), rendered by the Layout.
 - [ ] Components: write each component's styles in its own scoped `<style>` (or a sibling .css), copied from design/diseno-juaniw.md §8.
