@@ -1,0 +1,52 @@
+---
+/**
+ * Decorative arrow icon (owner-supplied SVGs). Replaces the → and ↗ text glyphs.
+ * Size: --icon-size (1em), so it scales with the surrounding text. Color: currentColor.
+ */
+interface Props {
+	direction: 'right' | 'up-right';
+	class?: string;
+}
+
+// `rest` carries the parent's scope attribute so call sites can style it (see LangSwitch).
+const { direction, class: className, ...rest } = Astro.props;
+---
+
+<svg
+	class:list={['arrow-icon', className]}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 16 16"
+	fill="none"
+	stroke="currentColor"
+	stroke-width="1.5"
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	aria-hidden="true"
+	focusable="false"
+	{...rest}
+>
+	{
+		direction === 'right' ? (
+			<>
+				<path d="M2.5 8h11" />
+				<path d="M9.5 4l4 4-4 4" />
+			</>
+		) : (
+			<>
+				<path d="M4.5 11.5 11.5 4.5" />
+				<path d="M6 4.5h5.5V10" />
+			</>
+		)
+	}
+</svg>
+
+<style>
+	.arrow-icon {
+		display: inline-block;
+		flex: none;
+		width: var(--icon-size);
+		height: var(--icon-size);
+		/* Centers the icon on the x-height, like the glyph it replaces. */
+		vertical-align: middle;
+	}
+</style>

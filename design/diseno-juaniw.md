@@ -93,7 +93,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 |---|---|---|---|
 | Cuerpo | Atkinson Hyperlegible Next | 400, 600, 700 | Párrafos, filas, nombres (600), etiquetas en negrita de Ahora (700) |
 | Títulos | Atkinson Hyperlegible Next | 600 | h1 internos, h2 fuertes, títulos de mini-caso. El h1 del inicio (hero) va en 400 |
-| Mono (acento) | Commit Mono | 400, 700 | Header completo (nombre en 700), ficha técnica, fechas, metadatos, encabezados de tabla, "Actualizado el…", flechas → |
+| Mono (acento) | Commit Mono | 400, 700 | Header completo (nombre en 700), ficha técnica, fechas, metadatos, encabezados de tabla, "Actualizado el…" (arrows are SVG icons since 2026-11-26: `src/components/ArrowIcon.astro`) |
 
 **Carga:** Atkinson con `next/font/google` (subsets `latin` y `latin-ext`, variable `--font-sans`). Commit Mono con `next/font/local`, desde los woff2 de `@fontsource/commit-mono` (licencia OFL), variable `--font-mono`. El peso 600 de la mono no se usa, así que no se carga.
 
@@ -119,7 +119,7 @@ export const mono = localFont({
 });
 ```
 
-> **Verificar al instalar:** (1) que tu versión de Next exporte `Atkinson_Hyperlegible_Next`; si no, actualizá Next o cargala con `localFont`. (2) Que la **flecha →** se vea bien. Por las dudas, la flecha siempre va en un `<span class="arrow">` con la fuente mono (§8.10).
+> **Verificar al instalar:** (1) que tu versión de Next exporte `Atkinson_Hyperlegible_Next`; si no, actualizá Next o cargala con `localFont`. (2) Que la **flecha →** se vea bien. Por las dudas, la flecha siempre va en un `<span class="arrow">` con la fuente mono (§8.10). Superseded 2026-11-26: arrows (→, ↗) are SVG icons from `src/components/ArrowIcon.astro`, sized by `--icon-size` (1em), so they no longer depend on the font.
 
 **Escala** (fluida entre 375 y 1440 px; los valores están en §5.3):
 

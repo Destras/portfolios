@@ -1,9 +1,11 @@
 ---
 /** Pill-shaped link that looks like a button (home actions). Label goes in the default slot. */
+import ArrowIcon from './ArrowIcon.astro';
+
 interface Props {
 	href: string;
 	variant: 'primary' | 'secondary';
-	/** Appends a decorative ↗ (hidden from screen readers). */
+	/** Appends a decorative up-right arrow icon (hidden from screen readers). */
 	arrow?: boolean;
 }
 
@@ -12,7 +14,7 @@ const { href, variant, arrow = false } = Astro.props;
 
 <a class:list={['button-link', `button-link--${variant}`]} href={href}>
 	<slot />
-	{arrow && <span aria-hidden="true">↗</span>}
+	{arrow && <ArrowIcon direction="up-right" />}
 </a>
 
 <style>

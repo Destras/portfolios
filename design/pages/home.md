@@ -88,7 +88,7 @@ Plan: `docs/superpowers/plans/2026-11-25-clickable-featured-work.md`.
 ## Verification results: Process page (2026-11-25)
 - `npm run check`: 0 errors, 0 warnings · `npm run build`: complete (15 pages).
 - Headings (ES and EN): one h1, then one h2. No heading problems.
-- Hardcoded text: only the decorative `↗` in `ButtonLink.astro` (aria-hidden).
+- Hardcoded text: none. The decorative up-right arrow in `ButtonLink.astro` is an SVG (`ArrowIcon.astro`, aria-hidden) since 2026-11-26.
 - Raw values: none in the touched components; the only literal is `--radius-full: 999px` in `foundations.css`.
 - Forbidden words in `src/i18n/*.ts`: none. "JPMorgan" / "contratame" in the built page: 0.
 - `noindex`: absent.

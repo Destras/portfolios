@@ -4,6 +4,8 @@
  * then the whole row is a link to its detail page (design/pages/work-detail.md, D-W10).
  * Mobile: date on top. Desktop: date column on the left, the rest on the right.
  */
+import ArrowIcon from './ArrowIcon.astro';
+
 export interface ExperienceItem {
 	org: string;
 	role: string;
@@ -47,7 +49,7 @@ const { items } = Astro.props;
 						{date}
 						{content}
 						<span class="exp-row__arrow" aria-hidden="true">
-							→
+							<ArrowIcon direction="right" />
 						</span>
 					</a>
 				</li>

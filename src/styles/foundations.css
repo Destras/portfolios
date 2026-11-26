@@ -74,6 +74,8 @@
 	--focus-offset: 2px;
 	--underline-offset: 0.25em;
 	--swatch-size: 0.875rem;
+	/* Icons (ArrowIcon.astro): scale with the surrounding text, like the glyphs they replace. */
+	--icon-size: 1em;
 
 	/* Motion: the cross-fade when the theme or mode changes (AppearanceMenu.astro + base.css). */
 	--duration-theme: 250ms;
