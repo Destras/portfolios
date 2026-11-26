@@ -15,7 +15,7 @@ The site has two color themes (Salvia, the default, and Brasa) and a day/night m
 |---|---|---|---|
 | Brasa reachable | No | No | Yes |
 | Night reachable | Only via the OS | Yes | Yes |
-| Header cost | None | One icon | One button ("Salvia · Día ▾"; swatch only on mobile) |
+| Header cost | None | One icon | One button ("Salvia · Día" + chevron; swatch only on mobile) |
 | Matches the design reference | — | No | Yes (v3 of the selector explorations) |
 
 Inside C, the mode got two options (Day / Night) rather than three (System / Day / Night).

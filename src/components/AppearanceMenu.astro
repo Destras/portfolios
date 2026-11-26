@@ -29,7 +29,20 @@ const modes = [
 		<span class="visually-hidden">{t.label}: </span>
 		<!-- Server default; the script replaces it with the active theme and mode on connect. -->
 		<span class="appearance__current">{defaultName} · {t.day}</span>
-		<span class="appearance__caret" aria-hidden="true">▾</span>
+		<svg
+			class="appearance__caret"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 16 16"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.5"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<path d="M4 6l4 4 4-4"></path>
+		</svg>
 	</button>
 	<div id="appearance-panel" class="appearance__panel" hidden>
 		<fieldset class="appearance__group" data-group="theme">
@@ -88,7 +101,11 @@ const modes = [
 		background: var(--color-surface);
 	}
 
+	/* Chevron (owner-supplied SVG), same size as ArrowIcon. */
 	.appearance__caret {
+		flex: none;
+		width: var(--icon-size);
+		height: var(--icon-size);
 		color: var(--color-text-muted);
 	}
 
