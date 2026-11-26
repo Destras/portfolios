@@ -102,6 +102,13 @@ video {
 	white-space: nowrap;
 }
 
+/* Theme and mode cross-fade (AppearanceMenu.astro calls document.startViewTransition). */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: var(--duration-theme);
+	animation-timing-function: var(--ease-standard);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,

@@ -73,4 +73,16 @@
 	--focus-width: 2px;
 	--focus-offset: 2px;
 	--underline-offset: 0.25em;
+	--swatch-size: 0.875rem;
+	/* Icons (ArrowIcon.astro): scale with the surrounding text, like the glyphs they replace. */
+	--icon-size: 1em;
+
+	/* Motion: the cross-fade when the theme or mode changes (AppearanceMenu.astro + base.css). */
+	--duration-theme: 250ms;
+	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+	/* Popover (header appearance selector) */
+	--popover-min-width: 13rem;
+	--shadow-popover: 0 8px 24px oklch(0 0 0 / 0.08);
+	--z-popover: 10;
 }

@@ -15,7 +15,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 | **P1** | Paleta | **Salvia.** Más contraste (acento 7,3:1 contra 5,1:1), se siente calma y confiable (Cuidador + Gobernante) y el verde no se asocia a botones de venta | Brasa: más cálida y enérgica, pero el naranja es el color clásico de un CTA de venta, y su foco en modo claro queda justo (3,4:1) | §3, `data-theme` en el layout |
 | **P2** | Alcance del MVP | **Inicio, Ahora, Uses y 404, en ES y EN.** Son las páginas que tienen copy. Proyectos, Casos, Proceso y Colofón quedan diseñadas para la fase 2 | Publicar también las páginas nuevas, pero antes hay que escribir su copy | §2, §8, §9 |
 | **P3** | Inicio V1 o V2 | **Ninguna de las dos tal cual:** los 3 mini-casos con su ficha técnica (lo que define `copy-mvp` §4.3) y la experiencia en filas (V2) | V1: bloques por empresa, sin ficha. V2: filas, sin mini-casos | §8.8, §8.9, §9.1 |
-| **P4** | Modo | **Sigue al sistema** (`prefers-color-scheme`), sin botón. `data-mode` queda solo para probar | Lo que dice la v1: el modo se fuerza con `data-mode` y nunca sigue al sistema. Pero sin un botón, el modo oscuro no aparece nunca | §5.4, §6 |
+| **P4** | Modo | **Sigue al sistema** (`prefers-color-scheme`), sin botón. `data-mode` queda solo para probar | Lo que dice la v1: el modo se fuerza con `data-mode` y nunca sigue al sistema. Pero sin un botón, el modo oscuro no aparece nunca. Superseded by `docs/adr/0002-theme-and-mode-selector.md` (2026-11-26) | §5.4, §6 |
 | **P5** | LinkedIn | **Se mantiene.** Es el CTA secundario de `copy-mvp` §4.5 | La v1 dice "No usás LinkedIn". Si es así, hay que reescribir el cierre | §8.4, §9.1, copy |
 | **P6** | Nombres de empresas | **Como en `copy-mvp` §4.4:** Harness, Split.io y MangooDev SRL. JPMorgan Chase solo aparece en el resumen de Split.io (decisión del 2026-11-24) | La v1 dice "solo Harness". Si es así, Split.io y MangooDev pasan a descripciones genéricas | §8.8, §8.9, copy |
 
@@ -93,7 +93,7 @@ Juan confirmó las 6 recomendaciones. El documento las tiene aplicadas.
 |---|---|---|---|
 | Cuerpo | Atkinson Hyperlegible Next | 400, 600, 700 | Párrafos, filas, nombres (600), etiquetas en negrita de Ahora (700) |
 | Títulos | Atkinson Hyperlegible Next | 600 | h1 internos, h2 fuertes, títulos de mini-caso. El h1 del inicio (hero) va en 400 |
-| Mono (acento) | Commit Mono | 400, 700 | Header completo (nombre en 700), ficha técnica, fechas, metadatos, encabezados de tabla, "Actualizado el…", flechas → |
+| Mono (acento) | Commit Mono | 400, 700 | Header completo (nombre en 700), ficha técnica, fechas, metadatos, encabezados de tabla, "Actualizado el…" (arrows are SVG icons since 2026-11-26: `src/components/ArrowIcon.astro`) |
 
 **Carga:** Atkinson con `next/font/google` (subsets `latin` y `latin-ext`, variable `--font-sans`). Commit Mono con `next/font/local`, desde los woff2 de `@fontsource/commit-mono` (licencia OFL), variable `--font-mono`. El peso 600 de la mono no se usa, así que no se carga.
 
@@ -119,7 +119,7 @@ export const mono = localFont({
 });
 ```
 
-> **Verificar al instalar:** (1) que tu versión de Next exporte `Atkinson_Hyperlegible_Next`; si no, actualizá Next o cargala con `localFont`. (2) Que la **flecha →** se vea bien. Por las dudas, la flecha siempre va en un `<span class="arrow">` con la fuente mono (§8.10).
+> **Verificar al instalar:** (1) que tu versión de Next exporte `Atkinson_Hyperlegible_Next`; si no, actualizá Next o cargala con `localFont`. (2) Que la **flecha →** se vea bien. Por las dudas, la flecha siempre va en un `<span class="arrow">` con la fuente mono (§8.10). Superseded 2026-11-26: arrows (→, ↗) are SVG icons from `src/components/ArrowIcon.astro`, sized by `--icon-size` (1em), so they no longer depend on the font.
 
 **Escala** (fluida entre 375 y 1440 px; los valores están en §5.3):
 

@@ -1,8 +1,10 @@
 ---
 /**
- * A list of full-width link rows: label · path · →. Used by the 404 (design/pages/404.md).
+ * A list of full-width link rows: label · path · arrow. Used by the 404 (design/pages/404.md).
  * MISSING IN §8: modeled on the ExperienceList linked row (§8.8). Add it to diseno §8 at close.
  */
+import ArrowIcon from './ArrowIcon.astro';
+
 interface Props {
 	/** The path column shows the href itself. */
 	items: { label: string; href: string }[];
@@ -19,7 +21,7 @@ const { items } = Astro.props;
 					<span class="link-rows__label">{item.label}</span>
 					<span class="link-rows__path">{item.href}</span>
 					<span class="link-rows__arrow" aria-hidden="true">
-						→
+						<ArrowIcon direction="right" />
 					</span>
 				</a>
 			</li>

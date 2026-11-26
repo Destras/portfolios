@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/locales';
+import ArrowIcon from '../ArrowIcon.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import {
 	colorTokens,
@@ -81,7 +82,7 @@ const t = getDictionary(locale).styleguide;
 				))}
 			</div>
 		))}
-		<p class="sg-mono-sample">{t.typography.arrowSample} <span aria-hidden="true">→</span></p>
+		<p class="sg-mono-sample">{t.typography.arrowSample} <ArrowIcon direction="right" /></p>
 
 		<h3>{t.typography.scaleHeading}</h3>
 		<ul class="sg-list">

@@ -12,3 +12,8 @@
 	--color-selection: color-mix(in oklch, var(--color-accent) 30%, transparent);
 	--color-on-selection: var(--color-text);
 }
+
+/* Swatch for the header's theme selector: this theme's accent, defined whatever theme is active. */
+:root {
+	--swatch-salvia: light-dark(oklch(0.4176 0.0943 142.54), oklch(0.836 0.0844 143.26));
+}

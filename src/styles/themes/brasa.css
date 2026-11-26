@@ -12,3 +12,8 @@
 	--color-selection: color-mix(in oklch, var(--color-accent) 30%, transparent);
 	--color-on-selection: var(--color-text);
 }
+
+/* Swatch for the header's theme selector: this theme's accent, defined whatever theme is active. */
+:root {
+	--swatch-brasa: light-dark(oklch(0.55 0.178 38.5), oklch(0.6545 0.1945 38.5));
+}
