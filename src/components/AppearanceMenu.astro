@@ -244,6 +244,7 @@ const modes = [
 		effectiveMode,
 		parseMode,
 		parseTheme,
+		shouldAnimate,
 		THEMES,
 		type Mode,
 		type Theme,
@@ -298,16 +299,25 @@ const modes = [
 
 		/** Writes the choice to <html> and localStorage, then refreshes the control. */
 		apply(change: { theme?: Theme; mode?: Mode }) {
-			const root = document.documentElement;
-			if (change.theme) {
-				root.dataset.theme = change.theme;
-				store('theme', change.theme);
-			}
-			if (change.mode) {
-				root.dataset.mode = change.mode;
-				store('mode', change.mode);
-			}
-			this.#render();
+			const update = () => {
+				const root = document.documentElement;
+				if (change.theme) {
+					root.dataset.theme = change.theme;
+					store('theme', change.theme);
+				}
+				if (change.mode) {
+					root.dataset.mode = change.mode;
+					store('mode', change.mode);
+				}
+				this.#render();
+			};
+			// Cross-fade the whole page (base.css sets the timing); instant without the API or with reduced motion.
+			const animate = shouldAnimate({
+				hasViewTransitions: 'startViewTransition' in document,
+				reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
+			});
+			if (animate) document.startViewTransition(update);
+			else update();
 		}
 
 		#isOpen() {
