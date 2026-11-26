@@ -53,9 +53,20 @@ const modes = [
 						<input class="visually-hidden" type="radio" name="appearance-theme" value={th.id} />
 						<span class="appearance__swatch" style={`background: var(--swatch-${th.id})`} aria-hidden="true" />
 						<span class="appearance__name">{th.name}</span>
-						<span class="appearance__check" aria-hidden="true">
-							✓
-						</span>
+						<svg
+							class="appearance__check"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+							focusable="false"
+						>
+							<path d="M3.5 8.5l3 3 6-7" />
+						</svg>
 					</label>
 				))
 			}
@@ -211,7 +222,11 @@ const modes = [
 		flex: 1;
 	}
 
+	/* Check (owner-supplied SVG), same size as ArrowIcon. */
 	.appearance__check {
+		flex: none;
+		width: var(--icon-size);
+		height: var(--icon-size);
 		visibility: hidden;
 	}
 
