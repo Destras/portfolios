@@ -11,7 +11,7 @@
 - [ ] Components page: a page that lists every component (SkipLink, SiteHeader, SiteNav, LangSwitch, SiteFooter, Hero, PageTitle/SectionTitle, ExperienceList, MiniCase, CtaLink, FactSheet, DataTable, NowList) with its states, once they exist.
 - [x] Make /styleguide bilingual (ES/EN) once i18n routing exists.
 - [x] Link /{locale}/styleguide from the footer or the colophon.
-- [ ] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Needs an adapter and on-demand rendering of `/` (`Astro.preferredLocale`). Today `/` is a static meta-refresh to /es/.
+- [x] `/` language detection: redirect 307 by `Accept-Language` (es* → /es, else /en) per design doc §2. Done 2026-11-25 with a Worker on `/` (`src/worker.ts`, `run_worker_first`), not with the adapter.
 - [x] LangSwitch component (goes to the same page in the other locale through the route map in src/i18n/routes.ts).
 - [x] Translated routes: src/i18n/routes.ts + src/pages/[locale]/[section].astro (see docs/guides/i18nRoutes.md).
 - [x] Replace the placeholder page (now) with a real one and drop its noindex (2026-11-25, design/pages/now.md).

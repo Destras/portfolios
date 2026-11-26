@@ -1,8 +1,11 @@
 {
   "name": "portfolios",
   "compatibility_date": "2026-11-01",
+  // Redirects `/` to /es/ or /en/ by Accept-Language. Only `/` reaches it (run_worker_first); everything else is a static asset.
+  "main": "./src/worker.ts",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/"]
   }
 }
