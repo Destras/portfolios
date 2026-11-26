@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n/locales';
 import { localizedPath, type LocalePaths, type RouteKey } from '../i18n/routes';
+import AppearanceMenu from './AppearanceMenu.astro';
 import LangSwitch from './LangSwitch.astro';
 import SiteNav from './SiteNav.astro';
 
@@ -19,7 +20,10 @@ const { locale, routeKey, paths, navCurrent } = Astro.props;
 <header class="site-header">
 	<a class="site-header__brand" href={localizedPath('home', locale)}>Juan Ignacio Werkalec</a>
 	<SiteNav class="site-header__nav" locale={locale} routeKey={routeKey} navCurrent={navCurrent} />
-	<LangSwitch class="site-header__lang" locale={locale} paths={paths} />
+	<div class="site-header__tools">
+		<LangSwitch locale={locale} paths={paths} />
+		<AppearanceMenu locale={locale} />
+	</div>
 </header>
 
 <style>
@@ -54,9 +58,13 @@ const { locale, routeKey, paths, navCurrent } = Astro.props;
 		grid-area: nav;
 	}
 
-	.site-header__lang {
+	/* Language switch + appearance selector, at the right end. */
+	.site-header__tools {
+		display: flex;
 		grid-area: lang;
+		align-items: center;
 		justify-self: end;
+		gap: var(--space-3);
 	}
 
 	/* Desktop: three columns, brand · centered nav · language. */

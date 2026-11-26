@@ -5,6 +5,7 @@ export const en: Dictionary = {
 		skipLink: 'Skip to content',
 		navLabel: 'Main',
 		langLabel: 'Language',
+		appearance: { label: 'Appearance', theme: 'Theme', mode: 'Mode', day: 'Day', night: 'Night' },
 		nav: {
 			now: 'Now',
 			projects: 'Projects',

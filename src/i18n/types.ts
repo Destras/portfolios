@@ -64,6 +64,15 @@ export interface Dictionary {
 		navLabel: string;
 		/** aria-label of the language switch. */
 		langLabel: string;
+		/** Header theme and mode selector. Theme names are proper nouns and live in src/scripts/appearance.ts. */
+		appearance: {
+			/** Prefix of the button's accessible name ("Apariencia: Salvia · Día"). */
+			label: string;
+			theme: string;
+			mode: string;
+			day: string;
+			night: string;
+		};
 		nav: {
 			now: string;
 			projects: string;

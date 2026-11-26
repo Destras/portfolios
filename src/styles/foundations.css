@@ -73,4 +73,10 @@
 	--focus-width: 2px;
 	--focus-offset: 2px;
 	--underline-offset: 0.25em;
+	--swatch-size: 0.875rem;
+
+	/* Popover (header appearance selector) */
+	--popover-min-width: 13rem;
+	--shadow-popover: 0 8px 24px oklch(0 0 0 / 0.08);
+	--z-popover: 10;
 }
