@@ -28,10 +28,18 @@ export function sectionPaths(key: RouteKey): LocalePaths {
 	return Object.fromEntries(locales.map((locale) => [locale, localizedPath(key, locale)])) as LocalePaths;
 }
 
-/** detailPaths('experiences', 'harness') → { es: '/es/experiencia/harness/', en: '/en/experience/harness/' } */
-export function detailPaths(kind: WorkKind, slug: string): LocalePaths {
+/**
+ * URL slug of a work detail in each locale. The row id is the internal key (and the Markdown file name);
+ * a row's optional `slug` field translates it: plataforma-clinica → { es: 'plataforma-clinica', en: 'clinical-platform' }.
+ */
+export function detailSlugs(id: string, slug?: Record<Locale, string>): Record<Locale, string> {
+	return slug ?? (Object.fromEntries(locales.map((locale) => [locale, id])) as Record<Locale, string>);
+}
+
+/** detailPaths('experiences', detailSlugs('harness')) → { es: '/es/experiencia/harness/', en: '/en/experience/harness/' } */
+export function detailPaths(kind: WorkKind, slugs: Record<Locale, string>): LocalePaths {
 	return Object.fromEntries(
-		locales.map((locale) => [locale, getRelativeLocaleUrl(locale, `${detailBases[kind][locale]}/${slug}`)]),
+		locales.map((locale) => [locale, getRelativeLocaleUrl(locale, `${detailBases[kind][locale]}/${slugs[locale]}`)]),
 	) as LocalePaths;
 }
 

@@ -1,6 +1,7 @@
 [
 	{
 		"id": "plataforma-clinica",
+		"slug": { "es": "plataforma-clinica", "en": "clinical-platform" },
 		"name": { "es": "Plataforma de seguimiento clínico", "en": "Clinical follow-up platform" },
 		"role": { "es": "Full-Stack Engineer y Technical Lead", "en": "Full-Stack Engineer and Technical Lead" },
 		"start": { "es": "abr 2026", "en": "Apr 2026" },

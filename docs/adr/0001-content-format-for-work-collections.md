@@ -54,3 +54,9 @@ Astro's `reference()` would let each Markdown file point to its JSON row (`proje
 - https://docs.astro.build/en/reference/modules/astro-content/#render
 - https://docs.astro.build/en/guides/content-collections/#generating-routes-from-content
 - https://docs.astro.build/en/recipes/i18n/#use-collections-for-translated-content
+
+## Update 2026-11-27: translated URL slugs
+
+The row id stays the internal key and the Markdown file name, but the URL slug may now differ per locale: an optional
+`slug: { es, en }` field on the JSON row (`src/content.config.ts`), resolved by `detailSlugs()` in `src/i18n/routes.ts`.
+First use: `plataforma-clinica` is `/en/projects/clinical-platform/` in English. Pairing (`pairDetails`) is unchanged.

@@ -30,6 +30,7 @@ test('sitemap lists only canonical indexable URLs', () => {
 	assert.ok(!urls.includes('https://juaniw.com/'), 'root redirect listed');
 	assert.ok(!urls.some((u) => u.includes('/styleguide/') || u.includes('404')), 'styleguide or 404 listed');
 	assert.ok(urls.includes('https://juaniw.com/en/') && urls.includes('https://juaniw.com/es/'));
+	assert.ok(!urls.includes('https://juaniw.com/en/projects/plataforma-clinica/'), 'old EN slug listed');
 });
 
 test('styleguide pages are noindex', () => {
@@ -79,4 +80,17 @@ test('detail titles carry the role and descriptions are 120–160 chars', () => 
 test('projects page h2 is not a copy of the h1', () => {
 	assert.match(readDist('en/projects/index.html'), />Freelance projects</);
 	assert.match(readDist('es/proyectos/index.html'), />Proyectos freelance</);
+});
+
+test('clinical detail pages cross-link the translated slugs', () => {
+	const en = readDist('en/projects/clinical-platform/index.html');
+	assert.match(en, /<link rel="canonical" href="https:\/\/juaniw\.com\/en\/projects\/clinical-platform\/"/);
+	assert.match(en, /hreflang="es" href="https:\/\/juaniw\.com\/es\/proyectos\/plataforma-clinica\/"/);
+	assert.match(readDist('es/proyectos/plataforma-clinica/index.html'), /hreflang="en" href="https:\/\/juaniw\.com\/en\/projects\/clinical-platform\/"/);
+	assert.throws(() => readDist('en/projects/plataforma-clinica/index.html'));
+	assert.match(readDist('en/index.html'), /href="\/en\/projects\/clinical-platform\/"/);
+});
+
+test('old EN clinical URL redirects permanently', () => {
+	assert.match(readDist('_redirects'), /^\/en\/projects\/plataforma-clinica\/ \/en\/projects\/clinical-platform\/ 301$/m);
 });

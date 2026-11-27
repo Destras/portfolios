@@ -28,7 +28,7 @@ They win over diseno and copy-mvp until those docs are updated (step 9).
 - Failures: none.
 
 ## Identity
-- Routes: project `/es/proyectos/{slug}/` · `/en/projects/{slug}/` (`plataforma-clinica`); experience `/es/experiencia/{slug}/` · `/en/experience/{slug}/` (`harness`, `split-io`, `mangoodev`)
+- Routes: project `/es/proyectos/{slug}/` · `/en/projects/{slug}/` (`plataforma-clinica`; EN slug `clinical-platform` since 2026-11-27, row field `slug`, 301 from the old EN URL in `public/_redirects`); experience `/es/experiencia/{slug}/` · `/en/experience/{slug}/` (`harness`, `split-io`, `mangoodev`)
 - h1: the project `name[locale]` or the experience `org` (from the JSON row)
 - Meta title: `{h1} · Juan Ignacio Werkalec` (both locales)
 - Meta description: the row `summary[locale]`

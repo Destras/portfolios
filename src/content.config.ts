@@ -24,6 +24,8 @@ const workRow = {
 	summary: localized,
 	/** Meta description of the detail page (~120–155 chars). Falls back to `summary`. */
 	metaDescription: localized.optional(),
+	/** URL slug of the detail page per locale, when it differs from the id (src/i18n/routes.ts detailSlugs). */
+	slug: localized.optional(),
 	/** Detail fact sheet (D-W5): technologies, not translated. */
 	stack: z.array(z.string().min(1)).min(1).optional(),
 };
