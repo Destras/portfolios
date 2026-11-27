@@ -41,3 +41,25 @@ test('every page links the sitemap', () => {
 	// dist/index.html is the noindex meta-refresh fallback of the `/` redirect (src/pages/index.astro), not a page.
 	for (const f of distHtmlFiles().filter((f) => f !== 'index.html')) assert.match(readDist(f), /<link rel="sitemap" href="\/sitemap-index\.xml"/, f);
 });
+
+const jsonLd = (html) => JSON.parse(html.match(/<script type="application\/ld\+json">(.+?)<\/script>/s)[1]);
+
+test('home has a ProfilePage JSON-LD and og:type profile', () => {
+	for (const l of ['es', 'en']) {
+		const html = readDist(`${l}/index.html`);
+		const ld = jsonLd(html);
+		assert.equal(ld['@type'], 'ProfilePage');
+		assert.equal(ld.mainEntity.jobTitle, 'Senior Full-Stack Engineer');
+		assert.deepEqual(ld.mainEntity.sameAs, ['https://www.linkedin.com/in/juan-ignacio-werkalec/', 'https://github.com/Destras']);
+		assert.match(html, /<meta property="og:type" content="profile"/);
+	}
+});
+
+test('detail pages have a 3-level BreadcrumbList and og:type article', () => {
+	const html = readDist('en/experience/harness/index.html');
+	const ld = jsonLd(html);
+	assert.equal(ld['@type'], 'BreadcrumbList');
+	assert.equal(ld.itemListElement.length, 3);
+	assert.equal(ld.itemListElement[2].item, 'https://juaniw.com/en/experience/harness/');
+	assert.match(html, /<meta property="og:type" content="article"/);
+});

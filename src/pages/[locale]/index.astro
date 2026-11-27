@@ -7,16 +7,26 @@ import SectionTitle from '../../components/SectionTitle.astro';
 import { getDictionary } from '../../i18n/dictionaries';
 import { localeStaticPaths } from '../../i18n/locales';
 import { localizedPath } from '../../i18n/routes';
-import { contactEmail, cvHref } from '../../data/contact';
+import { contactEmail, cvHref, knowsAbout, socialProfiles } from '../../data/contact';
+import { profilePageJsonLd } from '../../lib/structured-data';
 import { featuredRefs } from '../../data/home';
 
 export const getStaticPaths = localeStaticPaths;
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
+const jsonLd = profilePageJsonLd({
+	url: new URL(localizedPath('home', locale), Astro.site).href,
+	name: 'Juan Ignacio Werkalec',
+	jobTitle: 'Senior Full-Stack Engineer',
+	image: new URL('/og.png', Astro.site).href,
+	sameAs: socialProfiles.map((p) => p.href),
+	knowsAbout,
+	locale,
+});
 ---
 
-<Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home">
+<Layout title={t.home.meta.title} description={t.home.meta.description} routeKey="home" ogType="profile" jsonLd={jsonLd}>
 	<main id="contenido" class="page">
 		<p class="about-eyebrow">{t.home.eyebrow}</p>
 		<h1 class="about-title">{t.home.title}</h1>

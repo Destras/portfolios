@@ -10,6 +10,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SkipLink from '../components/SkipLink.astro';
 import { defaultLocale, isLocale, locales, type Locale } from '../i18n/locales';
+import { serializeJsonLd } from '../lib/structured-data';
 import { alternates, sectionPaths, type LocalePaths, type RouteKey } from '../i18n/routes';
 
 interface Props {
@@ -24,9 +25,13 @@ interface Props {
 	paths?: LocalePaths;
 	/** Keeps placeholder pages out of search results until they have content. */
 	noindex?: boolean;
+	/** Open Graph type: `profile` on the home page, `article` on work details, `website` elsewhere. */
+	ogType?: 'website' | 'profile' | 'article';
+	/** schema.org data for this page (src/lib/structured-data.ts), rendered as JSON-LD in <head>. */
+	jsonLd?: object;
 }
 
-const { title, description, routeKey, paths: subpagePaths, noindex = false } = Astro.props;
+const { title, description, routeKey, paths: subpagePaths, noindex = false, ogType = 'website', jsonLd } = Astro.props;
 const paths = subpagePaths ?? sectionPaths(routeKey);
 // The language comes from the URL prefix, never from a prop, so it can't disagree with the route.
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
@@ -65,7 +70,7 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<link rel="canonical" href={canonical} />
 		{alternates(paths, Astro.site!).map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 		<!-- Link previews (Open Graph + X). One language-neutral image for every page: social crawlers don't render SVG, so it's a PNG. -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:site_name" content="Juan Ignacio Werkalec" />
 		<meta property="og:title" content={title} />
 		{description && <meta property="og:description" content={description} />}
@@ -78,6 +83,7 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="Juan Ignacio Werkalec" />
 		<meta name="twitter:card" content="summary_large_image" />
+		{jsonLd && <script type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />}
 	</head>
 	<body>
 		<SkipLink locale={lang} />

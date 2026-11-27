@@ -2,7 +2,7 @@
 import type { Locale } from '../i18n/locales';
 import { getDictionary } from '../i18n/dictionaries';
 import { localizedPath } from '../i18n/routes';
-import { cvHref } from '../data/contact';
+import { cvHref, socialProfiles } from '../data/contact';
 
 interface Props {
 	locale: Locale;
@@ -13,8 +13,7 @@ const t = getDictionary(locale).site.footer;
 
 // External profiles open in a new tab and say so to screen readers. The CV opens in the same tab.
 const external = [
-	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/juan-ignacio-werkalec/', newTab: true },
-	{ label: 'GitHub', href: 'https://github.com/Destras', newTab: true },
+	...socialProfiles.map((p) => ({ ...p, newTab: true })),
 	{ label: t.cv, href: cvHref, newTab: false },
 ];
 
