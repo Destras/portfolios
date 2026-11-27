@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import ExperienceList, { type ExperienceItem } from './ExperienceList.astro';
 import type { Locale } from '../i18n/locales';
-import { detailPaths, type WorkKind } from '../i18n/routes';
+import { detailPaths, detailSlugs, type WorkKind } from '../i18n/routes';
 import { getWorkDetails } from '../lib/work-details';
 
 /**
@@ -49,7 +49,7 @@ const rows: ExperienceItem[] = refs.map(({ kind, id, org, summary }) => {
 		startIso: entry.startIso,
 		endIso: entry.endIso,
 		summary: summary ?? entry.summary[locale],
-		href: withDetail[kind].has(id) ? detailPaths(kind, id)[locale] : undefined,
+		href: withDetail[kind].has(id) ? detailPaths(kind, detailSlugs(id, entry.slug))[locale] : undefined,
 	};
 });
 ---

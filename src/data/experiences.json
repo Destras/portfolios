@@ -20,6 +20,10 @@
 			"es": "Construí la UI para configurar agentes de IA y LLMs en tiempo real: ayudó a cerrar la brecha con LaunchDarkly en un producto con 500+ clientes.",
 			"en": "Built the UI to configure AI agents and LLMs in real time: it helped close the gap with LaunchDarkly in a product with 500+ customers."
 		},
+		"metaDescription": {
+			"es": "Senior Frontend Engineer en Harness: único ingeniero de UI y BFF en Configs y AI Configs, configuración en tiempo real para agentes de IA y LLMs.",
+			"en": "Senior Frontend Engineer at Harness: sole UI and BFF engineer on Configs and AI Configs, real-time configuration for AI agents and LLMs."
+		},
 		"stack": ["React", "TypeScript", "GraphQL", "Node.js"]
 	},
 	{
@@ -43,6 +47,10 @@
 			"es": "Frontend de feature flags para 500+ clientes: segmentación avanzada para enterprise, archivado de flags para JPMorgan.",
 			"en": "Feature flag frontend for 500+ customers: advanced segmentation for enterprise and flag archiving for JPMorgan."
 		},
+		"metaDescription": {
+			"es": "Frontend Engineer en Split.io: bajé la carga de la pantalla de feature flags de 3–6 s a ~1 s y armé ~20 componentes compartidos usados por 3 equipos.",
+			"en": "Frontend Engineer at Split.io: cut the feature flag landing screen from 3–6 s to ~1 s and built ~20 shared components adopted by 3 teams."
+		},
 		"stack": ["React", "React Query", "GraphQL"]
 	},
 	{
@@ -65,6 +73,10 @@
 		"summary": {
 			"es": "Sistema de compliance de proveedores para una farmacéutica multinacional. Creé el design system del equipo.",
 			"en": "Supplier compliance system for a multinational pharma company. Built the team's design system."
+		},
+		"metaDescription": {
+			"es": "Full-Stack Developer en MangooDev: sistema de compliance de proveedores para una farmacéutica multinacional y el design system de un equipo de 6.",
+			"en": "Full-Stack Developer at MangooDev: a supplier compliance system for a multinational pharma company, plus the design system for a team of 6."
 		},
 		"stack": ["TBD"]
 	}

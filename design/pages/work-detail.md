@@ -12,7 +12,7 @@ They win over diseno and copy-mvp until those docs are updated (step 9).
 | D-W3 | **Experience detail route `/es/experiencia/{slug}/` · `/en/experience/{slug}/`.** No `/experiencia/` index: that URL is a 404 | copy-mvp §2 (experiences under `/proyectos/{slug}`) |
 | D-W4 | **The slug is the JSON row `id`**, identical in both locales. Only the section segment is translated | — |
 | D-W5 | **Fact-sheet data in the JSON:** `stack` (`string[]`, not translated), `status` and `stakeholders` (`localized`), all optional. Duration is derived from `start`/`end` | — |
-| D-W6 | **The body is free Markdown** with `##` headings written in the file. Projects: Contexto · Restricciones · Valor (EN Context · Constraints · Value). Experiences: Contexto / Context only | copy-mvp §4.10 (Restricciones and Valor for every detail) |
+| D-W6 | **The body is free Markdown** with `##` headings written in the file. Projects: Contexto · Restricciones · Valor (EN Context · Constraints · Value). Experiences: Contexto / Context, optionally followed by Proyectos destacados · Otras contribuciones (EN Highlighted projects · Other contributions), with one `###` per project (see D-W15) | copy-mvp §4.10 (Restricciones and Valor for every detail) |
 | D-W7 | **No visual.** No `visual` field, no `Media` component | copy-mvp §4.10 ("visual opcional") |
 | D-W8 | **All four rows get a body:** `plataforma-clinica`, `harness`, `split-io`, `mangoodev`. Draft ES/EN copy written by Claude from `fase3/datos.md`; any missing fact is the literal `TBD` | diseno §2 ("ninguna página de la fase 2 se publica sin su copy") |
 | D-W9 | **A row may have no body.** It stays static (no link, no arrow) | — |
@@ -21,6 +21,7 @@ They win over diseno and copy-mvp until those docs are updated (step 9).
 | D-W12 | **`TBD` renders literally.** Every `TBD` is listed in `TODO.md`. No `noindex`, no draft flag | — |
 | D-W13 | **Fact sheet.** Project: Rol · Duración · Stack · Estado · Stakeholders. Experience: Rol · Duración · Stack. Absent fields are skipped. New `FactSheet` (diseno §8.11), 3 columns on desktop | diseno §8.11 ("rol, duración o contexto, stack y estado") |
 | D-W14 | **Meta, navigation and links.** `<title>` = `{name or org} · Juan Ignacio Werkalec`; description = the row summary. Back link "← Proyectos" / "← Projects" above the h1 (to `/proyectos/` or `/proyectos/#experience-title`). The language switch goes to the same detail. The nav marks Proyectos with `aria-current="true"`. No closing links to projects or case studies yet | copy-mvp §4.10 ("Las experiencias cierran con links a sus proyectos y casos") |
+| D-W15 | **`###` is a project subtitle inside a body section (2026-11-27).** Spacing: h3 `margin-top: --space-8` and `margin-bottom: --space-2` (h2 keeps `--space-10` / `--space-2`, blocks inside a project `--space-4`). Whatever directly follows an `h2` or `h3` gets `margin-top: 0`, so a heading's own margin-bottom sets the gap and `##` → `###` doesn't collapse into a 2rem hole. Same approach as Tailwind Typography (`h2 + *`) and GitHub markdown (more space above a heading than below) | D-W6 (body used `##` only) |
 
 ## Step 0
 - Hard: i18n + `npm run check` ✅ (0 errors on 2026-11-25, before changes) · shared components ✅ (`SkipLink`, `SiteHeader`, `SiteNav`, `LangSwitch`, `SiteFooter`) · `[locale]` routing ✅ (`src/pages/[locale]/[section].astro`)
@@ -28,7 +29,7 @@ They win over diseno and copy-mvp until those docs are updated (step 9).
 - Failures: none.
 
 ## Identity
-- Routes: project `/es/proyectos/{slug}/` · `/en/projects/{slug}/` (`plataforma-clinica`); experience `/es/experiencia/{slug}/` · `/en/experience/{slug}/` (`harness`, `split-io`, `mangoodev`)
+- Routes: project `/es/proyectos/{slug}/` · `/en/projects/{slug}/` (`plataforma-clinica`; EN slug `clinical-platform` since 2026-11-27, row field `slug`, 301 from the old EN URL in `public/_redirects`); experience `/es/experiencia/{slug}/` · `/en/experience/{slug}/` (`harness`, `split-io`, `mangoodev`)
 - h1: the project `name[locale]` or the experience `org` (from the JSON row)
 - Meta title: `{h1} · Juan Ignacio Werkalec` (both locales)
 - Meta description: the row `summary[locale]`

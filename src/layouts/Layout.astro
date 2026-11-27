@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets';
+import { themeBootstrap } from '../scripts/themeBootstrap';
 import '../styles/themes/salvia.css';
 import '../styles/themes/brasa.css';
 import '../styles/modes.css';
@@ -10,6 +11,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SkipLink from '../components/SkipLink.astro';
 import { defaultLocale, isLocale, locales, type Locale } from '../i18n/locales';
+import { serializeJsonLd } from '../lib/structured-data';
 import { alternates, sectionPaths, type LocalePaths, type RouteKey } from '../i18n/routes';
 
 interface Props {
@@ -24,9 +26,13 @@ interface Props {
 	paths?: LocalePaths;
 	/** Keeps placeholder pages out of search results until they have content. */
 	noindex?: boolean;
+	/** Open Graph type: `profile` on the home page, `article` on work details, `website` elsewhere. */
+	ogType?: 'website' | 'profile' | 'article';
+	/** schema.org data for this page (src/lib/structured-data.ts), rendered as JSON-LD in <head>. */
+	jsonLd?: object;
 }
 
-const { title, description, routeKey, paths: subpagePaths, noindex = false } = Astro.props;
+const { title, description, routeKey, paths: subpagePaths, noindex = false, ogType = 'website', jsonLd } = Astro.props;
 const paths = subpagePaths ?? sectionPaths(routeKey);
 // The language comes from the URL prefix, never from a prop, so it can't disagree with the route.
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
@@ -43,20 +49,13 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<meta name="viewport" content="width=device-width" />
 		<Font cssVariable="--font-sans" preload />
 		<Font cssVariable="--font-mono" preload />
-		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
-		<script is:inline>
-			try {
-				const root = document.documentElement;
-				const theme = localStorage.getItem('theme');
-				const mode = localStorage.getItem('mode');
-				if (['salvia', 'brasa'].includes(theme)) root.dataset.theme = theme;
-				if (['light', 'dark'].includes(mode)) root.dataset.mode = mode;
-			} catch {}
-		</script>
+		<!-- Applies the stored theme and mode before first paint (src/scripts/themeBootstrap.ts). -->
+		<script is:inline set:html={themeBootstrap} />
 		<link rel="icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/manifest.webmanifest" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
@@ -64,7 +63,7 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<link rel="canonical" href={canonical} />
 		{alternates(paths, Astro.site!).map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 		<!-- Link previews (Open Graph + X). One language-neutral image for every page: social crawlers don't render SVG, so it's a PNG. -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:site_name" content="Juan Ignacio Werkalec" />
 		<meta property="og:title" content={title} />
 		{description && <meta property="og:description" content={description} />}
@@ -77,6 +76,7 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="Juan Ignacio Werkalec" />
 		<meta name="twitter:card" content="summary_large_image" />
+		{jsonLd && <script type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />}
 	</head>
 	<body>
 		<SkipLink locale={lang} />

@@ -25,10 +25,10 @@ export const es: Dictionary = {
 	projects: {
 		meta: {
 			title: 'Proyectos · Juan Ignacio Werkalec',
-			description: 'Experiencia y proyectos de Juan Ignacio Werkalec, Senior Full-Stack Engineer.',
+			description: 'Proyectos y experiencia de Juan Ignacio Werkalec, ingeniero full-stack senior: una plataforma clínica freelance y roles en Harness, Split.io y MangooDev.',
 		},
 		title: 'Proyectos',
-		projectsHeading: 'Proyectos',
+		projectsHeading: 'Proyectos freelance',
 		experienceHeading: 'Experiencia',
 	},
 	notFound: {
@@ -50,16 +50,17 @@ export const es: Dictionary = {
 	},
 	home: {
 		meta: {
-			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
-			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
+			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer, UI-first',
+			description: 'Ingeniero full-stack senior, foco en UI, en Rosario y remoto. Llevo features ambiguas de la idea a producción con TypeScript, React y Next.js.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
-		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
+		title: 'Ingeniero full-stack senior, foco en UI. Llevo features ambiguas de la idea a producción.',
 		lead: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
 		actions: {
 			email: 'Escribime',
 			cv: 'Ver CV',
 		},
+		availability: 'Abierto a roles senior frontend / full-stack — remoto.',
 		facts: [
 			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
 			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
@@ -166,7 +167,7 @@ export const es: Dictionary = {
 			{ layer: 'Tipografía', tech: 'Atkinson Hyperlegible Next y Commit Mono', why: 'Una para leer cómodo y otra como acento técnico. Las dos se sirven desde este sitio.' },
 			{ layer: 'Diseño', tech: 'Claude Design', why: 'Los wireframes y la primera versión visual. Las decisiones finales las tomé yo.' },
 			{ layer: 'Implementación', tech: 'Claude Code', why: 'Escribe el código desde specs y planes; yo decido y reviso cada sección.' },
-			{ layer: 'Deploy', tech: 'Netlify', why: 'Lo recomienda Astro: un sitio estático sale sin configuración extra.' },
+			{ layer: 'Deploy', tech: 'Cloudflare Workers', why: 'Archivos estáticos servidos desde el edge; un Worker mínimo solo elige el idioma en /.' },
 		],
 		styleguide: { before: '¿Cómo se ve cada pieza? Está en la ', link: 'guía de estilos', after: '.' },
 		source: { before: 'El código está en ', link: 'GitHub', after: '.' },

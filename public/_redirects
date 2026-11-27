@@ -1,0 +1,4 @@
+# Cloudflare Workers static assets redirects (copied to dist/). Old URLs that may already be linked or indexed.
+/en/projects/plataforma-clinica/ /en/projects/clinical-platform/ 301
+/en/projects/plataforma-clinica /en/projects/clinical-platform/ 301
+/cv-en.pdf /juan-ignacio-werkalec-fullstack-engineer-en.pdf 301

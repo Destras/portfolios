@@ -25,10 +25,10 @@ export const en: Dictionary = {
 	projects: {
 		meta: {
 			title: 'Projects · Juan Ignacio Werkalec',
-			description: 'Experience and projects of Juan Ignacio Werkalec, Senior Full-Stack Engineer.',
+			description: 'Projects and experience of Juan Ignacio Werkalec, senior full-stack engineer: a freelance clinical platform and roles at Harness, Split.io and MangooDev.',
 		},
 		title: 'Projects',
-		projectsHeading: 'Projects',
+		projectsHeading: 'Freelance projects',
 		experienceHeading: 'Experience',
 	},
 	notFound: {
@@ -50,16 +50,17 @@ export const en: Dictionary = {
 	},
 	home: {
 		meta: {
-			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
-			description: "Senior full-stack engineer, UI-focused. Give me the ambiguous stuff; I'll ship it.",
+			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer, UI-first',
+			description: 'Senior full-stack engineer, UI-first, in Rosario and remote. I take ambiguous features from idea to production with TypeScript, React and Next.js.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, and remote',
-		title: 'Full-stack web engineer with 6 years building digital products and web applications.',
+		title: 'Senior full-stack engineer, UI-first. I take ambiguous features from idea to production.',
 		lead: 'I enjoy taking ambiguous features and shipping them to production, sweating the details that separate good from great.',
 		actions: {
 			email: 'Email me',
 			cv: 'View CV',
 		},
+		availability: 'Open to senior frontend / full-stack roles — remote.',
 		facts: [
 			{ label: 'Focus', value: 'Web applications, design systems, end-to-end products' },
 			{ label: 'Tools', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },
@@ -163,7 +164,7 @@ export const en: Dictionary = {
 			{ layer: 'Typography', tech: 'Atkinson Hyperlegible Next and Commit Mono', why: 'One for easy reading and one as a technical accent. Both are served from this site.' },
 			{ layer: 'Design', tech: 'Claude Design', why: 'The wireframes and the first visual pass. The final calls were mine.' },
 			{ layer: 'Build', tech: 'Claude Code', why: 'It writes the code from specs and plans; I decide and review every section.' },
-			{ layer: 'Deploy', tech: 'Netlify', why: 'Astro recommends it: a static site ships with no extra setup.' },
+			{ layer: 'Deploy', tech: 'Cloudflare Workers', why: 'Static files served from the edge; a tiny Worker only picks the language on /.' },
 		],
 		styleguide: { before: "Want to see each piece? It's in the ", link: 'styleguide', after: '.' },
 		source: { before: 'The code is on ', link: 'GitHub', after: '.' },

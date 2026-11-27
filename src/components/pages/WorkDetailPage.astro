@@ -68,6 +68,12 @@ const { Content } = await render(detail.entries[locale]);
 		margin-top: 0;
 	}
 
+	/* D-W15: a ### is a project subtitle inside a section; less space above than h2, same below. */
+	.work-detail__body :global(h3) {
+		margin-top: var(--space-8);
+		margin-bottom: var(--space-2);
+	}
+
 	.work-detail__body :global(p) {
 		text-wrap: pretty;
 	}
@@ -83,5 +89,10 @@ const { Content } = await render(detail.entries[locale]);
 		gap: var(--space-2);
 		padding-inline-start: var(--space-5);
 		list-style: disc;
+	}
+
+	/* D-W15: whatever follows a heading uses only the heading's margin-bottom (no collapse-dependent gaps). Keep last: it must beat the ul rule. */
+	.work-detail__body :global(:is(h2, h3) + *) {
+		margin-top: 0;
 	}
 </style>

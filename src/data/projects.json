@@ -1,6 +1,7 @@
 [
 	{
 		"id": "plataforma-clinica",
+		"slug": { "es": "plataforma-clinica", "en": "clinical-platform" },
 		"name": { "es": "Plataforma de seguimiento clínico", "en": "Clinical follow-up platform" },
 		"role": { "es": "Full-Stack Engineer y Technical Lead", "en": "Full-Stack Engineer and Technical Lead" },
 		"start": { "es": "abr 2026", "en": "Apr 2026" },
@@ -10,6 +11,10 @@
 		"summary": {
 			"es": "Web para terapeutas y app para pacientes, en producción.",
 			"en": "Web console for therapists and a patient app, in production."
+		},
+		"metaDescription": {
+			"es": "Plataforma clínica freelance: consola web en Next.js para terapeutas y app React Native para pacientes, en producción a los ~6 meses.",
+			"en": "Freelance build of a clinical platform: Next.js web console for therapists and a React Native patient app, in production after ~6 months."
 		},
 		"stack": ["Next.js", "React", "TypeScript", "Supabase", "Expo / React Native", "Jest", "Playwright"],
 		"status": { "es": "En producción desde oct 2026", "en": "In production since Oct 2026" },

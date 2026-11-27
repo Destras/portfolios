@@ -1,4 +1,14 @@
-# Cloudflare Workers static assets (copied to dist/).
+# Cloudflare Workers static assets headers (copied to dist/).
+# They apply to static files only, not to the Worker's `/` redirect response (src/worker.ts).
+
+# Security headers on every page and file. The CSP itself is a <meta> per page (security.csp in astro.config.mjs).
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+
 # Files under /_astro/ carry a content hash in their name, so they never change and can be cached for a year.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

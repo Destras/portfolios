@@ -3,7 +3,10 @@ import type { GetStaticPaths } from 'astro';
 import Layout from '../../../layouts/Layout.astro';
 import WorkDetailPage from '../../../components/pages/WorkDetailPage.astro';
 import { locales } from '../../../i18n/locales';
-import { detailBases, detailPaths, type WorkKind } from '../../../i18n/routes';
+import { getDictionary } from '../../../i18n/dictionaries';
+import { detailBases, detailPaths, detailSlugs, localizedPath, type WorkKind } from '../../../i18n/routes';
+import { breadcrumbJsonLd } from '../../../lib/structured-data';
+import { detailTitle } from '../../../lib/page-meta';
 import { getWorkDetails } from '../../../lib/work-details';
 
 // One route per (kind × detail × locale): /es/proyectos/{slug}/, /en/experience/{slug}/, …
@@ -13,7 +16,11 @@ export const getStaticPaths = (async () => {
 	const details = (await Promise.all(kinds.map((kind) => getWorkDetails(kind)))).flat();
 	return details.flatMap((detail) =>
 		locales.map((locale) => ({
-			params: { locale, section: detailBases[detail.kind][locale], slug: detail.slug },
+			params: {
+				locale,
+				section: detailBases[detail.kind][locale],
+				slug: detailSlugs(detail.slug, detail.row.data.slug)[locale],
+			},
 			props: { locale, detail },
 		})),
 	);
@@ -22,13 +29,23 @@ export const getStaticPaths = (async () => {
 const { locale, detail } = Astro.props;
 const { data } = detail.row;
 const title = 'name' in data ? data.name[locale] : data.org;
+const paths = detailPaths(detail.kind, detailSlugs(detail.slug, data.slug));
+const t = getDictionary(locale);
+const abs = (path: string) => new URL(path, Astro.site).href;
+const jsonLd = breadcrumbJsonLd([
+	{ name: t.notFound.home, url: abs(localizedPath('home', locale)) },
+	{ name: t.projects.title, url: abs(localizedPath('projects', locale)) },
+	{ name: title, url: abs(paths[locale]) },
+]);
 ---
 
 <Layout
-	title={`${title} · Juan Ignacio Werkalec`}
-	description={data.summary[locale]}
+	title={detailTitle({ name: title, role: 'org' in data ? data.role[locale] : undefined })}
+	description={data.metaDescription?.[locale] ?? data.summary[locale]}
 	routeKey="projects"
-	paths={detailPaths(detail.kind, detail.slug)}
+	paths={paths}
+	ogType="article"
+	jsonLd={jsonLd}
 >
 	<WorkDetailPage locale={locale} detail={detail} />
 </Layout>
