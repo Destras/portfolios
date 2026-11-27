@@ -164,7 +164,7 @@ export const en: Dictionary = {
 			{ layer: 'Typography', tech: 'Atkinson Hyperlegible Next and Commit Mono', why: 'One for easy reading and one as a technical accent. Both are served from this site.' },
 			{ layer: 'Design', tech: 'Claude Design', why: 'The wireframes and the first visual pass. The final calls were mine.' },
 			{ layer: 'Build', tech: 'Claude Code', why: 'It writes the code from specs and plans; I decide and review every section.' },
-			{ layer: 'Deploy', tech: 'Netlify', why: 'Astro recommends it: a static site ships with no extra setup.' },
+			{ layer: 'Deploy', tech: 'Cloudflare Workers', why: 'Static files served from the edge; a tiny Worker only picks the language on /.' },
 		],
 		styleguide: { before: "Want to see each piece? It's in the ", link: 'styleguide', after: '.' },
 		source: { before: 'The code is on ', link: 'GitHub', after: '.' },

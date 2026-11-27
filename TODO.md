@@ -20,12 +20,16 @@
 - [ ] Add "Casos de estudio" / "Case studies" to the header nav and the route map once its pages exist.
 - [ ] Sync home "Trabajo destacado" with the `experiences`/`projects` content collections (`src/content.config.ts`). Home still reads `home.work.items` + `src/data/home.ts`, so the Harness and Split.io text is duplicated until then.
 - [x] 404 page (EN only, design/pages/404.md).
-- [ ] Sitemap and robots (6 MVP URLs).
+- [x] Sitemap and robots (2026-11-27: `src/pages/robots.txt.ts`, sitemap `filter` from `src/i18n/routeMap.ts`).
 - [x] OG image (`og:image`, the link-preview card on LinkedIn/Slack/WhatsApp). Decided 2026-11-25: one language-neutral `public/og.png` (1200×630, JW mark + name, no role or tagline) for every page, instead of `og-es.png`/`og-en.png` per copy-mvp §4.9. `Layout.astro` emits the `og:*` and `twitter:card` tags.
 - [ ] Custom domain: add the `juaniw.com` zone to Cloudflare, then add `"routes": [{ "pattern": "juaniw.com", "custom_domain": true }]` to `wrangler.jsonc`, and redirect `www.juaniw.com` → `juaniw.com` with a Redirect Rule.
 
 
 ## Detail copy TBDs (draft 2026-11-25, design/pages/work-detail.md)
+
+The owner answers these in `docs/handoffs/2026-11-27-owner-input-and-ops.md` §A (questions there); the TBDs stay published until then.
+
+- [ ] TBD build guard: once the TBDs below are gone, add an `astro:build:done` integration that fails the build if `dist/**/*.html` contains `TBD` (handoff §A.5).
 
 - [ ] src/data/projects.json: `plataforma-clinica` → `stakeholders` (es, en)
 - [ ] src/data/experiences.json: `mangoodev` → `stack`

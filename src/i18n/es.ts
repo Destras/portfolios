@@ -167,7 +167,7 @@ export const es: Dictionary = {
 			{ layer: 'Tipografía', tech: 'Atkinson Hyperlegible Next y Commit Mono', why: 'Una para leer cómodo y otra como acento técnico. Las dos se sirven desde este sitio.' },
 			{ layer: 'Diseño', tech: 'Claude Design', why: 'Los wireframes y la primera versión visual. Las decisiones finales las tomé yo.' },
 			{ layer: 'Implementación', tech: 'Claude Code', why: 'Escribe el código desde specs y planes; yo decido y reviso cada sección.' },
-			{ layer: 'Deploy', tech: 'Netlify', why: 'Lo recomienda Astro: un sitio estático sale sin configuración extra.' },
+			{ layer: 'Deploy', tech: 'Cloudflare Workers', why: 'Archivos estáticos servidos desde el edge; un Worker mínimo solo elige el idioma en /.' },
 		],
 		styleguide: { before: '¿Cómo se ve cada pieza? Está en la ', link: 'guía de estilos', after: '.' },
 		source: { before: 'El código está en ', link: 'GitHub', after: '.' },

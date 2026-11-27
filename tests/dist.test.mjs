@@ -142,3 +142,11 @@ test('_headers sets the security headers on every path', () => {
 		assert.ok(h.includes(line), line);
 	assert.match(h, /^\/\*$/m);
 });
+
+test('colophon names the real host', () => {
+	for (const p of ['en/colophon/index.html', 'es/colofon/index.html']) {
+		const html = readDist(p);
+		assert.ok(!html.includes('Netlify'), p);
+		assert.ok(html.includes('Cloudflare Workers'), p);
+	}
+});

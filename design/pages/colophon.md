@@ -10,7 +10,7 @@
 | D-C2 | Structure: PageTitle with a lead → DataTable (Capa · Tecnología · Por qué) → a closing line with links to the styleguide and to the source on GitHub | Wireframe `colofon` (h1 + table only) |
 | D-C3 | 8 rows: Framework, Tipos, Idiomas, Estilos, Tipografía, Diseño, Implementación, Deploy | Wireframe (5 placeholder rows) |
 | D-C4 | No version numbers ("Astro", not "Astro 7") so the page doesn't go stale | — |
-| D-C5 | Why Netlify: Astro recommends it (the Astro deploy guide: a static site needs no extra configuration) | — |
+| D-C5 | ~~Why Netlify~~ Superseded 2026-11-27: the site deploys on **Cloudflare Workers** static assets (`wrangler.jsonc`). Row copy: "Static files served from the edge; a tiny Worker only picks the language on /." | audit 2026-11-27 |
 | D-C6 | AI rows follow the Uses line ("the AI speeds things up; the judgment is still mine"). Skills are not named (they're in Uses) | — |
 | D-C7 | Meta title "Colofón · Juan Ignacio Werkalec" / "Colophon · Juan Ignacio Werkalec"; description = the lead; no `noindex` | — |
 
@@ -110,7 +110,7 @@
 - [ ] **Owner review of the draft copy** (copy-mvp §4.10, "pending owner review").
 - [ ] **DEVIATION:** `.colophon-more` (the closing line) isn't in the wireframe or §8. It's a plain paragraph with global links, `margin-top: var(--space-8)`. Propose adding it to diseno §9 when the colophon section is written.
 - [ ] **diseno §9:** add a "Colofón" section (h1, meta, PageTitle with lead → DataTable of 8 rows → closing line) once the owner approves. §8.12 "Dónde se usa" → "Uses y Colofón".
-- [ ] **Netlify config isn't in the repo** (no `netlify.toml`). The build settings live in the Netlify dashboard. Optional: add `netlify.toml` (`npm run build`, `dist`) so the repo documents them.
+- [x] ~~Netlify config isn't in the repo~~ Obsolete 2026-11-27: hosting is Cloudflare Workers, configured in `wrangler.jsonc`.
 
 ## Verification (step 8)
 - check + build: `astro check` 0 errors, 0 warnings, 0 hints; build 15 pages, complete.
