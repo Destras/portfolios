@@ -33,7 +33,7 @@ Plan: `docs/superpowers/plans/2026-11-25-clickable-featured-work.md`.
 | D-PR3 | EN copy translated by Claude from the ES copy, pending owner review | MISSING COPY (no EN anywhere) |
 | D-PR4 | Ships production-ready: no `noindex`, even with `TBD` strings | diseno §2 "fase 2" |
 | D-PR5 | Header mode toggle out of scope (open TODO item) | Design header |
-| D-PR6 | "Escribime" → `mailto:juan.werkalec+contactame@gmail.com`. "Ver CV" → `/cv-en.pdf`, same tab, both locales; `↗` decorative | — |
+| D-PR6 | "Escribime" → `mailto:juan.werkalec+contactame@gmail.com`. "Ver CV" → `/juan-ignacio-werkalec-fullstack-engineer-en.pdf` (renamed 2026-11-27; `/cv-en.pdf` 301s there), same tab, both locales; `↗` decorative | — |
 | D-PR7 | New shared `ButtonLink.astro`; `SectionTitle` gets a `strong` variant; fact list is page-scoped `<dl>`; h1 copies the Hero h1 tokens | Not in diseno §8 |
 | D-PR8 | One new token `--radius-full: 999px`; every other value maps to an existing token | Design's `999px`, `--leading-block`, `--space-11/12` |
 

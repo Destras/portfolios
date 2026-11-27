@@ -35,6 +35,7 @@ const jsonLd = profilePageJsonLd({
 			<ButtonLink href={`mailto:${contactEmail}`} variant="primary">{t.home.actions.email}</ButtonLink>
 			<ButtonLink href={cvHref} variant="secondary" arrow>{t.home.actions.cv}</ButtonLink>
 		</div>
+		<p class="about-availability">{t.home.availability}</p>
 		<dl class="fact-list">
 			{
 				t.home.facts.map((fact) => (
@@ -91,6 +92,14 @@ const jsonLd = profilePageJsonLd({
 		flex-wrap: wrap;
 		gap: var(--space-3);
 		margin-top: var(--space-8);
+	}
+
+	.about-availability {
+		margin-top: var(--space-4);
+		font-family: var(--font-accent);
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
+		color: var(--color-text-muted);
 	}
 
 	.fact-list {

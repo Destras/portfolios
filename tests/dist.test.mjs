@@ -94,3 +94,21 @@ test('clinical detail pages cross-link the translated slugs', () => {
 test('old EN clinical URL redirects permanently', () => {
 	assert.match(readDist('_redirects'), /^\/en\/projects\/plataforma-clinica\/ \/en\/projects\/clinical-platform\/ 301$/m);
 });
+
+test('home uses one positioning label and shows availability', () => {
+	const en = readDist('en/index.html');
+	assert.match(en, /<title>Juan Ignacio Werkalec · Senior Full-Stack Engineer, UI-first<\/title>/);
+	assert.match(en, /<h1[^>]*>Senior full-stack engineer, UI-first\. I take ambiguous features from idea to production\.<\/h1>/);
+	assert.match(en, /Open to senior frontend \/ full-stack roles — remote\./);
+	const es = readDist('es/index.html');
+	assert.match(es, /<title>Juan Ignacio Werkalec · Senior Full-Stack Engineer, UI-first<\/title>/);
+	assert.match(es, /<h1[^>]*>Ingeniero full-stack senior, foco en UI\. Llevo features ambiguas de la idea a producción\.<\/h1>/);
+	assert.match(es, /Abierto a roles senior frontend \/ full-stack — remoto\./);
+});
+
+test('CV is served under its new name, old URL redirects', () => {
+	readDist('juan-ignacio-werkalec-fullstack-engineer-en.pdf');
+	assert.throws(() => readDist('cv-en.pdf'));
+	assert.match(readDist('_redirects'), /^\/cv-en\.pdf \/juan-ignacio-werkalec-fullstack-engineer-en\.pdf 301$/m);
+	for (const f of distHtmlFiles()) assert.ok(!readDist(f).includes('/cv-en.pdf'), f);
+});

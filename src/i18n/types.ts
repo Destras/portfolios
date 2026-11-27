@@ -135,6 +135,8 @@ export interface Dictionary {
 			email: string;
 			cv: string;
 		};
+		/** Availability line under the actions (audit 2026-11-27, item 4). */
+		availability: string;
 		/** Same order in both locales. The tuple length keeps ES and EN in step. */
 		facts: readonly [Fact, Fact, Fact];
 		work: {

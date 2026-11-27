@@ -50,16 +50,17 @@ export const es: Dictionary = {
 	},
 	home: {
 		meta: {
-			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer',
-			description: 'Fullstack senior, foco en UI. Me dan lo ambiguo; lo entrego en producción.',
+			title: 'Juan Ignacio Werkalec · Senior Full-Stack Engineer, UI-first',
+			description: 'Ingeniero full-stack senior, foco en UI, en Rosario y remoto. Llevo features ambiguas de la idea a producción con TypeScript, React y Next.js.',
 		},
 		eyebrow: 'Juan Ignacio Werkalec — Rosario, y remoto',
-		title: 'Ingeniero web fullstack con 6 años construyendo productos digitales y aplicaciones web.',
+		title: 'Ingeniero full-stack senior, foco en UI. Llevo features ambiguas de la idea a producción.',
 		lead: 'Disfruto tomar features ambiguas y llevarlas a producción cuidando los detalles que separan lo bueno de lo excelente.',
 		actions: {
 			email: 'Escribime',
 			cv: 'Ver CV',
 		},
+		availability: 'Abierto a roles senior frontend / full-stack — remoto.',
 		facts: [
 			{ label: 'Foco', value: 'Aplicaciones web, design systems, productos de punta a punta' },
 			{ label: 'Herramientas', value: 'TypeScript, React, Next.js, Node.js, GraphQL, Supabase' },

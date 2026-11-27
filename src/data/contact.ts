@@ -1,8 +1,8 @@
 /** Contact facts shared by the footer and the home page. Not prose, so they stay out of the dictionary. */
 export const contactEmail = 'juan.werkalec+contactame@gmail.com';
 
-/** Both locales link the EN CV until an ES one exists. */
-export const cvHref = '/cv-en.pdf';
+/** Both locales link the EN CV (owner decision 2026-11-27). The old /cv-en.pdf 301s here (public/_redirects). */
+export const cvHref = '/juan-ignacio-werkalec-fullstack-engineer-en.pdf';
 
 /** External profiles: footer links and the JSON-LD `sameAs` of the home page. */
 export const socialProfiles = [
