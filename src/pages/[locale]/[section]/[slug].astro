@@ -6,6 +6,7 @@ import { locales } from '../../../i18n/locales';
 import { getDictionary } from '../../../i18n/dictionaries';
 import { detailBases, detailPaths, localizedPath, type WorkKind } from '../../../i18n/routes';
 import { breadcrumbJsonLd } from '../../../lib/structured-data';
+import { detailTitle } from '../../../lib/page-meta';
 import { getWorkDetails } from '../../../lib/work-details';
 
 // One route per (kind × detail × locale): /es/proyectos/{slug}/, /en/experience/{slug}/, …
@@ -35,8 +36,8 @@ const jsonLd = breadcrumbJsonLd([
 ---
 
 <Layout
-	title={`${title} · Juan Ignacio Werkalec`}
-	description={data.summary[locale]}
+	title={detailTitle({ name: title, role: 'org' in data ? data.role[locale] : undefined })}
+	description={data.metaDescription?.[locale] ?? data.summary[locale]}
 	routeKey="projects"
 	paths={paths}
 	ogType="article"

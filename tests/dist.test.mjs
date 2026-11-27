@@ -63,3 +63,20 @@ test('detail pages have a 3-level BreadcrumbList and og:type article', () => {
 	assert.equal(ld.itemListElement[2].item, 'https://juaniw.com/en/experience/harness/');
 	assert.match(html, /<meta property="og:type" content="article"/);
 });
+
+const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+
+test('detail titles carry the role and descriptions are 120–160 chars', () => {
+	assert.match(readDist('en/experience/harness/index.html'), /<title>Harness — Senior Frontend Engineer · Juan Ignacio Werkalec<\/title>/);
+	const details = distHtmlFiles().filter((f) => /\/(experiencia|experience|proyectos|projects)\/.+\//.test(f));
+	assert.ok(details.length >= 8, `found ${details.length} detail pages`);
+	for (const f of details) {
+		const d = decode(readDist(f).match(/<meta name="description" content="([^"]+)"/)[1]);
+		assert.ok(d.length >= 120 && d.length <= 160, `${f}: ${d.length}`);
+	}
+});
+
+test('projects page h2 is not a copy of the h1', () => {
+	assert.match(readDist('en/projects/index.html'), />Freelance projects</);
+	assert.match(readDist('es/proyectos/index.html'), />Proyectos freelance</);
+});

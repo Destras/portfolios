@@ -25,10 +25,10 @@ export const es: Dictionary = {
 	projects: {
 		meta: {
 			title: 'Proyectos · Juan Ignacio Werkalec',
-			description: 'Experiencia y proyectos de Juan Ignacio Werkalec, Senior Full-Stack Engineer.',
+			description: 'Proyectos y experiencia de Juan Ignacio Werkalec, ingeniero full-stack senior: una plataforma clínica freelance y roles en Harness, Split.io y MangooDev.',
 		},
 		title: 'Proyectos',
-		projectsHeading: 'Proyectos',
+		projectsHeading: 'Proyectos freelance',
 		experienceHeading: 'Experiencia',
 	},
 	notFound: {

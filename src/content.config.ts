@@ -22,6 +22,8 @@ const workRow = {
 	/** null when the work is ongoing: the end is text, not a date. */
 	endIso: month.nullable(),
 	summary: localized,
+	/** Meta description of the detail page (~120–155 chars). Falls back to `summary`. */
+	metaDescription: localized.optional(),
 	/** Detail fact sheet (D-W5): technologies, not translated. */
 	stack: z.array(z.string().min(1)).min(1).optional(),
 };

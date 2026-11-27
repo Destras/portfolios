@@ -83,7 +83,7 @@ No DEVIATION.
 | Meta title | `projects.meta.title` | Proyectos · Juan Ignacio Werkalec | Projects · Juan Ignacio Werkalec | diseno §9.2/§9.3 pattern (move to copy-mvp) |
 | Meta description | `projects.meta.description` | Experiencia y proyectos de Juan Ignacio Werkalec, Senior Full-Stack Engineer. | Experience and projects of Juan Ignacio Werkalec, Senior Full-Stack Engineer. | Owner, D-P7 (move to copy-mvp) |
 | h1 | `projects.title` | Proyectos | Projects | diseno §2 |
-| h2 projects | `projects.projectsHeading` | Proyectos | Projects | diseno §14.4 |
+| h2 projects | `projects.projectsHeading` | Proyectos freelance | Freelance projects | diseno §14.4 |
 | h2 experience | `projects.experienceHeading` | Experiencia | Experience | diseno §14.4 |
 | Project row | `src/data/projects.json` → `plataforma-clinica` | abr 2026 – actualidad · Plataforma de seguimiento clínico · Full-Stack Engineer y Technical Lead · "Web para terapeutas y app para pacientes, en producción." | Apr 2026 – Present · Clinical follow-up platform · Full-Stack Engineer and Technical Lead · "Web console for therapists and a patient app, in production." | copy-mvp §4.4 (name, role, dates, V1 Freelance line); owner-approved (move to copy-mvp) |
 | Experience row | `src/data/experiences.json` → `harness` | jun 2024 – oct 2026 · Harness · Senior Frontend Engineer · `home.work.items[1].summary` (es) | Jun 2024 – Oct 2026 · Harness · Senior Frontend Engineer · `home.work.items[1].summary` (en) | Dictionary, D-P2 (move to copy-mvp) |
