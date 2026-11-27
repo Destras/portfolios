@@ -31,11 +31,11 @@ const jsonLd = profilePageJsonLd({
 		<p class="about-eyebrow">{t.home.eyebrow}</p>
 		<h1 class="about-title">{t.home.title}</h1>
 		<p class="about-lead">{t.home.lead}</p>
+		<p class="about-availability">{t.home.availability}</p>
 		<div class="about-actions">
 			<ButtonLink href={`mailto:${contactEmail}`} variant="primary">{t.home.actions.email}</ButtonLink>
 			<ButtonLink href={cvHref} variant="secondary" arrow>{t.home.actions.cv}</ButtonLink>
 		</div>
-		<p class="about-availability">{t.home.availability}</p>
 		<dl class="fact-list">
 			{
 				t.home.facts.map((fact) => (
