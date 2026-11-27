@@ -2,6 +2,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
+import { unindexedPaths } from './src/i18n/routeMap.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -51,5 +52,13 @@ export default defineConfig({
       },
 	],
 
-  integrations: [sitemap()],
+  integrations: [
+      sitemap({
+          // Only canonical 200 pages: `/` is a 307 to /es/ or /en/ (src/worker.ts), and unindexed sections are noindex.
+          filter: (page) => {
+              const path = new URL(page).pathname;
+              return path !== '/' && !unindexedPaths().includes(path);
+          },
+      }),
+  ],
 });

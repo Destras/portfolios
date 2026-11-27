@@ -12,7 +12,9 @@
     "astro": "astro",
     "check": "astro check",
     "preview:cf": "astro build && wrangler dev",
-    "deploy": "astro build && wrangler deploy"
+    "deploy": "astro build && wrangler deploy",
+    "test": "node --test \"src/**/*.test.mjs\"",
+    "test:dist": "node --test tests/dist.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",

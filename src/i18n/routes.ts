@@ -1,30 +1,10 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { locales, type Locale } from './locales';
 
-/**
- * The single source of translated routes: generated pages, nav, footer, language switch,
- * canonical and hreflang all come from here. Keys are internal ids, never URLs.
- * `satisfies` fails the type check if a section is missing a locale.
- */
-export const routes = {
-	projects: { es: 'proyectos', en: 'projects' },
-	now: { es: 'now', en: 'now' },
-	uses: { es: 'uses', en: 'uses' },
-	colophon: { es: 'colofon', en: 'colophon' },
-	styleguide: { es: 'styleguide', en: 'styleguide' },
-} as const satisfies Record<string, Record<Locale, string>>;
-
-export type SectionKey = keyof typeof routes;
-
-/**
- * Base segment of each kind of work detail page: /es/proyectos/{slug}/, /es/experiencia/{slug}/.
- * Not part of `routes`, so no section page is generated for them (/es/experiencia/ is a 404, D-W3).
- * Keys are the JSON collection names in src/content.config.ts.
- */
-export const detailBases = {
-	projects: routes.projects,
-	experiences: { es: 'experiencia', en: 'experience' },
-} as const satisfies Record<string, Record<Locale, string>>;
+// The route map itself lives in routeMap.ts (no astro:* imports, so the config and Node tests can use it).
+// This file is the single source of translated URLs: generated pages, nav, footer, language switch, canonical and hreflang.
+export { routes, detailBases, unindexedSections, unindexedPaths, type SectionKey } from './routeMap.ts';
+import { routes, detailBases, type SectionKey } from './routeMap.ts';
 
 export type WorkKind = keyof typeof detailBases;
 export type RouteKey = 'home' | SectionKey;
