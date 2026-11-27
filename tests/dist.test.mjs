@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const dist = new URL('../dist/', import.meta.url).pathname;
 
@@ -111,4 +112,33 @@ test('CV is served under its new name, old URL redirects', () => {
 	assert.throws(() => readDist('cv-en.pdf'));
 	assert.match(readDist('_redirects'), /^\/cv-en\.pdf \/juan-ignacio-werkalec-fullstack-engineer-en\.pdf 301$/m);
 	for (const f of distHtmlFiles()) assert.ok(!readDist(f).includes('/cv-en.pdf'), f);
+});
+
+const sha256 = (s) => `'sha256-${createHash('sha256').update(s).digest('base64')}'`;
+
+test('inline scripts and styles are allowed by the page CSP', () => {
+	// dist/index.html is the meta-refresh fallback of `/` (no scripts, no styles), emitted by Astro.redirect without a CSP.
+	for (const f of distHtmlFiles().filter((f) => f !== 'index.html')) {
+		const html = readDist(f);
+		const csp = html.match(/<meta http-equiv="content-security-policy" content="([^"]+)"/)?.[1];
+		assert.ok(csp, `${f}: no CSP meta`);
+		for (const [, attrs, body] of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g))
+			if (!/\bsrc=/.test(attrs) && !/application\/ld\+json/.test(attrs)) assert.ok(csp.includes(sha256(body)), `${f}: script not hashed`);
+		for (const [, body] of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) assert.ok(csp.includes(sha256(body)), `${f}: style not hashed`);
+		assert.match(csp, /https:\/\/static\.cloudflareinsights\.com/);
+		assert.match(csp, /object-src 'none'/);
+	}
+});
+
+test('_headers sets the security headers on every path', () => {
+	const h = readDist('_headers');
+	for (const line of [
+		'Strict-Transport-Security: max-age=31536000',
+		'X-Content-Type-Options: nosniff',
+		'Referrer-Policy: strict-origin-when-cross-origin',
+		'X-Frame-Options: DENY',
+		'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+	])
+		assert.ok(h.includes(line), line);
+	assert.match(h, /^\/\*$/m);
 });

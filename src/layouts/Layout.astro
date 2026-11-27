@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets';
+import { themeBootstrap } from '../scripts/themeBootstrap';
 import '../styles/themes/salvia.css';
 import '../styles/themes/brasa.css';
 import '../styles/modes.css';
@@ -48,16 +49,8 @@ const ogLocales: Record<Locale, string> = { es: 'es_AR', en: 'en_US' };
 		<meta name="viewport" content="width=device-width" />
 		<Font cssVariable="--font-sans" preload />
 		<Font cssVariable="--font-mono" preload />
-		<!-- Applies the stored theme and mode before first paint. Read-only: never writes to localStorage. -->
-		<script is:inline>
-			try {
-				const root = document.documentElement;
-				const theme = localStorage.getItem('theme');
-				const mode = localStorage.getItem('mode');
-				if (['salvia', 'brasa'].includes(theme)) root.dataset.theme = theme;
-				if (['light', 'dark'].includes(mode)) root.dataset.mode = mode;
-			} catch {}
-		</script>
+		<!-- Applies the stored theme and mode before first paint (src/scripts/themeBootstrap.ts). -->
+		<script is:inline set:html={themeBootstrap} />
 		<link rel="icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />

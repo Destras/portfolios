@@ -2,7 +2,12 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
+import { createHash } from 'node:crypto';
 import { unindexedPaths } from './src/i18n/routeMap.ts';
+import { themeBootstrap } from './src/scripts/themeBootstrap.ts';
+
+// Hash of the is:inline pre-paint script, which Astro's CSP doesn't hash on its own.
+const themeBootstrapHash = /** @type {`sha256-${string}`} */ (`sha256-${createHash('sha256').update(themeBootstrap).digest('base64')}`);
 
 // https://astro.build/config
 export default defineConfig({
@@ -51,6 +56,37 @@ export default defineConfig({
           },
       },
 	],
+
+  // Content Security Policy as a <meta> per page, with hashes of the scripts and styles Astro emits
+  // (https://docs.astro.build/en/reference/configuration-reference/#securitycsp). frame-ancestors can't go in a
+  // <meta>; X-Frame-Options in public/_headers covers framing. The Cloudflare Web Analytics beacon is allowed.
+  security: {
+      csp: {
+          directives: [
+              "default-src 'self'",
+              "img-src 'self' data:",
+              "font-src 'self'",
+              "connect-src 'self' https://cloudflareinsights.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+          ],
+          scriptDirective: {
+              resources: ["'self'", 'https://static.cloudflareinsights.com'],
+              hashes: [themeBootstrapHash],
+          },
+          // Element hashes go to style-src-elem; style="" attributes (appearance swatches, styleguide) need 'unsafe-inline' on style-src-attr only.
+          styleDirective: {
+              resources: [
+                  { resource: "'self'", kind: 'element' },
+                  { resource: "'unsafe-inline'", kind: 'attribute' },
+              ],
+          },
+      },
+  },
+
+  // No code blocks in the content; Shiki's inline styles would also clash with the CSP.
+  markdown: { syntaxHighlight: false },
 
   integrations: [
       sitemap({
