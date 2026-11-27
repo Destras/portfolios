@@ -94,6 +94,8 @@ test('clinical detail pages cross-link the translated slugs', () => {
 
 test('old EN clinical URL redirects permanently', () => {
 	assert.match(readDist('_redirects'), /^\/en\/projects\/plataforma-clinica\/ \/en\/projects\/clinical-platform\/ 301$/m);
+	// _redirects matches paths exactly, and the old page no longer exists to get the slash added: cover the no-slash form too.
+	assert.match(readDist('_redirects'), /^\/en\/projects\/plataforma-clinica \/en\/projects\/clinical-platform\/ 301$/m);
 });
 
 test('home uses one positioning label and shows availability', () => {
